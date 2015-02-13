@@ -64,8 +64,6 @@ prt_fild03,307,75,5,5	monster	Green Plant	1080,5,360000,180000,1
 prt_fild03,0,0,0,0	monster	Green Plant	1080,5,360000,180000,1
 prt_fild03,148,107,5,5	monster	Green Plant	1080,5,360000,180000,1
 
-prt_fild03,0,0,0,0	monster	Paragon Yoyo	3057,1,0,0,0,2
-
 //==================================================
 // prt_fild04 - Prontera Field
 //==================================================
