@@ -22,7 +22,7 @@ prt_fild00,0,0,0,0	monster	Hornet	1004,70,0,0,0
 prt_fild00,227,212,0,0	monster	Shining Plant	1083,1,1800000,900000,1
 prt_fild00,285,138,10,10	monster	Green Plant	1080,5,360000,180000,1
 
-prt_fild00,0,0,0,0	monster	Paragon Hornet	3004,1,0,0,0,2
+prt_fild00,0,0,0,0	monster	Paragon Hornet	3004,2,0,0,0,2
 
 //==================================================
 // prt_fild01 - Prontera Field
@@ -35,7 +35,7 @@ prt_fild01,0,0,0,0	monster	Poring	1002,30,0,0,0
 prt_fild01,199,266,3,3	monster	Green Plant	1080,3,360000,180000,1
 prt_fild01,199,266,3,3	monster	Blue Plant	1079,1,900000,450000,1
 
-prt_fild01,0,0,0,0	monster	Paragon Lunatic	3063,1,0,0,0,2
+prt_fild01,0,0,0,0	monster	Paragon Lunatic	3063,2,0,0,0,2
 
 //==================================================
 // prt_fild02 - Prontera Field
@@ -49,7 +49,7 @@ prt_fild02,0,0,0,0	monster	Eclipse	1093,1,1800000,1200000,0
 prt_fild02,339,309,3,3	monster	Shining Plant	1083,1,1800000,900000,1
 prt_fild02,0,0,0,0	monster	Shining Plant	1083,2,1800000,900000,1
 
-prt_fild02,0,0,0,0	monster	Paragon Mandragora	3020,1,0,0,0,2
+prt_fild02,0,0,0,0	monster	Paragon Mandragora	3020,2,0,0,0,2
 
 //==================================================
 // prt_fild03 - Prontera Field
@@ -85,7 +85,7 @@ prt_fild05,0,0,0,0	monster	Thief Bug	1051,10,0,0,0
 prt_fild05,208,37,10,10	monster	Green Plant	1080,6,900000,450000,1
 prt_fild05,208,37,10,10	monster	Blue Plant	1079,1,900000,450000,1
 
-prt_fild05,0,0,0,0	monster	Paragon Poring	3002,1,0,0,0,2
+prt_fild05,0,0,0,0	monster	Paragon Poring	3002,2,0,0,0,2
 
 //==================================================
 // prt_fild06 - Prontera Field
@@ -116,7 +116,7 @@ prt_fild08,0,0,0,0	monster	Pupa	1008,20,0,0,0
 prt_fild08,0,0,0,0	monster	Poring	1002,70,0,0,0
 prt_fild08,0,0,0,0	monster	Drops	1113,10,0,0,0
 
-prt_fild08,0,0,0,0	monster	Paragon Poring	3002,1,0,0,0,2
+prt_fild08,0,0,0,0	monster	Paragon Poring	3002,2,0,0,0,2
 
 //==================================================
 // prt_fild09 - Prontera Field
@@ -128,7 +128,7 @@ prt_fild09,0,0,0,0	monster	Picky	1049,20,0,0,0
 prt_fild09,0,0,0,0	monster	Condor	1009,10,0,0,0
 prt_fild09,237,115,5,5	monster	Yellow Plant	1081,3,360000,180000,1
 
-prt_fild09,0,0,0,0	monster	Paragon Savage Babe	3167,1,0,0,0,2
+prt_fild09,0,0,0,0	monster	Paragon Savage Babe	3167,2,0,0,0,2
 
 //==================================================
 // prt_fild10 - Prontera Field
@@ -140,7 +140,7 @@ prt_fild10,0,0,0,0	monster	Thief Bug	1051,10,0,0,0
 prt_fild10,99,114,20,5	monster	Red Mushroom	1085,15,360000,180000,1
 prt_fild10,155,179,10,10	monster	Shining Plant	1083,1,1800000,900000,1
 
-prt_fild10,0,0,0,0	monster	Paragon Savage	3166,1,0,0,0,2
+prt_fild10,0,0,0,0	monster	Paragon Savage	3166,2,0,0,0,2
 
 //==================================================
 // prt_fild11 - Prontera Field
