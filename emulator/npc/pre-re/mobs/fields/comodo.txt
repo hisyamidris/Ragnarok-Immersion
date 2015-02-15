@@ -164,7 +164,7 @@ cmd_fild07,0,0,0,0	monster	Paragon Aster	3266,2,60000,0,0,2
 cmd_fild07,0,0,0,0	monster	Paragon Crab	3073,3,60000,0,0,2
 cmd_fild07,0,0,0,0	monster	Paragon Raggler	3254,1,180000,0,0,2
 cmd_fild07,0,0,0,0	monster	Paragon Drops	3113,20,0,0,0,2
-cmd_fild07,0,0,0,0	Paragon monster	Shellfish	3074,2,60000,0,0,2
+cmd_fild07,0,0,0,0	monster	Paragon Shellfish	3074,2,60000,0,0,2
 
 //==================================================
 // cmd_fild08 - Fortress Saint Darmain (East)
