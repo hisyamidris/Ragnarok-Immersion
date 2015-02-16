@@ -2656,9 +2656,10 @@ int status_calc_pc_(struct map_session_data* sd, enum e_status_calc_opt opt) {
 	if((skill_lv=pc->checkskill(sd,CR_TRUST))>0)
 		bstatus->max_hp += skill_lv * 200;
 	if ( pc->checkskill(sd, MC_VENDING) > 0 ) {
-		//skill_lv = sd->weight * 1000 / sd->max_weight / 10;
-		skill_lv = sd->weight / sd->max_weight * 100;
-		bstatus->max_hp += bstatus->max_hp * skill_lv * 5 / 1000;
+		skill_lv = sd->weight * 1000 / sd->max_weight / 10;
+		if(sd->weight < sd->max_weight)	{
+		bstatus->max_hp += bstatus->max_hp * (100 - skill_lv) * (5 * pc->checkskill(sd, MC_VENDING)) / 10000;
+		}
 	}
 	// Apply relative modifiers from equipment
 	if(sd->hprate < 0)
