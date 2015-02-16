@@ -7560,6 +7560,7 @@ int skill_castend_nodamage_id(struct block_list *src, struct block_list *bl, uin
 			}
 			clif->skill_nodamage(src,bl,skill_id,skill_lv,
 				sc_start4(src,bl,type,100,skill_lv,skill_id,src->id,skill->get_time(skill_id,skill_lv),1000));
+			sc_start(src, bl, SC_SPLASHER_POST, 100, skill_lv, 3000);
 		#ifndef RENEWAL
 			if (sd) skill->blockpc_start (sd, skill_id, skill->get_time(skill_id, skill_lv)+3000);
 		#endif
