@@ -4063,6 +4063,7 @@ int pc_additem(struct map_session_data *sd,struct item *item_data,int amount,e_l
 
 	sd->weight += w;
 	clif->updatestatus(sd,SP_WEIGHT);
+	status_calc_pc(sd, SCO_FORCE);
 	//Auto-equip
 	if(data->flag.autoequip)
 		pc->equipitem(sd, i, data->equip);
@@ -4110,8 +4111,10 @@ int pc_delitem(struct map_session_data *sd,int n,int amount,int type, short reas
 	}
 	if(!(type&1))
 		clif->delitem(sd,n,amount,reason);
-	if(!(type&2))
-		clif->updatestatus(sd,SP_WEIGHT);
+	if ( !(type & 2) ) {
+		clif->updatestatus(sd, SP_WEIGHT);
+		status_calc_pc(sd, SCO_FORCE);
+	}
 
 	return 0;
 }

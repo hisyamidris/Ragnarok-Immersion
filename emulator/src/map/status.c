@@ -2629,6 +2629,20 @@ int status_calc_pc_(struct map_session_data* sd, enum e_status_calc_opt opt) {
 		bstatus->batk += 4;
 #endif
 
+	// Weight
+	if ( (skill_lv = pc->checkskill(sd, MC_INCCARRY))>0 )
+		sd->max_weight += 2000 * skill_lv;
+	if ( pc_isridingpeco(sd) && pc->checkskill(sd, KN_RIDING) > 0 )
+		sd->max_weight += 10000;
+	else if ( pc_isridingdragon(sd) )
+		sd->max_weight += 5000 + 2000 * pc->checkskill(sd, RK_DRAGONTRAINING);
+	if ( sc->data[SC_KNOWLEDGE] )
+		sd->max_weight += sd->max_weight*sc->data[SC_KNOWLEDGE]->val1 / 10;
+	if ( (skill_lv = pc->checkskill(sd, ALL_INCCARRY))>0 )
+		sd->max_weight += 2000 * skill_lv;
+
+	sd->cart_weight_max = battle_config.max_cart_weight + (pc->checkskill(sd, GN_REMODELING_CART) * 5000);
+
 	// ----- HP MAX CALCULATION -----
 
 	// Basic MaxHP value
@@ -2640,8 +2654,11 @@ int status_calc_pc_(struct map_session_data* sd, enum e_status_calc_opt opt) {
 
 	// Absolute modifiers from passive skills
 	if((skill_lv=pc->checkskill(sd,CR_TRUST))>0)
-		bstatus->max_hp += skill_lv*200;
-
+		bstatus->max_hp += skill_lv * 200;
+	if ( pc->checkskill(sd, MC_VENDING) > 0 ) {
+		skill_lv = sd->weight * 1000 / sd->max_weight / 10;
+		bstatus->max_hp += bstatus->max_hp * skill_lv * 5 / 1000;
+	}
 	// Apply relative modifiers from equipment
 	if(sd->hprate < 0)
 		sd->hprate = 0;
@@ -2868,20 +2885,6 @@ int status_calc_pc_(struct map_session_data* sd, enum e_status_calc_opt opt) {
 		bstatus->dmotion = bstatus->dmotion*battle_config.pc_damage_delay_rate/100;
 
 	// ----- MISC CALCULATIONS -----
-
-	// Weight
-	if((skill_lv=pc->checkskill(sd,MC_INCCARRY))>0)
-		sd->max_weight += 2000*skill_lv;
-	if (pc_isridingpeco(sd) && pc->checkskill(sd,KN_RIDING) > 0)
-		sd->max_weight += 10000;
-	else if(pc_isridingdragon(sd))
-		sd->max_weight += 5000+2000*pc->checkskill(sd,RK_DRAGONTRAINING);
-	if(sc->data[SC_KNOWLEDGE])
-		sd->max_weight += sd->max_weight*sc->data[SC_KNOWLEDGE]->val1/10;
-	if((skill_lv=pc->checkskill(sd,ALL_INCCARRY))>0)
-		sd->max_weight += 2000*skill_lv;
-
-	sd->cart_weight_max = battle_config.max_cart_weight + (pc->checkskill(sd, GN_REMODELING_CART)*5000);
 
 	if (pc->checkskill(sd,SM_MOVINGRECOVERY)>0)
 		sd->regen.state.walk = 1;
@@ -5392,6 +5395,8 @@ unsigned short status_calc_speed(struct block_list *bl, struct status_change *sc
 				val = max( val, sc->data[SC_WIND_STEP_OPTION]->val2 );
 			if( sc->data[SC_FULL_THROTTLE] )
 				val = max( val, 25);
+			if ( sc->data[SC_MOMENTUM] )
+				val = max(val, 2 * sc->data[SC_MOMENTUM]->val1);
 			//FIXME: official items use a single bonus for this [ultramage]
 			if( sc->data[SC_MOVHASTE_HORSE] ) // temporary item-based speedup
 				val = max( val, 25 );
@@ -7492,6 +7497,10 @@ int status_change_start(struct block_list *src, struct block_list *bl, enum sc_t
 				if( sce->val1 > val1 )
 					val1 = sce->val1;
 				break;
+			case SC_MOMENTUM:
+			case SC_WEAKENED_SOUL:
+				val1 += sce->val1;
+				break;
 			case SC_ADRENALINE:
 			case SC_ADRENALINE2:
 			case SC_WEAPONPERFECT:
@@ -8151,6 +8160,12 @@ int status_change_start(struct block_list *src, struct block_list *bl, enum sc_t
 				}
 				status_zap(bl, st->hp-1, val2 ? 0 : st->sp);
 				return 1;
+				break;
+			case SC_MOMENTUM:
+				val1 = min(10, val1);
+				break;
+			case SC_WEAKENED_SOUL:
+				val1 = min(15, val1);
 				break;
 			case SC_RG_CCONFINE_S:
 			{
@@ -10822,8 +10837,8 @@ int status_change_timer(int tid, int64 tick, int id, intptr_t data) {
 				clif->message(bl, counter);
 			}
 #endif // 0
-			if((sce->val4 -= 500) > 0) {
-				sc_timer_next(500 + tick, status->change_timer, bl->id, data);
+			if((sce->val4 -= 1000) > 0) {
+				sc_timer_next(1000 + tick, status->change_timer, bl->id, data);
 				return 0;
 			}
 			break;

@@ -1541,6 +1541,11 @@ int unit_skilluse_id2(struct block_list *src, int target_id, uint16 skill_id, ui
 			status_change_end(src,SC_CLOAKINGEXCEED, INVALID_TIMER);
 			if (!src->prev) return 0;
 		}
+
+		if ( sc->data[SC_CONCENTRATION] && skill_id == SN_SHARPSHOOTING ) {
+			casttime -= casttime * 10 * sc->data[SC_CONCENTRATION]->val1 / 100;
+			status_change_end(src, SC_CONCENTRATION, INVALID_TIMER);
+		}
 	}
 
 	if(!ud->state.running) //need TK_RUN or WUGDASH handler to be done before that, see bugreport:6026

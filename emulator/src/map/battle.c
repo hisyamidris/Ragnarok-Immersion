@@ -3513,6 +3513,24 @@ struct Damage battle_calc_magic_attack(struct block_list *src,struct block_list 
 						ad.damage += sc->data[SC_TELEKINESIS_INTENSE]->val3;
 				}
 				switch(skill_id){
+					case MG_SOULSTRIKE:
+					case HW_NAPALMVULCAN:
+					{
+						struct status_change *tsc = status->get_sc(target);
+						if ( tsc && tsc->data[SC_WEAKENED_SOUL] )
+							skillratio += 10 * tsc->data[SC_WEAKENED_SOUL]->val1;
+						MATK_RATE(battle->calc_skillratio(BF_MAGIC, src, target, skill_id, skill_lv, skillratio, mflag));
+					}
+						break;
+					case MG_NAPALMBEAT:
+					{
+						struct status_change *tsc = status->get_sc(target);
+						if ( tsc && tsc->data[SC_WEAKENED_SOUL] )
+							skillratio += 20 * tsc->data[SC_WEAKENED_SOUL]->val1;
+						status_change_end(target, SC_WEAKENED_SOUL, INVALID_TIMER);
+						MATK_RATE(battle->calc_skillratio(BF_MAGIC, src, target, skill_id, skill_lv, skillratio, mflag));
+					}
+						break;
 					case MG_FIREBOLT:
 					case MG_COLDBOLT:
 					case MG_LIGHTNINGBOLT:
@@ -3529,6 +3547,9 @@ struct Damage battle_calc_magic_attack(struct block_list *src,struct block_list 
 				//Constant/misc additions from skills
 				if (skill_id == WZ_FIREPILLAR)
 					MATK_ADD(100+50*skill_lv);
+				if ( skill_id == MG_SOULSTRIKE ) {
+					sc_start(src, target, SC_WEAKENED_SOUL, 100, ad.div_, 12000);
+				}
 				if( sd && ( sd->status.class_ == JOB_ARCH_BISHOP_T || sd->status.class_ == JOB_ARCH_BISHOP ) &&
 					(i=pc->checkskill(sd,AB_EUCHARISTICA)) > 0 &&
 					(tstatus->race == RC_DEMON || tstatus->def_ele == ELE_DARK) )
@@ -3786,7 +3807,14 @@ struct Damage battle_calc_misc_attack(struct block_list *src,struct block_list *
 		if(md.damage > 9999) md.damage = 9999;
 		break;
 	case PA_PRESSURE:
-		md.damage=500+300*skill_lv;
+		/* md.damage=500+300*skill_lv; */
+	{
+		int per = 1; /* Full HP */
+		if ( status_get_hp(target) < status_get_max_hp(target) ) {
+			per = (status_get_max_hp(target) - status_get_hp(target)) * 1000 / status_get_max_hp(target) / 10;
+		}
+		md.damage = 10 * skill_lv * per;
+	}
 		break;
 	case PA_GOSPEL:
 		md.damage = 1+rnd()%9999;
@@ -4917,7 +4945,8 @@ struct Damage battle_calc_weapon_attack(struct block_list *src,struct block_list
 					case ASC_BREAKER:
 					case ASC_METEORASSAULT: break;
 					default:
-						ATK_ADDRATE(sc->data[SC_EDP]->val3);
+						if ( tsc && tsc->data[SC_POISON] )
+							ATK_ADDRATE(sc->data[SC_EDP]->val3);
 				}
 			}
 #endif
@@ -4925,6 +4954,8 @@ struct Damage battle_calc_weapon_attack(struct block_list *src,struct block_list
 				TBL_HOM *hd = BL_CAST(BL_HOM,src);
 				if (hd) ATK_ADD(hd->homunculus.spiritball * 3);
 			}
+			if ( sc->data[SC_MOMENTUM] )
+				ATK_ADDRATE(5 * sc->data[SC_MOMENTUM]->val1);
 		}
 
 		switch (skill_id) {
@@ -5777,10 +5808,11 @@ enum damage_lv battle_weapon_attack(struct block_list* src, struct block_list* t
 		int dist = distance_bl(src, target);
 		if(dist <= 0 || (!map->check_dir(dir,t_dir) && dist <= tstatus->rhw.range+1)) {
 			uint16 skill_lv = tsc->data[SC_AUTOCOUNTER]->val1;
-			clif->skillcastcancel(target); //Remove the casting bar. [Skotlex]
+			/* clif->skillcastcancel(target); //Remove the casting bar. [Skotlex]*/
 			clif->damage(src, target, sstatus->amotion, 1, 0, 1, 0, 0); //Display MISS.
-			status_change_end(target, SC_AUTOCOUNTER, INVALID_TIMER);
+			/* status_change_end(target, SC_AUTOCOUNTER, INVALID_TIMER); */
 			skill->attack(BF_WEAPON,target,target,src,KN_AUTOCOUNTER,skill_lv,tick,0);
+			clif->skill_nodamage(src, target, KN_AUTOCOUNTER, skill_lv, 1);
 			return ATK_BLOCK;
 		}
 	}
@@ -5950,9 +5982,9 @@ enum damage_lv battle_weapon_attack(struct block_list* src, struct block_list* t
 		if (i >= 50) skill_lv -= 2;
 		else if (i >= 15) skill_lv--;
 		if (skill_lv < 1) skill_lv = 1;
-		sp = skill->get_sp(skill_id,skill_lv) * 2 / 3;
+		/* sp = skill->get_sp(skill_id,skill_lv) * 2 / 3;
 
-		if (status->charge(src, 0, sp)) {
+		if ( status->charge(src, 0, sp) ) { */
 			switch (skill->get_casttype(skill_id)) {
 				case CAST_GROUND:
 					skill->castend_pos2(src, target->x, target->y, skill_id, skill_lv, tick, flag);
@@ -5964,7 +5996,7 @@ enum damage_lv battle_weapon_attack(struct block_list* src, struct block_list* t
 					skill->castend_damage_id(src, target, skill_id, skill_lv, tick, flag);
 					break;
 			}
-		}
+		/* } */
 	}
 	if (sd) {
 		if( wd.flag&BF_SHORT && sc

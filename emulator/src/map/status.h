@@ -744,6 +744,9 @@ typedef enum sc_type {
 	SC_MTF_PUMPKIN,
 	SC_MTF_HITFLEE,
 
+	SC_MOMENTUM,
+	SC_WEAKENED_SOUL,
+
 	SC_MAX, //Automatically updated max, used in for's to check we are within bounds.
 } sc_type;
 

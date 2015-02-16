@@ -814,6 +814,8 @@ int skill_additional_effect(struct block_list* src, struct block_list *bl, uint1
 			 && sd && skill_id==TF_POISON
 			)
 				clif->skill_fail(sd,skill_id,USESKILL_FAIL_LEVEL,0);
+			if ( skill_id == AS_SPLASHER && tsc && !tsc->data[SC_SPLASHER] )
+				sc_start4(src, bl, SC_SPLASHER, 100, skill_lv, skill_id, src->id, skill->get_time(skill_id, skill_lv), 1000);
 			break;
 
 		case AS_SONICBLOW:
@@ -943,11 +945,15 @@ int skill_additional_effect(struct block_list* src, struct block_list *bl, uint1
 			break;
 
 		case BA_FROSTJOKER:
-			sc_start(src,bl,SC_FREEZE,(15+5*skill_lv),skill_lv,skill->get_time2(skill_id,skill_lv));
+			temp = 100 - 5 * skill_lv;
+			temp -= distance_bl(src, bl) * 12;
+			sc_start(src, bl, SC_FREEZE, temp/*(15+5*skill_lv)*/, skill_lv, skill->get_time2(skill_id, skill_lv));
 			break;
 
 		case DC_SCREAM:
-			sc_start(src,bl,SC_STUN,(25+5*skill_lv),skill_lv,skill->get_time2(skill_id,skill_lv));
+			temp = 100 - 5 * skill_lv;
+			temp -= distance_bl(src, bl) * 12;
+			sc_start(src, bl, SC_STUN, temp/*(25+5*skill_lv)*/, skill_lv, skill->get_time2(skill_id, skill_lv));
 			break;
 
 		case BD_LULLABY:
@@ -3206,12 +3212,16 @@ int skill_timerskill(int tid, int64 tick, int id, intptr_t data) {
 
 			switch(skl->skill_id) {
 				case RG_INTIMIDATE:
-					if (unit->warp(src,-1,-1,-1,CLR_TELEPORT) == 0) {
-						short x,y;
+				{
+					/* if ( unit->warp(src, -1, -1, -1, CLR_TELEPORT) == 0 ) { */
+					if ( skill->blown(src, src, 0x6, unit->getdir(src), 0) > 0 ) {
+						int16 x, y;
+						clif->fixpos(src);
 						map->search_freecell(src, 0, &x, &y, 1, 1, 0);
-						if (target != src && !status->isdead(target))
+						if ( target != src && !status->isdead(target) )
 							unit->warp(target, -1, x, y, CLR_TELEPORT);
 					}
+				}
 					break;
 				case BA_FROSTJOKER:
 				case DC_SCREAM:
@@ -4232,17 +4242,17 @@ int skill_castend_damage_id(struct block_list* src, struct block_list *bl, uint1
 
 		// [Celest]
 		case PF_SOULBURN:
-			if (rnd()%100 < (skill_lv < 5 ? 30 + skill_lv * 10 : 70)) {
+			/* if (rnd()%100 < (skill_lv < 5 ? 30 + skill_lv * 10 : 70)) { */
 				clif->skill_nodamage(src,bl,skill_id,skill_lv,1);
 				if (skill_lv == 5)
 					skill->attack(BF_MAGIC,src,src,bl,skill_id,skill_lv,tick,flag);
-				status_percent_damage(src, bl, 0, 100, false);
-			} else {
+				status_percent_damage(src, bl, 0, 5 * skill_lv, false);
+			/*} else {
 				clif->skill_nodamage(src,src,skill_id,skill_lv,1);
 				if (skill_lv == 5)
 					skill->attack(BF_MAGIC,src,src,src,skill_id,skill_lv,tick,flag);
 				status_percent_damage(src, src, 0, 100, false);
-			}
+			}*/
 			break;
 
 		case NPC_BLOODDRAIN:
@@ -4922,7 +4932,12 @@ int skill_castend_id(int tid, int64 tick, int id, intptr_t data) {
 
 		if( ud->skill_id == PR_TURNUNDEAD ) {
 			struct status_data *tstatus = status->get_status_data(target);
-			if( !battle->check_undead(tstatus->race, tstatus->def_ele) )
+			sc = status->get_sc(target); 
+			if ( !battle->check_undead(tstatus->race, tstatus->def_ele) ) {
+				sc_start(src, target, SC_PROPERTYUNDEAD, 100, ud->skill_lv, 10000);
+				break;
+			}
+			if ( sc && sc->data[SC_PROPERTYUNDEAD] )
 				break;
 		}
 
@@ -13220,8 +13235,10 @@ int skill_check_condition_castbegin(struct map_session_data* sd, uint16 skill_id
 			if(sc->data[SC_BLADESTOP])
 				break;
 			if (sc->data[SC_COMBOATTACK]) {
-				if( sc->data[SC_COMBOATTACK]->val1 == MO_TRIPLEATTACK )
+				if ( sc->data[SC_COMBOATTACK]->val1 == MO_TRIPLEATTACK ) {
+					sc_start(&sd->bl, &sd->bl, SC_MOMENTUM, 100, 1, 10000);
 					break;
+				}
 				clif->skill_fail(sd, skill_id, USESKILL_FAIL_COMBOSKILL, MO_TRIPLEATTACK);
 			}
 			return 0;
@@ -13229,8 +13246,10 @@ int skill_check_condition_castbegin(struct map_session_data* sd, uint16 skill_id
 			if(!sc)
 				return 0;
 			if( sc && sc->data[SC_COMBOATTACK] ) {
-				if ( sc->data[SC_COMBOATTACK]->val1 == MO_CHAINCOMBO )
+				if ( sc->data[SC_COMBOATTACK]->val1 == MO_CHAINCOMBO ) {
+					sc_start(&sd->bl, &sd->bl, SC_MOMENTUM, 100, 1, 10000);
 					break;
+				}
 				clif->skill_fail(sd, skill_id, USESKILL_FAIL_COMBOSKILL, MO_CHAINCOMBO);
 			}
 			return 0;
@@ -13238,8 +13257,10 @@ int skill_check_condition_castbegin(struct map_session_data* sd, uint16 skill_id
 			if(!sc)
 				return 0;
 			if( sc && sc->data[SC_COMBOATTACK] ) {
-				if ( sc->data[SC_COMBOATTACK]->val1 == MO_COMBOFINISH )
+				if ( sc->data[SC_COMBOATTACK]->val1 == MO_COMBOFINISH ) {
+					sc_start(&sd->bl, &sd->bl, SC_MOMENTUM, 100, 1, 10000);
 					break;
+				}
 				clif->skill_fail(sd, skill_id, USESKILL_FAIL_COMBOSKILL, MO_COMBOFINISH);
 			}
 			return 0;
@@ -13247,8 +13268,10 @@ int skill_check_condition_castbegin(struct map_session_data* sd, uint16 skill_id
 			if(!sc)
 				return 0;
 			if( sc && sc->data[SC_COMBOATTACK] ) {
-				if( sc->data[SC_COMBOATTACK]->val1 == CH_TIGERFIST )
+				if( sc->data[SC_COMBOATTACK]->val1 == CH_TIGERFIST ){
+					sc_start(&sd->bl, &sd->bl, SC_MOMENTUM, 100, 1, 10000);
 					break;
+				}
 				clif->skill_fail(sd, skill_id, USESKILL_FAIL_COMBOSKILL, CH_TIGERFIST);
 			}
 			return 0;
@@ -13264,6 +13287,7 @@ int skill_check_condition_castbegin(struct map_session_data* sd, uint16 skill_id
 					case MO_COMBOFINISH:
 					case CH_TIGERFIST:
 					case CH_CHAINCRUSH:
+						sc_start(&sd->bl, &sd->bl, SC_MOMENTUM, 100, 1, 10000);
 						break;
 					default:
 						return 0;
@@ -14768,6 +14792,7 @@ int skill_vfcastfix(struct block_list *bl, double time, uint16 skill_id, uint16 
 		time = (1 - sqrt( ((float)(status_get_dex(bl)*2 + status_get_int(bl)) / battle_config.vcast_stat_scale) )) * time;
 	// underflow checking/capping
 	time = max(time, 0) + (1 - (float)min(fixcast_r, 100) / 100) * max(fixed,0);
+
 #endif
 	return (int)time;
 }
