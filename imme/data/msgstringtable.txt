@@ -19,7 +19,7 @@ Are you sure that you want to quit?#
 Passwords are at least 4 characters long. Please try again.#
 Are you sure that you want to delete this character?#
 Foul Language Detected.#
-Character Name must be at least 4 characters long.#
+Character Name must be at least 4 characters long. Only alphabets are allowed.#
 Command List: /h | /help#
 Effects On#
 Effects Off#
