@@ -814,8 +814,10 @@ int skill_additional_effect(struct block_list* src, struct block_list *bl, uint1
 			 && sd && skill_id==TF_POISON
 			)
 				clif->skill_fail(sd,skill_id,USESKILL_FAIL_LEVEL,0);
-			if ( skill_id == AS_SPLASHER && tsc && !tsc->data[SC_SPLASHER] )
+			if ( skill_id == AS_SPLASHER && tsc && !tsc->data[SC_SPLASHER_POST] ) {
 				sc_start4(src, bl, SC_SPLASHER, 100, skill_lv, skill_id, src->id, skill->get_time(skill_id, skill_lv), 1000);
+				sc_start(src, bl, SC_SPLASHER_POST, 100, skill_lv, 3000);
+			}
 			break;
 
 		case AS_SONICBLOW:
