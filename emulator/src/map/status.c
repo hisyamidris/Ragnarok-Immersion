@@ -2656,7 +2656,8 @@ int status_calc_pc_(struct map_session_data* sd, enum e_status_calc_opt opt) {
 	if((skill_lv=pc->checkskill(sd,CR_TRUST))>0)
 		bstatus->max_hp += skill_lv * 200;
 	if ( pc->checkskill(sd, MC_VENDING) > 0 ) {
-		skill_lv = sd->weight * 1000 / sd->max_weight / 10;
+		//skill_lv = sd->weight * 1000 / sd->max_weight / 10;
+		skill_lv = sd->weight / sd->max_weight * 100;
 		bstatus->max_hp += bstatus->max_hp * skill_lv * 5 / 1000;
 	}
 	// Apply relative modifiers from equipment
@@ -5396,7 +5397,7 @@ unsigned short status_calc_speed(struct block_list *bl, struct status_change *sc
 			if( sc->data[SC_FULL_THROTTLE] )
 				val = max( val, 25);
 			if ( sc->data[SC_MOMENTUM] )
-				val = max(val, 2 * sc->data[SC_MOMENTUM]->val1);
+				val = max(val, 5 * sc->data[SC_MOMENTUM]->val1);
 			//FIXME: official items use a single bonus for this [ultramage]
 			if( sc->data[SC_MOVHASTE_HORSE] ) // temporary item-based speedup
 				val = max( val, 25 );
