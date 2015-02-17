@@ -23,38 +23,68 @@
 //= 2.4 Corrected an error in Hanson. (bugreport:2374) [L0ne_W0lf]
 //============================================================
 
-// Bulletin Board
-new_1-1,66,114,4	script	Bulletin Board#nv	HIDDEN_NPC,{
-	mes "^FF0000=================================^000000";
-	mes "^FF0000 ^000000 ^E40CAA[Welcome]^CC0000 to ^FF9000Novice^7FFF00 Training ^00FF00Grounds ^E40CAA[Welcome]^FF0000^000000";
-	mes "^FF0000=================================^000000";
-	close;
-}
-
-new_1-1,144,116,2	script	Guard#nv1	8W_SOLDIER,{
-	mes "[Training Grounds Guard]";
-	mes "Welcome to the Training Grounds.";
-	mes "You are now in the outer court yard. Please go inside the castle to begin your training.";
-	close;
-}
-
-new_1-1,144,107,2	script	Guard#nv2	8W_SOLDIER,{
-	mes "[Training Grounds Guard]";
+new_1-2,96,12,6	script	Guard	8W_SOLDIER,{
 	if(rand(2)) {
-		mes "Come in!";
-		mes "I would like";
-		mes "to welcome you to";
-		mes "the Training Grounds!";
-		next;
 		mes "[Training Grounds Guard]";
-		mes "In here, you can prepare";
-		mes "yourself for your future";
-		mes "adventures throughout the";
-		mes "Ragnarok world!";
+		mes "New recruit? You should talk to the Receptionist at the end of this hallway.";
 	}
 	else {
-		mes "Go, Novice, go!";
-		mes "Fight, and grow stronger! Look towards a brighter tomorrow!";
+		mes "*Guard salutes you with respect*";
+	}
+	close;
+}
+
+new_1-2,96,19,6	script	Guard	8W_SOLDIER,{
+	if(rand(2)) {
+		mes "[Training Grounds Guard]";
+		mes "New recruit? You should talk to the Receptionist at the end of this hallway.";
+	}
+	else {
+		mes "*Guard salutes you with respect*";
+	}
+	close;
+}
+
+new_1-2,96,27,6	script	Guard	8W_SOLDIER,{
+	if(rand(2)) {
+		mes "[Training Grounds Guard]";
+		mes "New recruit? You should talk to the Receptionist at the end of this hallway.";
+	}
+	else {
+		mes "*Guard salutes you with respect*";
+	}
+	close;
+}
+
+new_1-2,103,27,2	script	Guard	8W_SOLDIER,{
+	if(rand(2)) {
+		mes "[Training Grounds Guard]";
+		mes "New recruit? You should talk to the Receptionist at the end of this hallway.";
+	}
+	else {
+		mes "*Guard salutes you with respect*";
+	}
+	close;
+}
+
+new_1-2,103,19,2	script	Guard	8W_SOLDIER,{
+	if(rand(2)) {
+		mes "[Training Grounds Guard]";
+		mes "New recruit? You should talk to the Receptionist at the end of this hallway.";
+	}
+	else {
+		mes "*Guard salutes you with respect*";
+	}
+	close;
+}
+
+new_1-2,103,12,2	script	Guard	8W_SOLDIER,{
+	if(rand(2)) {
+		mes "[Training Grounds Guard]";
+		mes "New recruit? You should talk to the Receptionist at the end of this hallway.";
+	}
+	else {
+		mes "*Guard salutes you with respect*";
 	}
 	close;
 }
@@ -62,8 +92,8 @@ new_1-1,144,107,2	script	Guard#nv2	8W_SOLDIER,{
 // Receptionist
 new_1-2,100,29,4	script	Receptionist#nv1	4_M_04,{
 	mes "[Training Grounds Receptionist]";
-	mes "Hello, you look to be new here.";
-	mes "What is your name?";
+	mes "Hello, you must be the new recruit.";
+	mes "Your name, please?";
 	next;
 	input .@charname$;
 	if (.@charname$!=strcharinfo(0)) {
@@ -73,20 +103,16 @@ new_1-2,100,29,4	script	Receptionist#nv1	4_M_04,{
 		close;
 	}
 	mes "[Training Grounds Receptionist]";
-	mes "Welcome!";
-	mes "You are at the entrance";
-	mes "of the ^3355FFTraining Grounds^000000.";
+	mes "Thank you for volunteering. With your help, we may be able to still defend our self against the enemies of Rune-Midgard.";
 	next;
 	mes "[Training Grounds Receptionist]";
-	mes "If you're new";
-	mes "to the Ragnarok world,";
-	mes "please choose the";
-	mes "^3355FFTraining Grounds Introduction^000000";
-	mes "menu for more information.";
+	mes "Whenever you're ready to enter, let me know.";
 	next;
 	while (1) {
-		switch(select("Apply for training.:Direct access to Ragnarok Online.:^3355FFTraining Grounds Introduction.^000000:I need a moment to think.")) {
+		switch(select("Enter Training Grounds.:^3355FFWhat is this Training Grounds?^000000:I need a moment to think.")) {
 		case 1:
+			jobchange Job_Novice_High;
+			resetlvl(1);
 			mes "[Training Grounds Receptionist]";
 			mes "Thank you for applying for Novice training. For detailed information of each training course, please inquire the Guides for assistance.";
 			next;
@@ -101,48 +127,7 @@ new_1-2,100,29,4	script	Receptionist#nv1	4_M_04,{
 			end;
 		case 2:
 			mes "[Training Grounds Receptionist]";
-			mes "I understand.";
-			mes "Please do your";
-			mes "best, and I wish you";
-			mes "the best of luck!";
-			close2;
-			nov_1st_cos = 0;
-			nov_2nd_cos = 0;
-			nov_3_swordman = 0;
-			nov_3_archer = 0;
-			nov_3_thief = 0;
-			nov_3_magician = 0;
-			nov_3_acolyte = 0;
-			nov_3_merchant = 0;
-			switch(rand(6)) {
-			case 0:
-				savepoint "prontera",273,354;
-				warp "prontera",273,354;
-				break;
-			case 1:
-				savepoint "morocc",160,94;
-				warp "morocc",160,94;
-				break;
-			case 2:
-				savepoint "geffen",120,100;
-				warp "geffen",120,100;
-				break;
-			case 3:
-				savepoint "payon",70,100;
-				warp "payon",70,100;
-				break;
-			case 4:
-				savepoint "alberta",116,57;
-				warp "alberta",116,57;
-				break;
-			case 5:
-				savepoint "izlude",94,103;
-				warp "izlude",94,103;
-			}
-			end;
-		case 3:
-			mes "[Training Grounds Receptionist]";
-			mes "This training grounds was established in order to provide useful information to new players of Ragnarok Online by the Rune-Midgarts Kingdom's Board of Education.";
+			mes "This training grounds was established in order to provide useful information to new recruits of Ragnarok Online by the Rune-Midgarts Kingdom Leaders.";
 			next;
 			mes "[Training Grounds Receptionist]";
 			mes "The training course is organized into two parts: the Basic Knowledge classes, and Field Combat training.";
@@ -162,13 +147,10 @@ new_1-2,100,29,4	script	Receptionist#nv1	4_M_04,{
 			mes "At the end of the training, we will provide an introduction to the 1st Job Classes. This will help players decide which job class is best for them.";
 			next;
 			mes "[Training Grounds Receptionist]";
-			mes "If you wish to participate in the training grounds, please choose '^3355FFApply for training^000000' in the menu.";
-			next;
-			mes "[Training Grounds Receptionist]";
-			mes "Otherwise, if you want to skip the basic training and immediately enter the world of Ragnarok Online, please choose '^3355FFDirect access to Ragnarok Online^000000.'";
+			mes "If you wish to participate in the training grounds, please choose '^3355FFEnter Training Grounds^000000' in the menu.";
 			next;
 			break;
-		case 4:
+		case 3:
 			mes "[Training Grounds Receptionist]";
 			mes "I understand.";
 			mes "Please, take your time.";
@@ -354,7 +336,7 @@ new_1-2,99,105,3	script	Interfaces Tutor#nv1	4_M_CRU,{
 		mes "[Kris]";
 		mes "You've completed all the essential courses. Have you spoken to the assistant tutors already? The field combat training will be your next course. Would you like to proceed?";
 		next;
-		switch(select("Sure!:No, I'll come back later.:Send me to a town!")) {
+		switch(select("Sure!:No, I'll come back later.:Who is that girl in brown uniform?")) {
 		case 1:
 			mes "[Kris]";
 			mes "Your next course is Field Combat training. Please listen carefully to your next trainer, and I hope you pass the course. Godspeed.";
@@ -370,7 +352,7 @@ new_1-2,99,105,3	script	Interfaces Tutor#nv1	4_M_CRU,{
 			close;
 		case 3:
 			mes "[Kris]";
-			mes "So, would you like to be sent to a town? If you're confident that you've learned enough, head over to the right and speak to the ^3355FFKafra Employee^000000.";
+			mes "She is one of the ^3355FFKafra Employee^000000. Their powers are unique and very valuable for our cause. They will help you advance to the next job when you're ready.";
 			next;
 			mes "[Kris]";
 			mes "The Kafra Services are very convenient once you get out into the real world. Their Teleport Service can be used to travel from town to town, and you can keep your items safe in the Kafra Storage.";
@@ -412,7 +394,7 @@ new_1-2,99,105,3	script	Interfaces Tutor#nv1	4_M_CRU,{
 		mes "more about interface";
 		mes "fundamentals?";
 		next;
-		switch(select("Yes.:Nah, I'm a pro~:Cancel.")) {
+		switch(select("Yes.:Send me straight to Combat Training:Cancel.")) {
 		case 1:
 			mes "[Kris]";
 			mes "First, it's possible to move every interface window on your screen by dragging the window. Just click on the window, hold down the mouse button and move your mouse.";
@@ -633,7 +615,7 @@ new_1-2,83,111,3	script	Skill Tutor#nv	4_M_MONK,{
 		mes "Did you need more help?";
 		mes "I see that you've completed all the essential courses. Did you speak to the assistant tutors too?";
 		next;
-		switch(select("Send me to the next course!:Assistant tutors?:Take me to a town!")) {
+		switch(select("Send me to the next course!:Assistant tutors?:How do I get more skills?")) {
 		case 1:
 			mes "[Cecil]";
 			mes "Ah! Right, right.";
@@ -669,11 +651,10 @@ new_1-2,83,111,3	script	Skill Tutor#nv	4_M_MONK,{
 			close;
 		case 3:
 			mes "[Cecil]";
-			mes "A town...?";
-			mes "What do I look like, your own personal Peco Peco?";
+			mes "You will learn new skills when you advance to the next job.";
 			next;
 			mes "[Cecil]";
-			mes "That's right, you might be too young to know about that. Listen, if you want to move to a town, speak to the Kafra Lady to the right, okay?";
+			mes "Once you've reach a certain job level, you can ask a Kafra Employee for job advancement.";
 			close;
 		}
 	}
@@ -889,7 +870,7 @@ new_1-2,115,111,3	script	Item Tutor#nv	4_F_JOB_BLACKSMITH,{
 		mes "Huh...?";
 		mes "Do you need help looking for someone? You seem to have completed all of the essential courses. Where do you need to go?";
 		next;
-		switch(select("I'm not sure~!:Send me to a town.:Cancel")) {
+		switch(select("I'm not sure~!:Who is that girl in brown?:Cancel")) {
 		case 1:
 			mes "[Alice]";
 			mes "Hmm...";
@@ -912,8 +893,11 @@ new_1-2,115,111,3	script	Item Tutor#nv	4_F_JOB_BLACKSMITH,{
 			}
 		case 2:
 			mes "[Alice]";
-			mes "Ah, I see.";
-			mes "If you want to move to a town, the Kafra Lady to the right of me will teleport you. Take care now~";
+			mes "They are the Kafra Employee.";
+			mes "I don't know much about them, but I do know that they are one of the most useful organization in Rune-Midgard.";
+			next;
+			mes "[Alice]";
+			mes "You should talk to them about their services";
 			close;
 		case 3:
 			mes "[Alice]";
@@ -1253,159 +1237,24 @@ new_1-2,118,108,3	script	Kafra Employee#nv1	4_F_KAFRA1,{
 	mes "I've been dispatched from Kafra Corporation Headquarters to assist new players such as yourself.";
 	next;
 	mes "[Kafra Employee]";
-	mes "Please, take heed!";
-	mes "If you move to a town";
-	mes "^4d4dffyou will be unable to return to the Training Grounds ever again^000000.";
+	mes "How can I help you today?";
 	next;
-	if ( select("Teleport Service","About Kafra services") == 1 ) {
-		if (nov_get_item02 < 10 && nov_get_item03 < 10 && nov_get_item04 < 10) {
+	if ( select("I want to advance to the next job!","About Kafra services") == 1 ) {
 			mes "[Kafra Employee]";
-			mes "I see, you must want to teleport to a town in Rune-Midgard imediately. First, let me briefly inform you about the different towns and cities in Ragnarok.";
+			mes "I am glad that you're eager to advance to the next class, but I'm afraid you're not ready for it.";
 			next;
 			mes "[Kafra Employee]";
-			mes "Prontera is the capital of the Rune-Midgarts kingdom, and its satellite, Izlude, is closeby.";
+			mes "For novices, you need to be job level 10 in order to advance to the next class.";
 			next;
 			mes "[Kafra Employee]";
-			mes "^996633Morroc^000000 is in the desert. It's the town where you can change your job to the Thief and Assassin classes.";
+			mes "Once you've advance to first class, you need to be job level 50 to advance to the next one.";
 			next;
 			mes "[Kafra Employee]";
-			mes "^006600Payon^000000 is in the mountains, and is famous for its Archer Village, where Novices can change their jobs to Archers.";
+			mes "These restriction are made by the High Wizards of Geffen to maximize the player's potential.";
 			next;
 			mes "[Kafra Employee]";
-			mes "The city of magic, ^993300Geffen^000000, is where people go to become Mages and Wizards.";
-			next;
-			mes "[Kafra Employee]";
-			mes "^003399Alberta^000000, the port city, is where the Merchant Guild is located. You must also go to Alberta if you wish to travel by sea.";
-			next;
-			mes "[Kafra Employee]";
-			mes "Please choose";
-			mes "your destination.";
-			next;
-			switch(select("Prontera:Morroc:Payon:Alberta:Geffen")) {
-			case 1:
-				.@dest$ = "Prontera";
-				.@mapn$ = "prontera";
-				.@saveX = 117; .@saveY = 72;
-				.@warpX = 150; .@warpY = 50;
-				break;
-			case 2:
-				.@dest$ = "Morroc";
-				.@mapn$ = "morocc";
-				.@saveX = 150; .@saveY = 99;
-				.@warpX = 155; .@warpY = 110;
-				break;
-			case 3:
-				.@dest$ = "Payon";
-				.@mapn$ = "payon";
-				.@saveX = 70; .@saveY = 100;
-				.@warpX = 166; .@warpY = 67;
-				break;
-			case 4:
-				.@dest$ = "Alberta";
-				.@mapn$ = "alberta";
-				.@saveX = 30; .@saveY = 232;
-				.@warpX = 114; .@warpY = 58;
-				break;
-			case 5:
-				.@dest$ = "Geffen";
-				.@mapn$ = "geffen";
-				.@saveX = 119; .@saveY = 37;
-				.@warpX = 122; .@warpY = 65;
-				break;
-			}
-			mes "[Kafra Employee]";
-			mes "You have decided";
-			mes "to go to "+.@dest$+".";
-			mes "May God be with you.";
-			close2;
-			if (nov_get_item05 < 11) {
-				nov_get_item05 = 11;
-				getitem 569,100; //Novice_Potion
-				getitem 1243,1; //Novice_Knife
-				getitem 2414,1; //Novice_Boots
-				getitem 2510,1; //Novice_Hood
-				getitem 2352,1; //Novice_Plate
-				getitem 2112,1; //Novice_Guard
-				getitem 601,10; //Wing_Of_Fly
-				getitem 602,2; //Wing_Of_Butterfly
-				getitem 7059,5; //Cargo_Free_Ticket
-				getitem 7060,5; //Warp_Free_Ticket
-			}
-			nov_1st_cos = 0;
-			nov_2nd_cos = 0;
-			nov_3_swordman = 0;
-			nov_3_archer = 0;
-			nov_3_thief = 0;
-			nov_3_magician = 0;
-			nov_3_acolyte = 0;
-			nov_3_merchant = 0;
-			savepoint .@mapn$,.@saveX,.@saveY;
-			warp .@mapn$,.@warpX,.@warpY;
-			end;
-		}
-		else {
-			switch(select("Field Combat Course:Prontera:Morroc:Payon:Alberta:Geffen")) {
-			case 1:
-				mes "[Kafra Employee]";
-				mes "Thank you, let";
-				mes "me send you to the";
-				mes "Field Combat Training Course.";
-				close2;
-				warp "new_1-2",28,178;
-				end;
-			case 2:
-				.@dest$ = "Prontera";
-				.@mapn$ = "prontera";
-				.@saveX = 117; .@saveY = 72;
-				.@warpX = 150; .@warpY = 50;
-				break;
-			case 3:
-				.@dest$ = "Morroc";
-				.@mapn$ = "morocc";
-				.@saveX = 150; .@saveY = 99;
-				.@warpX = 155; .@warpY = 110;
-				break;
-			case 4:
-				.@dest$ = "Payon";
-				.@mapn$ = "payon";
-				.@saveX = 70; .@saveY = 100;
-				.@warpX = 166; .@warpY = 67;
-				break;
-			case 5:
-				.@dest$ = "Alberta";
-				.@mapn$ = "alberta";
-				.@saveX = 30; .@saveY = 232;
-				.@warpX = 114; .@warpY = 58;
-				break;
-			case 6:
-				.@dest$ = "Geffen";
-				.@mapn$ = "geffen";
-				.@saveX = 119; .@saveY = 37;
-				.@warpX = 122; .@warpY = 65;
-				break;
-			}
-			mes "[Kafra Employee]";
-			mes "You have decided";
-			mes "to go to "+.@dest$+".";
-			mes "May God be with you.";
-			close2;
-			if (nov_get_item05 < 11) {
-				nov_get_item05 = 11;
-				getitem 7059,5; //Cargo_Free_Ticket
-				getitem 7060,5; //Warp_Free_Ticket
-			}
-			nov_1st_cos = 0;
-			nov_2nd_cos = 0;
-			nov_3_swordman = 0;
-			nov_3_archer = 0;
-			nov_3_thief = 0;
-			nov_3_magician = 0;
-			nov_3_acolyte = 0;
-			nov_3_merchant = 0;
-			savepoint .@mapn$,.@saveX,.@saveY;
-			warp .@mapn$,.@warpX,.@warpY;
-			end;
-		}
+			mes "Let me know if you want to know more about my services.";
+			close;
 	}
 	else {
 		mes "[Kafra Employee]";
