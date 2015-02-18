@@ -2468,73 +2468,28 @@ new_1-2,38,182,3	script	Entrance Guard#nv	4_F_03,{
 //Teleport NPC
 new_1-3,95,30,4	script	Trainer#nv1::NovHoffman	4_M_02,{
 	mes "[Hoffman]";
-	mes "Hey there~";
-	mes "I'm here to provide";
-	mes "you with a little instruction.";
+	mes "What is going on ... there aren't suppose to be any paragon monsters here.";
 	next;
-	mes "[Hoffman]";
-	mes "These monsters are all weak";
-	mes "and easy to kill. But be careful,";
-	mes "a lot of them are aggressive";
-	mes "and out for blood!";
-	next;
-	mes "[Hoffman]";
-	mes "If you think monsters here are too weak for you, I can send you to another training ground where the monsters are stronger than the ones over here.";
-	next;
-	mes "[Hoffman]";
-	mes "But don't worry so much,";
-	mes "They're not impossible for";
-	mes "Novices. So would you";
-	mes "like to try?";
-	next;
-	switch(select("I do want more of a challenge~:I wanna fight tough monsters!:Cancel")) {
+	switch(select("What is a Paragon Monster?:What am I suppose to do here?")) {
 	case 1:
 		mes "[Hoffman]";
-		mes "I see, then let me guide";
-		mes "you to a training ground that has stronger monsters. May God be with you...";
+		mes "Lately there has been rumors saying that the monsters are getting stronger ... as if they are evolving.";
 		next;
-		if (strnpcinfo(2) == "nv1") {
-			if (rand(2)) {
-				warp "new_2-3",96,21;
-			}
-			else {
-				warp "new_3-3",96,21;
-			}
-		}
-		else {
-			warp "new_1-3",96,21;
-		}
-		end;
+		mes "[Hoffman]";
+		mes "There's little we know about them. They are usually slightly bigger and stronger than normal monsters.";
+		next;
+		mes "[Hoffman]";
+		mes "They are not something you should take on alone, if you plan to bring them down I suggest you do so in a group.";
+		next;
+		close;
 	case 2:
 		mes "[Hoffman]";
-		mes "You must like ";
-		mes "rough challenges,";
-		mes "don't you? Please";
-		mes "be careful, it can get";
-		mes "pretty difficult...";
+		mes "This is the combat practice, you should practice your combat skills against these monsters.";
 		next;
-		if (strnpcinfo(2) == "nv1" || strnpcinfo(2) == "nv2" || strnpcinfo(2) == "nv3") {
-			if (rand(2)) {
-				warp "new_4-3",96,21;
-			}
-			else {
-				warp "new_5-3",96,21;
-			}
-		}
-		else {
-			if (rand(2)) {
-				warp "new_2-3",96,21;
-			}
-			else {
-				warp "new_3-3",96,21;
-			}
-		}
-		end;
-	case 3:
 		mes "[Hoffman]";
-		mes "Hmm...?";
-		mes "Are you worried about going";
-		mes "to more challenging places? That's understandable, since you're still a new adventurer. Good luck~";
+		mes "Once you've reached job level 10, proceed to the Kafra Employee. She will advance you to the next job you choose.";
+		next;
+		mes "Choose wisely, there is no turning back after you've advanced to the next job.";
 		close;
 	}
 }
@@ -2544,28 +2499,37 @@ new_3-3,95,30,4	duplicate(NovHoffman)	Trainer#nv3	4_M_02
 new_4-3,95,30,4	duplicate(NovHoffman)	Trainer#nv4	4_M_02
 new_5-3,95,30,4	duplicate(NovHoffman)	Trainer#nv5	4_M_02
 
-new_1-3,96,174,3	script	Test Examiner#nv1::NovKeyman	4_M_03,{
-	mes "[Keyman]";
-	mes "Good!!";
-	mes "Now you know how to fight";
-	mes "against monsters, don't you?";
-	mes "Would you like to move";
-	mes "to the next course?";
-	next;
-	switch(select("Yes:No")) {
-	case 1:
+new_1-3,97,174,3	script	Test Examiner#nv1::NovKeyman	4_M_03,{
+	if (Class != Job_Novice_High) {
 		mes "[Keyman]";
-		mes "I hope you will be";
-		mes "a good fighter in the";
-		mes "future. Bon voyage.";
-		close2;
-		warp "new_1-4",99,10;
-		return
-		end;
-	case 2:
+		mes "Good!!";
+		mes "Now you know how to fight";
+		mes "against monsters, don't you?";
+		mes "Would you like to move";
+		mes "to the next course?";
+		next;
+		switch(select("Yes:No")) {
+		case 1:
+			mes "[Keyman]";
+			mes "I hope you will be";
+			mes "a good fighter in the";
+			mes "future. Bon voyage.";
+			close2;
+			warp "new_1-4",99,10;
+			return
+			end;
+		case 2:
+			mes "[Keyman]";
+			mes "I see...";
+			mes "It can't hurt to practice until you're more comfortable with the basics of battle.";
+			close;
+		}
+	} else {
 		mes "[Keyman]";
-		mes "I see...";
-		mes "It can't hurt to practice until you're more comfortable with the basics of battle.";
+		mes "You need to advance to first job in order to proceed to the next training.";
+		next;
+		mes "[Keyman]";
+		mes "Talk to the Kafra Employee to advance to the next job.";
 		close;
 	}
 }
@@ -2584,7 +2548,6 @@ new_1-4,100,29,1	script	Hanson#nv	1_ETC_01,{
 		mes "All of the items you are carrying must be quite a burden. Where did you get so much things? Please lighten your weight by getting rid of things you don't need.";
 		close;
 	}
-	if (nov_3_swordman == 20) {
 		mes "[Hanson]";
 		mes "Good day,";
 		mes "^A62A2A" + strcharinfo(0) + "'^000000.";
@@ -3549,76 +3512,6 @@ new_1-4,100,29,1	script	Hanson#nv	1_ETC_01,{
 			}
 			end;
 		}
-	}
-	else if (nov_3_swordman == 40) {
-		mes "[Hanson]";
-		mes "Hmmm...?";
-		mes "Why are you";
-		mes "still here?";
-		next;
-		mes "[Hanson]";
-		mes "You didn't say anything, so";
-		mes "I assumed you were already gone. Since you have already finished the final test and I gave you all the supplies...";
-		next;
-		mes "[Hanson]";
-		mes "The only thing";
-		mes "left to do is to lead";
-		mes "you to Rune-Midgard~";
-		next;
-		nov_1st_cos = 0;
-		nov_2nd_cos = 0;
-		nov_3_swordman = 0;
-		nov_3_archer = 0;
-		nov_3_thief = 0;
-		nov_3_magician = 0;
-		nov_3_acolyte = 0;
-		nov_3_merchant = 0;
-		.@startmap = rand(1,6);
-		if ((.@startmap > 0) && (.@startmap < 2)) {
-			savepoint "prontera",117,72;
-			warp "prt_fild08",170,371;
-		}
-		else if ((.@startmap > 1) && (.@startmap < 3)) {
-			savepoint "geffen",119,37;
-			warp "gef_fild07",327,188;
-		}
-		else if ((.@startmap > 2) && (.@startmap < 4)) {
-			savepoint "alberta",30,232;
-			warp "pay_fild03",388,70;
-		}
-		else if ((.@startmap > 3) && (.@startmap < 5)) {
-			savepoint "morocc",150,99;
-			warp "moc_fild07",198,39;
-		}
-		else if ((.@startmap > 4) && (.@startmap < 6)) {
-			savepoint "payon",70,100;
-			warp "pay_fild01",334,354;
-		}
-		else if ((.@startmap > 5) && (.@startmap < 7)) {
-			savepoint "izlude",93,104;
-			warp "prt_fild08",357,212;
-		}
-		end;
-	}
-	else {
-		mes "[Hanson]";
-		mes "Hello, you";
-		mes "must be "+ strcharinfo(0) +".";
-		next;
-		mes "[Hanson]";
-		mes "I am Hanson,";
-		mes "the person in";
-		mes "charge of the";
-		mes "personality test.";
-		next;
-		mes "[Hanson]";
-		mes "Please speak";
-		mes "to Bruce for";
-		mes "'Class Explanation'";
-		mes "before we begin your";
-		mes "test. Thank you.";
-		close;
-	}
 
 S_UserJobchoice:
 	mes "[Hanson]";
@@ -4066,6 +3959,24 @@ new_3-3,0,0,0,0	monster	Fabre	1184,5,0,0,0
 new_4-3,0,0,0,0	monster	Fabre	1184,5,0,0,0
 new_5-3,0,0,0,0	monster	Fabre	1184,5,0,0,0
 
+new_1-3,0,0,0,0	monster	Paragon Poring	3002,1,0,0,0,2
+new_1-3,0,0,0,0	monster	Paragon Drops	3113,1,0,0,0,2
+new_1-3,0,0,0,0	monster	Paragon Lunatic	3063,1,0,0,0,2
+new_1-3,0,0,0,0	monster	Paragon ChonChon	3011,1,0,0,0,2
+new_2-3,0,0,0,0	monster	Paragon Condor	3009,1,0,0,0,2
+new_2-3,0,0,0,0	monster	Paragon Picky	3050,1,0,0,0,2
+new_2-3,0,0,0,0	monster	Paragon Willow	3010,1,0,0,0,2
+new_2-3,0,0,0,0	monster	Paragon Roda Frog	3012,1,0,0,0,2
+new_3-3,0,0,0,0	monster	Paragon Condor	3009,1,0,0,0,2
+new_3-3,0,0,0,0	monster	Paragon Picky	3050,1,0,0,0,2
+new_3-3,0,0,0,0	monster	Paragon Willow	3010,1,0,0,0,2
+new_3-3,0,0,0,0	monster	Paragon Roda Frog	3012,1,0,0,0,2
+new_4-3,0,0,0,0	monster	Paragon Rocker	3052,1,0,0,0,2
+new_4-3,0,0,0,0	monster	Paragon Thief Bug	3051,1,0,0,0,2
+new_4-3,0,0,0,0	monster	Paragon Thief Bug	3053,1,0,0,0,2
+new_4-3,0,0,0,0	monster	Paragon Spore	3014,1,0,0,0,2
+new_5-3,0,0,0,0	monster	Paragon Rocker	3052,1,0,0,0,2
+
 //============================================================
 // Old changelog
 //============================================================
@@ -4082,3 +3993,275 @@ new_5-3,0,0,0,0	monster	Fabre	1184,5,0,0,0
 //= 1.7b Corrected a little Typo Error. (bugreport:728) [Samuray22]
 //= 1.7C Corrected another Typo Error. (bugreport:740) [Samuray22]
 //============================================================
+
+// Izlude
+//============================================================
+new_1-3,94,174,6	script	Kafra Employee	4_F_KAFRA1,{
+	function Job_Menu; function A_An;
+
+	mes "[Job Master]";
+	if (Class > Job_Soul_Linker) {
+		mes "No more jobs are available.";
+		close;
+	}
+	if (checkfalcon() || checkcart() || checkmount() || hascashmount()) {
+		mes "Please remove your "+((checkfalcon())?"falcon":"")+((checkcart())?"cart":"")+((checkmount() || hascashmount())?"mount":"")
+		    +" before proceeding.";
+		close;
+	}
+	if (.skill_point_check && SkillPoint > 0) {
+		mes "Please use all your skill points before proceeding.";
+		close;
+	}
+
+	.@eac = eaclass();
+	.@base = .third_classes ? roclass(.@eac&EAJ_UPPERMASK) : Class;
+	if (.@base >= Job_Knight && .@base <= Job_Crusader2) {
+		if (BaseLevel < .rebirth_blevel || JobLevel < .rebirth_jlevel) {
+			.@blvl = .rebirth_blevel - BaseLevel;
+			.@jlvl = .rebirth_jlevel - JobLevel;
+			mes "You need "
+			    + (BaseLevel < .rebirth_blevel ? ((.rebirth_blevel - BaseLevel) +" more base levels "+ (JobLevel < .rebirth_jlevel ? "and " : "")) : "")
+			    + (JobLevel < .rebirth_jlevel ? (.rebirth_jlevel - JobLevel) +" more job levels " : "")
+			    + "to continue.";
+			close;
+		}
+		if (Class > Job_Crusader2) {
+			mes "Switch to third class?";
+			next;
+			Job_Menu(roclass(.@eac|EAJL_THIRD));
+			close;
+		}
+		while (true) {
+			mes "Select an option.";
+			next;
+			.@choice = select(" ~ ^0055FFRebirth^000000:"+(.third_classes ? " ~ ^FF0000Third Class^000000" : "")+": ~ ^777777Cancel^000000");
+			if (.@choice == 3)
+				close;
+			mes "[Job Master]";
+			mes "Are you sure?";
+			next;
+			if (.@choice == 1)
+				Job_Menu(Job_Novice_High);
+			else
+				Job_Menu(roclass(.@eac|EAJL_THIRD));
+			mes "[Job Master]";
+		}
+	}
+	.@job1 = roclass(.@eac|EAJL_2_1);
+	.@job2 = roclass(.@eac|EAJL_2_2);
+	if ((.@eac&EAJ_UPPERMASK) == EAJ_SUPER_NOVICE) {
+		.@newclass = roclass(.@eac|EAJL_THIRD);
+		.@required_jlevel = 99;
+	} else if (Class == Job_Ninja) {
+		.@newclass = .@job1;
+		.@required_jlevel = 70;
+	}
+	if (.@newclass && .third_classes) {
+		if (BaseLevel < .rebirth_blevel || JobLevel < .@required_jlevel) {
+			mes "You need "
+			    + (BaseLevel < .rebirth_blevel ? ((.rebirth_blevel - BaseLevel) +" more base levels "+ (JobLevel < .@required_jlevel ? "and " : "")) : "")
+			    + (JobLevel < .@required_jlevel ? (.@required_jlevel - JobLevel) +" more job levels " : "")
+			    + "to continue.";
+			close;
+		}
+		mes "Switch to "+jobname(.@newclass)+"?";
+		next;
+		Job_Menu(.@newclass);
+		close;
+	}
+	if (.@eac&EAJL_2)
+		if (.@eac&(EAJL_UPPER|EAJL_BABY) || roclass(.@eac|EAJL_UPPER) == -1) {
+			mes "No more jobs are available.";
+			close;
+		}
+	if ((.@eac&EAJ_BASEMASK) == EAJ_NOVICE) {
+		if (JobLevel < .jobchange_first) {
+			mes "A job level of "+.jobchange_first+" is required to change into the 1st Class.";
+		} else if (Class == Job_Novice_High && .linear_jobchange && lastJob) {
+			mes "Switch classes now?";
+			next;
+			Job_Menu(roclass((eaclass(lastJob)&EAJ_BASEMASK)|EAJL_UPPER));
+		} else if (Class == Job_Novice) {
+			Job_Menu(Job_Swordman, Job_Mage, Job_Archer, Job_Acolyte, Job_Merchant, Job_Thief);
+		} else if (Class == Job_Novice_High) {
+			Job_Menu(Job_Swordman_High, Job_Mage_High, Job_Archer_High, Job_Acolyte_High, Job_Merchant_High, Job_Thief_High);
+		} else if (Class == Job_Baby) {
+			Job_Menu(Job_Baby_Swordman, Job_Baby_Mage, Job_Baby_Archer, Job_Baby_Acolyte, Job_Baby_Merchant, Job_Baby_Thief,
+			         Job_Super_Baby);
+		} else {
+			mes "An error has occurred.";
+		}
+		close;
+	}
+	if (roclass(.@eac|EAJL_2_1) == -1 || roclass(.@eac|EAJL_2_2) == -1) {
+		mes "No more jobs are available.";
+	} else if (!(.@eac&EAJL_2) && JobLevel < .jobchange_second) {
+		mes "A job level of "+.jobchange_second+" is required to change into the 2nd Class.";
+	} else if (.linear_jobchange && lastJob && (.@eac&EAJL_UPPER)) {
+		mes "Switch classes now?";
+		next;
+		Job_Menu(lastJob+Job_Novice_High);
+	} else {
+		Job_Menu(.@job1, .@job2);
+	}
+	close;
+
+function Job_Menu {
+	while (true) {
+		if (getargcount() > 1) {
+			mes "Select a job.";
+			.@menu$ = "";
+			for (.@i = 0; .@i < getargcount(); ++.@i)
+				.@menu$ += " ~ "+jobname(getarg(.@i))+":";
+			.@menu$ += " ~ ^777777Cancel^000000";
+			next;
+			.@newjob = getarg(select(.@menu$)-1, 0);
+			if (!.@newjob) close;
+			if ((.@newjob == Job_SuperNovice || .@newjob == Job_Super_Baby) && BaseLevel < .supernovice_level) {
+				mes "[Job Master]";
+				mes "A base level of "+.supernovice_level+" is required to turn into a "+jobname(.@newjob)+".";
+				close;
+			}
+			mes "[Job Master]";
+			mes "Are you sure?";
+			next;
+		} else {
+			.@newjob = getarg(0);
+		}
+		if (select(" ~ Change into ^0055FF"+jobname(.@newjob)+"^000000 class: ~ ^777777"+(getargcount() > 1 ? "Go back" : "Cancel")+"^000000") == 1) {
+			mes "[Job Master]";
+			mes "You are now "+A_An(jobname(.@newjob))+"!";
+			if (.@newjob == Job_Novice_High && .linear_jobchange)
+				lastJob = Class; // Note: This is incompatible with the Valkyrie rebirth script.
+			jobchange .@newjob;
+			if (.@newjob == Job_Novice_High)
+				resetlvl(1);
+			if (.@newjob == Job_Baby) {
+				resetlvl(4);
+				SkillPoint = 0;
+			}
+			specialeffect2 EF_ANGEL2;
+			specialeffect2 EF_ELECTRIC;
+			if (.platinum)
+				callsub Get_Platinum;
+			close;
+		}
+		if (getargcount() == 1)
+			return;
+		mes "[Job Master]";
+	}
+	end;
+}
+
+function A_An {
+	setarray .@vowels$, "a", "e", "i", "o", "u";
+	.@firstletter$ = strtolower(charat(getarg(0), 0));
+	for (.@i = 0; .@i < getarraysize(.@vowels); ++.@i) {
+		if (.@vowels$[.@i] == .@firstletter$)
+			return "an "+getarg(0);
+	}
+	return "a "+getarg(0);
+}
+
+Get_Platinum:
+	skill NV_FIRSTAID, 1, 0;
+	if (BaseClass == Job_Novice) {
+		if (Class != Job_SuperNovice)
+			skill NV_TRICKDEAD, 1, 0;
+	} else if (BaseClass == Job_Swordman) {
+		skill SM_MOVINGRECOVERY, 1, 0;
+		skill SM_FATALBLOW, 1, 0;
+		skill SM_AUTOBERSERK, 1, 0;
+		getitem 1407,1;
+	} else if (BaseClass == Job_Mage) {
+		skill MG_ENERGYCOAT, 1, 0;
+		getitem 1601,1;
+	} else if (BaseClass == Job_Archer) {
+		skill AC_MAKINGARROW, 1, 0;
+		skill AC_CHARGEARROW, 1, 0;
+		getitem 1704,1;
+		getitem 1750,300;
+	} else if (BaseClass == Job_Acolyte) {
+		skill AL_HOLYLIGHT, 1, 0;
+		getitem 1601,1;
+		getitem 1519,1;
+	} else if (BaseClass == Job_Merchant) {
+		skill MC_CARTREVOLUTION, 1, 0;
+		skill MC_CHANGECART, 1, 0;
+		skill MC_LOUD, 1, 0;
+		getitem 1351,1;
+	} else if (BaseClass == Job_Thief) {
+		skill TF_SPRINKLESAND, 1, 0;
+		skill TF_BACKSLIDING, 1, 0;
+		skill TF_PICKSTONE, 1, 0;
+		skill TF_THROWSTONE, 1, 0;
+		getitem 1207,1;
+	}
+
+	if (BaseJob == Job_Knight) {
+		skill KN_CHARGEATK, 1, 0;
+		getitem 1460,1;
+	} else if (BaseJob == Job_Priest) {
+		skill PR_REDEMPTIO, 1, 0;
+		getitem 1607,1;
+	} else if (BaseJob == Job_Wizard) {
+		skill WZ_SIGHTBLASTER, 1, 0;
+		getitem 1607,1;
+	} else if (BaseJob == Job_Blacksmith) {
+		skill BS_UNFAIRLYTRICK, 1, 0;
+		skill BS_GREED, 1, 0;
+		getitem 1360,1;
+	} else if (BaseJob == Job_Hunter) {
+		skill HT_PHANTASMIC, 1, 0;
+		getitem 1714,1;
+	} else if (BaseJob == Job_Assassin) {
+		skill AS_SONICACCEL, 1, 0;
+		skill AS_VENOMKNIFE, 1, 0;
+		getitem 1252,1;
+	} else if (BaseJob == Job_Crusader) {
+		skill CR_SHRINK, 1, 0;
+		getitem 2105,1;
+	} else if (BaseJob == Job_Monk) {
+		skill MO_KITRANSLATION, 1, 0;
+		skill MO_BALKYOUNG, 1, 0;
+		getitem 1807,1;
+	} else if (BaseJob == Job_Sage) {
+		skill SA_CREATECON, 1, 0;
+		skill SA_ELEMENTWATER, 1, 0;
+		skill SA_ELEMENTGROUND, 1, 0;
+		skill SA_ELEMENTFIRE, 1, 0;
+		skill SA_ELEMENTWIND, 1, 0;
+		getitem 1550,1;
+	} else if (BaseJob == Job_Rogue) {
+		skill RG_CLOSECONFINE, 1, 0;
+		getitem 1714,1;
+		getitem 1750,300;
+	} else if (BaseJob == Job_Alchemist) {
+		skill AM_BIOETHICS, 1, 0;
+		getitem 1360,1;
+	} else if (BaseJob == Job_Bard) {
+		skill BA_PANGVOICE, 1, 0;
+		getitem 1909,1;
+		getitem 1714,1;
+		getitem 1750,300;
+	} else if (BaseJob == Job_Dancer) {
+		skill DC_WINKCHARM, 1, 0;
+		getitem 1960,1;
+		getitem 1714,1;
+		getitem 1750,300;
+	}
+	return;
+
+OnInit:
+	.rebirth_blevel = 99;    // Minimum base level to reborn OR change to third class
+	.rebirth_jlevel = 50;    // Minimum base job level to reborn OR change to third class
+	.jobchange_first = 10;   // Minimum job level to turn into 1st class
+	.jobchange_second = 50;  // Minimum job level to turn into 2nd class
+	.third_classes = 0;      // Enable third classes? (1: yes / 0: no)
+	.supernovice_level = 45; // Minimum base level to turn into Super Novice
+	.linear_jobchange = 1;   // Enforce linear class changes? (1: yes / 0: no)
+	.skill_point_check = 1;  // Force player to use up all skill points? (1: yes / 0: no)
+	.platinum = 1;           // Get platinum skills automatically? (1: yes / 0: no)
+	end;
+}
