@@ -1061,3 +1061,12 @@ yuno_in04.rsw#Republic Library#
 yuno_in05.rsw#Power Plant of Ymir's Heart#
 yuno_pre.rsw#Schwaltzvalt Government Buildings#
 z_agit.rsw#Z Gang's Hideout#
+
+arena.rsw#Battle Arena#
+arena30.rsw#Battle Arena L30#
+arena40.rsw#Battle Arena L40#
+arena50.rsw#Battle Arena L50#
+arena60.rsw#Battle Arena L60#
+arena70.rsw#Battle Arena L70#
+arena80.rsw#Battle Arena L80#
+arena90.rsw#Battle Arena L90#

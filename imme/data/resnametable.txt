@@ -1693,31 +1693,39 @@ bossnia_04.rsw#gef_dun03.rsw#
 arena30.gnd#guild_vs5.gnd#
 arena30.gat#guild_vs5.gat#
 arena30.rsw#guild_vs5.rsw#
+유저인터페이스\map\arena30.bmp#유저인터페이스\map\guild_vs5.bmp#
 
 arena40.gnd#guild_vs5.gnd#
 arena40.gat#guild_vs5.gat#
 arena40.rsw#guild_vs5.rsw#
+유저인터페이스\map\arena40.bmp#유저인터페이스\map\guild_vs5.bmp#
 
 arena50.gnd#guild_vs5.gnd#
 arena50.gat#guild_vs5.gat#
 arena50.rsw#guild_vs5.rsw#
+유저인터페이스\map\arena50.bmp#유저인터페이스\map\guild_vs5.bmp#
 
 arena60.gnd#guild_vs5.gnd#
 arena60.gat#guild_vs5.gat#
 arena60.rsw#guild_vs5.rsw#
+유저인터페이스\map\arena60.bmp#유저인터페이스\map\guild_vs5.bmp#
 
 arena70.gnd#guild_vs5.gnd#
 arena70.gat#guild_vs5.gat#
 arena70.rsw#guild_vs5.rsw#
+유저인터페이스\map\arena70.bmp#유저인터페이스\map\guild_vs5.bmp#
 
 arena80.gnd#guild_vs5.gnd#
 arena80.gat#guild_vs5.gat#
 arena80.rsw#guild_vs5.rsw#
+유저인터페이스\map\arena80.bmp#유저인터페이스\map\guild_vs5.bmp#
 
 arena90.gnd#guild_vs5.gnd#
 arena90.gat#guild_vs5.gat#
 arena90.rsw#guild_vs5.rsw#
+유저인터페이스\map\arena90.bmp#유저인터페이스\map\guild_vs5.bmp#
 
 arena.gnd#guild_vs5.gnd#
 arena.gat#guild_vs5.gat#
 arena.rsw#guild_vs5.rsw#
+유저인터페이스\map\arena.bmp#유저인터페이스\map\guild_vs5.bmp#
