@@ -23,7 +23,7 @@
 //= 2.4 Corrected an error in Hanson. (bugreport:2374) [L0ne_W0lf]
 //============================================================
 
-new_1-2,96,12,6	script	Guard	8W_SOLDIER,{
+new_1-2,96,12,6	script	Guard#nov1	8W_SOLDIER,{
 	if(rand(2)) {
 		mes "[Training Grounds Guard]";
 		mes "New recruit? You should talk to the Receptionist at the end of this hallway.";
@@ -34,7 +34,7 @@ new_1-2,96,12,6	script	Guard	8W_SOLDIER,{
 	close;
 }
 
-new_1-2,96,19,6	script	Guard	8W_SOLDIER,{
+new_1-2,96,19,6	script	Guard#nov2	8W_SOLDIER,{
 	if(rand(2)) {
 		mes "[Training Grounds Guard]";
 		mes "New recruit? You should talk to the Receptionist at the end of this hallway.";
@@ -45,7 +45,7 @@ new_1-2,96,19,6	script	Guard	8W_SOLDIER,{
 	close;
 }
 
-new_1-2,96,27,6	script	Guard	8W_SOLDIER,{
+new_1-2,96,27,6	script	Guard#nov3	8W_SOLDIER,{
 	if(rand(2)) {
 		mes "[Training Grounds Guard]";
 		mes "New recruit? You should talk to the Receptionist at the end of this hallway.";
@@ -56,7 +56,7 @@ new_1-2,96,27,6	script	Guard	8W_SOLDIER,{
 	close;
 }
 
-new_1-2,103,27,2	script	Guard	8W_SOLDIER,{
+new_1-2,103,27,2	script	Guard#nov4	8W_SOLDIER,{
 	if(rand(2)) {
 		mes "[Training Grounds Guard]";
 		mes "New recruit? You should talk to the Receptionist at the end of this hallway.";
@@ -67,7 +67,7 @@ new_1-2,103,27,2	script	Guard	8W_SOLDIER,{
 	close;
 }
 
-new_1-2,103,19,2	script	Guard	8W_SOLDIER,{
+new_1-2,103,19,2	script	Guard#nov5	8W_SOLDIER,{
 	if(rand(2)) {
 		mes "[Training Grounds Guard]";
 		mes "New recruit? You should talk to the Receptionist at the end of this hallway.";
@@ -78,7 +78,7 @@ new_1-2,103,19,2	script	Guard	8W_SOLDIER,{
 	close;
 }
 
-new_1-2,103,12,2	script	Guard	8W_SOLDIER,{
+new_1-2,103,12,2	script	Guard#nov6	8W_SOLDIER,{
 	if(rand(2)) {
 		mes "[Training Grounds Guard]";
 		mes "New recruit? You should talk to the Receptionist at the end of this hallway.";

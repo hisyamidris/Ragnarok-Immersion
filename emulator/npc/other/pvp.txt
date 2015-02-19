@@ -182,8 +182,8 @@ geffen_in,67,63,4	duplicate(pvpe)	PVP Narrator#pe6	4_M_02
 	mes "modes or rules, Please ask";
 	mes "the Narrator...";
 	next;
-	switch(select("^3355FF' PvP Yoyo Mode'^000000Quit")) {
-		case 2:
+	switch(select("^3355FF' PvP Yoyo Mode'^000000:Quit")) {
+		case 1:
 			mes "[Gate Keeper]";
 			mes "Do you want to move";
 			mes "to the Yoyo Mode";
@@ -203,7 +203,7 @@ geffen_in,67,63,4	duplicate(pvpe)	PVP Narrator#pe6	4_M_02
 				mes "we welcome your challenge!";
 				close;
 			}
-		case 4:
+		case 2:
 			mes "[Gate Keeper]";
 			mes "With war raging between monsters";
 			mes "and humans, This competition";
@@ -255,55 +255,55 @@ function	script	F_PVP_FSRS	{
 	}
 	if (BaseLevel > 98) {
 		.@base$ = "pvp_y_"+strnpcinfo(2);
-		setarray .@maps$[0],	.@base$+"-1",
-		setarray .@name$[0],	"Arena",
-		setarray .@Limit[0],	20,
-	} else if (BaseLevel < 99 || BaseLevel > 89) {
+		setarray .@maps$[0],	"arena";
+		setarray .@name$[0],	"Max Level Arena";
+		setarray .@Limit[0],	20;
+	} else if (BaseLevel < 99 && BaseLevel > 89) {
 		.@base$ = "pvp_y_"+strnpcinfo(2);
-		setarray .@maps$[0],	.@base$+"-1",
-		setarray .@name$[0],	"Arena",
-		setarray .@Limit[0],	20,
-	} else if (BaseLevel < 90 || BaseLevel > 79) {
+		setarray .@maps$[0],	"arena90";
+		setarray .@name$[0],	"Arena 90 - 98";
+		setarray .@Limit[0],	20;
+	} else if (BaseLevel < 90 && BaseLevel > 79) {
 		.@base$ = "pvp_y_"+strnpcinfo(2);
-		setarray .@maps$[0],	.@base$+"-1",
-		setarray .@name$[0],	"Arena",
-		setarray .@Limit[0],	20,
-	} else if (BaseLevel < 80 || BaseLevel > 69) {
+		setarray .@maps$[0],	"arena80";
+		setarray .@name$[0],	"Arena 80 - 89";
+		setarray .@Limit[0],	20;
+	} else if (BaseLevel < 80 && BaseLevel > 69) {
 		.@base$ = "pvp_y_"+strnpcinfo(2);
-		setarray .@maps$[0],	.@base$+"-1",
-		setarray .@name$[0],	"Arena",
-		setarray .@Limit[0],	20,
-	} else if (BaseLevel < 70 || BaseLevel > 59) {
+		setarray .@maps$[0],	"arena70";
+		setarray .@name$[0],	"Arena 70 - 79";
+		setarray .@Limit[0],	20;
+	} else if (BaseLevel < 70 && BaseLevel > 59) {
 		.@base$ = "pvp_y_"+strnpcinfo(2);
-		setarray .@maps$[0],	.@base$+"-1",
-		setarray .@name$[0],	"Arena",
-		setarray .@Limit[0],	20,
-	} else if (BaseLevel < 60 || BaseLevel > 49)) {
+		setarray .@maps$[0],	"arena60";
+		setarray .@name$[0],	"Arena 60 - 69";
+		setarray .@Limit[0],	20;
+	} else if (BaseLevel < 60 && BaseLevel > 49) {
 		.@base$ = "pvp_y_"+strnpcinfo(2);
-		setarray .@maps$[0],	.@base$+"-1",
-		setarray .@name$[0],	"Arena",
-		setarray .@Limit[0],	20,
-	} else if (BaseLevel < 50 || BaseLevel > 39) {
+		setarray .@maps$[0],	"arena50";
+		setarray .@name$[0],	"Arena 50 - 59";
+		setarray .@Limit[0],	20;
+	} else if (BaseLevel < 50 && BaseLevel > 39) {
 		.@base$ = "pvp_y_"+strnpcinfo(2);
-		setarray .@maps$[0],	.@base$+"-1",
-		setarray .@name$[0],	"Arena",
-		setarray .@Limit[0],	20,
-	} else if (BaseLevel < 40 || BaseLevel > 29) {
+		setarray .@maps$[0],	"arena40";
+		setarray .@name$[0],	"Arena 40 - 49";
+		setarray .@Limit[0],	20;
+	} else if (BaseLevel < 40 && BaseLevel > 29) {
 		.@base$ = "pvp_y_"+strnpcinfo(2);
-		setarray .@maps$[0],	.@base$+"-1",
-		setarray .@name$[0],	"Arena",
-		setarray .@Limit[0],	20,
+		setarray .@maps$[0],	"arena30";
+		setarray .@name$[0],	"Arena 30 - 39";
+		setarray .@Limit[0],	20;
 	} else {
 			mes "[PVP Fight Square Reception Staff]";
 			mes "You need to be at least level 30 to enter the arena.";
 			warp "Save",0,0;
 			close;
 	}
-	for (.@i = 0; .@i<5; ++.@i)
+	for (.@i = 0; .@i<1; ++.@i)
 		.@menu$ += .@name$[.@i]+" ["+getmapusers(.@maps$[.@i])+" / "+.@Limit[.@i]+"]:";
 	.@menu$ += "Cancel.";
 	.@i = select(.@menu$)-1;
-	if (.@i == 5) close;
+	if (.@i == 1) close;
 	if (getmapusers(.@maps$[.@i]) >= .@Limit[.@i]) {
 		mes "[PVP Fight Square Reception Staff]";
 		mes "This map is currently full.";
