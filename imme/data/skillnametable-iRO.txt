@@ -54,7 +54,7 @@ MC_DISCOUNT#Discount#
 MC_OVERCHARGE#Overcharge#
 MC_PUSHCART#Pushcart#
 MC_IDENTIFY#Item_Appraisal#
-MC_VENDING#Vending#
+MC_VENDING#Merchant's Burden#
 MC_MAMMONITE#Mammonite#
 MC_CARTREVOLUTION#Cart_Revolution#
 MC_CHANGECART#Change_Cart#

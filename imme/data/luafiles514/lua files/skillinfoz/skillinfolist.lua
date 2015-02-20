@@ -3173,9 +3173,9 @@ SKILL_INFO_LIST = {
 
 	[SKID.MC_VENDING] = {
 		"MC_VENDING";
-		SkillName = "Vending",
+		SkillName = "Merchant's Burden",
 		MaxLv = 10,
-		SpAmount = { 30, 30, 30, 30, 30, 30, 30, 30, 30, 30 },
+		SpAmount = { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
 		bSeperateLv = false,
 		AttackRange = { 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 },
 		_NeedSkillList = {
