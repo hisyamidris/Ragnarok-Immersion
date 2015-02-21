@@ -3227,7 +3227,7 @@ int skill_timerskill(int tid, int64 tick, int id, intptr_t data) {
 				case RG_INTIMIDATE:
 				{
 					/* if ( unit->warp(src, -1, -1, -1, CLR_TELEPORT) == 0 ) { */
-					if ( skill->blown(src, src, 0x6, unit->getdir(src), 0) > 0 ) {
+					if ( skill->blown(src, src, 0x10, unit->getdir(src), 0) > 0 ) {
 						int16 x, y;
 						clif->fixpos(src);
 						map->search_freecell(src, 0, &x, &y, 1, 1, 0);

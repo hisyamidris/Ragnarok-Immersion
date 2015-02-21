@@ -229,7 +229,7 @@ function	script	F_InnMaid	{
 		close2;
 		Zeny -= 500;
 		warp "1@gef_in",28,158;
-		return;
+		close;
 	case 3:
 		close;
 	}
@@ -268,10 +268,25 @@ OnInit:
 	}
 
 OnInit:
-OnTimer3000:
+OnTimer1000:
 	initnpctimer;
 	getmapxy(.@m$,.@x,.@y,1,strnpcinfo(0));
-	areapercentheal .@m$,.@x-5,.@y-5,.@x+5,.@y+5,3,3;
+	areapercentheal .@m$,.@x-10,.@y-10,.@x+10,.@y+10,3,3;
+	sc_start SC_INCHIT,1800000,30;
+	sc_start SC_INCFLEE,1800000,30;
 	end;
 }
 
+1@gef_in,30,178,4    script    Clouds    -1,{ 
+// We will do a script instead of function for it to call on the exact map and the exact coordinates. But you can use as well function then instead of script.
+// We will also use -1 since we don't want to display the actual NPC. In other words, -1 will make the NPC invisible.
+end;
+
+OnInit:
+    atcommand "@clouds"; // You can change @sakura to @snow, @clouds, @clouds2, @fog, @fireworks or @leaves
+    end;
+}
+
+1@gef_in	mapflag	nowarp
+1@gef_in	mapflag	noteleport
+1@gef_in	mapflag	nomemo
