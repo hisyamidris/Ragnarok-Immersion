@@ -61,25 +61,25 @@ prontera,146,92,4	script	Twin Towers#tt1::Twin-Towers	TW_TOWER,{
 	switch (select("Cancel","Hidden Temple","Orc Dungeon","Ant Hell","Mjolnir Waste Pit","Sphinx","Glast Heim","Comodo")) {
 	case 1:
 		close;
-	case 1: // HiddenTemple
+	case 2: // HiddenTemple
 		warp "prt_fild01",136,368;
 		close;
-	case 2: // OrcDungeon
+	case 3: // OrcDungeon
 		warp "gef_fild10",67,334;
 		close;
-	case 3: // AntHell
+	case 4: // AntHell
 		warp "moc_fild04",210,329;
 		close;
-	case 4: // MjolnirWastePit
+	case 5: // MjolnirWastePit
 		warp "mjolnir_02",79,361;
 		close;
-	case 5: // Sphinx
+	case 6: // Sphinx
 		warp "moc_fild19",105,99;
 		close;
-	case 6: // GlastHeim
+	case 7: // GlastHeim
 		warp "gef_fild06",45,304;
 		close;
-	case 7: // Comodo
+	case 8: // Comodo
 		warp "cmd_fild01",30,317;
 		close;
 	}
