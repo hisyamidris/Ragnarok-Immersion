@@ -7876,8 +7876,8 @@ int status_change_start(struct block_list *src, struct block_list *bl, enum sc_t
 				if(val3 < 1) val3 = 1;
 				tick_time = 1000; // [GodLesZ] tick time
 				//val4: HP damage
-				if (bl->type == BL_PC)
-					val4 = (type == SC_DPOISON) ? 3 + st->max_hp/50 : 3 + st->max_hp*3/200;
+				if ( bl->type == BL_PC )
+					val4 = (type == SC_DPOISON) ? 3 + st->max_hp / 50 : /*3 + st->max_hp*3/200*/ 2 + st->max_hp / 200; // 0.5% + 2
 				else
 					val4 = (type == SC_DPOISON) ? 3 + st->max_hp/100 : 3 + st->max_hp/200;
 
@@ -10282,6 +10282,15 @@ int status_change_end_(struct block_list* bl, enum sc_type type, int tid, const 
 				case BL_PC:
 					status_zap(bl, 0, status_get_max_sp(bl) / 2);
 					break;
+			}
+			break;
+		case SC_POISON:
+			if ( bl->type == BL_PC && sce->val3 > 0 ) { // still got time
+				if ( st->hp <= max(st->max_hp >> 2, sce->val4) )
+					break;
+				status_zap(bl, sce->val3 * (st->max_hp / 200), 0);
+				//clif->damage(bl, bl, 0, 0, sce->val3 * (st->max_hp / 200), 1, 0, 0);
+				clif->specialeffect(bl, 192, AREA);
 			}
 			break;
 	}

@@ -5949,8 +5949,9 @@ enum damage_lv battle_weapon_attack(struct block_list* src, struct block_list* t
 				(d_bl->type == BL_PC && ((TBL_PC*)d_bl)->devotion[sce->val2] == target->id)
 				) && check_distance_bl(target, d_bl, sce->val3) )
 			{
-				clif->damage(d_bl, d_bl, 0, 0, damage, 0, 0, 0);
-				status_fix_damage(NULL, d_bl, damage, 0);
+				clif->damage(d_bl, d_bl, 0, 0, damage >> 1, 0, 0, 0);
+				status_fix_damage(NULL, d_bl, damage >> 1, 0);
+				status_fix_damage(NULL, target, damage >> 1, 0);
 			}
 			else
 				status_change_end(target, SC_DEVOTION, INVALID_TIMER);
