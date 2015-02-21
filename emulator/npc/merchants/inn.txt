@@ -261,8 +261,11 @@ OnInit:
 		mes "has been saved.";
 		mes "Thank you,";
 		mes "please come again.";
+		
+		sc_start SC_CASH_PLUSEXP,1800000,50;
+		
 		warp "Save",0,0;
-		return;
+		close;
 	case 2:
 		close;
 	}
@@ -272,12 +275,10 @@ OnTimer1000:
 	initnpctimer;
 	getmapxy(.@m$,.@x,.@y,1,strnpcinfo(0));
 	areapercentheal .@m$,.@x-10,.@y-10,.@x+10,.@y+10,3,3;
-	sc_start SC_INCHIT,1800000,30;
-	sc_start SC_INCFLEE,1800000,30;
 	end;
 }
 
-1@gef_in,30,178,4    script    Clouds    -1,{ 
+1@gef_in,109,171,5	script	Steam Maker	4_F_SHAMAN,{
 // We will do a script instead of function for it to call on the exact map and the exact coordinates. But you can use as well function then instead of script.
 // We will also use -1 since we don't want to display the actual NPC. In other words, -1 will make the NPC invisible.
 end;
