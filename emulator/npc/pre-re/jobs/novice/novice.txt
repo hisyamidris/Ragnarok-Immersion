@@ -2594,14 +2594,16 @@ new_1-4,100,29,1	script	Hanson#nv	1_ETC_01,{
 			mes "^0000335 Free Ticket for Kafra Storage^000000";
 			mes "^0000335 Free Ticket for Kafra Transportation^000000";
 			mes "^0000331 Adventurer's Suit^000000";
-			mes "^0000335 Free Ticket for Kafra Transportation^000000";
-			mes "^0000331 Adventurer's Suit^000000";
+			mes "^0000331 Wrapped Mask^000000";
+			mes "^0000331 Jewelry Box^000000";
+			mes "^00003330 Authoritative Badge^000000";
 			mes "^0000993000 Zeny^000000";
 			next;
 			//------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 			nov_3_swordman = 40;
 			getitem 12106,1;
 			getitem 12107,1;
+			getitem 662,30;
 			getitem 7059,5; //Cargo_Free_Ticket
 			getitem 7060,5; //Warp_Free_Ticket
 			getitem 2305,1; //Adventure_Suit

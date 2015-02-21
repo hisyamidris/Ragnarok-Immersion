@@ -58,7 +58,9 @@ prontera,146,92,4	script	Twin Towers#tt1::Twin-Towers	TW_TOWER,{
 	mes "[Twin Towers]";
 	mes "Come on! Where do you wish to go?";
 	mes "Just let us know you desired destination and we will send your there!";
-	switch (select("Hidden Temple","Orc Dungeon","Ant Hell","Mjolnir Waste Pit","Sphinx","Glast Heim","Comodo")) {
+	switch (select("Cancel","Hidden Temple","Orc Dungeon","Ant Hell","Mjolnir Waste Pit","Sphinx","Glast Heim","Comodo")) {
+	case 1:
+		close;
 	case 1: // HiddenTemple
 		warp "prt_fild01",136,368;
 		close;

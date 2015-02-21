@@ -3526,7 +3526,7 @@ struct Damage battle_calc_magic_attack(struct block_list *src,struct block_list 
 					{
 						struct status_change *tsc = status->get_sc(target);
 						if ( tsc && tsc->data[SC_WEAKENED_SOUL] )
-							skillratio += 50 * tsc->data[SC_WEAKENED_SOUL]->val1;
+							skillratio += 100 * tsc->data[SC_WEAKENED_SOUL]->val1;
 						status_change_end(target, SC_WEAKENED_SOUL, INVALID_TIMER);
 						MATK_RATE(battle->calc_skillratio(BF_MAGIC, src, target, skill_id, skill_lv, skillratio, mflag));
 					}

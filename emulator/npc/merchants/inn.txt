@@ -272,6 +272,8 @@ OnTimer1000:
 	initnpctimer;
 	getmapxy(.@m$,.@x,.@y,1,strnpcinfo(0));
 	areapercentheal .@m$,.@x-10,.@y-10,.@x+10,.@y+10,3,3;
+	sc_start SC_INCHIT,1800000,30;
+	sc_start SC_INCFLEE,1800000,30;
 	end;
 }
 
