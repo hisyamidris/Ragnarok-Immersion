@@ -254,6 +254,9 @@ int skill_get_range2 (struct block_list *bl, uint16 skill_id, uint16 skill_lv) {
 
 	//TODO: Find a way better than hardcoding the list of skills affected by AC_VULTURE
 	switch( skill_id ) {
+		case CR_DEVOTION:
+			range <<= 1; // range is twice farther
+			break;
 		case AC_SHOWER:
 		case MA_SHOWER:
 		case AC_DOUBLE:
@@ -2298,6 +2301,14 @@ int skill_attack(int attack_type, struct block_list* src, struct block_list *dsr
 			if(skill_id == WZ_WATERBALL && skill_lv > 1)
 				sp = sp/((skill_lv|1)*(skill_lv|1)); //Estimate SP cost of a single water-ball
 			status->heal(bl, 0, sp, 2);
+			switch ( skill->get_casttype(skill_id) ) {
+				case CAST_NODAMAGE:
+					skill->castend_nodamage_id(bl, src, skill_id, skill_lv, tick, flag);
+					break;
+				case CAST_DAMAGE:
+					skill->castend_damage_id(bl, src, skill_id, skill_lv, tick, flag);
+					break;
+			}
 		}
 	}
 
@@ -5423,6 +5434,17 @@ int skill_castend_nodamage_id(struct block_list *src, struct block_list *bl, uin
 						heal_get_jobexp = 1;
 					pc->gainexp (sd, bl, 0, heal_get_jobexp, false);
 				}
+				if ( sd ) {
+					int count, i;
+					ARR_FIND(0, 5, count, sd->devotion[count] == 0);
+					if ( count < 5) {
+						for ( i = 0; i < count; i++ ) {
+							struct block_list* dbl = map->id2bl(sd->devotion[i]);
+							if ( dbl )
+								status->heal(dbl, heal >> 1, 0, 0x2);
+						}
+					}
+				}
 			}
 			break;
 
@@ -6768,7 +6790,7 @@ int skill_castend_nodamage_id(struct block_list *src, struct block_list *bl, uin
 		case SC_STRIPACCESSARY: {
 			unsigned short location = 0;
 			int d = 0, rate;
-
+			/*
 			//Rate in percent
 			if ( skill_id == ST_FULLSTRIP ) {
 				rate = 5 + 2*skill_lv + (sstatus->dex - tstatus->dex)/5;
@@ -6779,16 +6801,19 @@ int skill_castend_nodamage_id(struct block_list *src, struct block_list *bl, uin
 			}
 
 			if (rate < 5) rate = 5; //Minimum rate 5%
-
+			*/
 			//Duration in ms
 			if( skill_id == GC_WEAPONCRUSH){
+				rate = 5 + 5 * skill_lv + (sstatus->dex - tstatus->dex) / 5;
 				d = skill->get_time(skill_id,skill_lv);
 				if(bl->type == BL_PC)
 					d += 1000 * ( skill_lv * 15 + ( sstatus->dex - tstatus->dex ) );
 				else
 					d += 1000 * ( skill_lv * 30 + ( sstatus->dex - tstatus->dex ) / 2 );
-			}else
-				d = skill->get_time(skill_id,skill_lv) + (sstatus->dex - tstatus->dex)*500;
+			} else {
+				rate = 100;
+				d = skill->get_time(skill_id, skill_lv) + (sstatus->dex - tstatus->dex) * 500;
+			}
 
 			if (d < 0) d = 0; //Minimum duration 0ms
 
@@ -7336,6 +7361,26 @@ int skill_castend_nodamage_id(struct block_list *src, struct block_list *bl, uin
 					break;
 				md->state.provoke_flag = tbl->id;
 				mob->target(md, tbl, sstatus->rhw.range);
+			}
+			break;
+
+		case CR_CULTIVATION:
+			if ( dstmd && dstmd->master_id == src->id ) {
+				struct mob_data *cmd;
+				int area = 2; // 5x5
+				int tmpx = bl->x - area + rnd() % (area * 2 + 1);
+				int tmpy = bl->y - area + rnd() % (area * 2 + 1);
+
+				cmd = mob->once_spawn_sub(src, src->m, tmpx, tmpy, status->get_name(src), dstmd->class_, "", SZ_SMALL, AI_NONE);
+				if ( cmd ) {
+					cmd->master_id = src->id;
+					cmd->special_state.ai = AI_FLORA;
+					if ( cmd->deletetimer != INVALID_TIMER )
+						timer->delete(cmd->deletetimer, mob->timer_delete);
+					cmd->deletetimer = timer->add(timer->gettick() + DIFF_TICK(timer->get(dstmd->deletetimer)->tick, timer->gettick()), mob->timer_delete, cmd->bl.id, 0);
+					mob->spawn(cmd);
+					clif->skill_poseffect(src, skill_id, skill_lv, tmpx, tmpy, tick);
+				}
 			}
 			break;
 
@@ -10622,13 +10667,15 @@ int skill_castend_pos2(struct block_list* src, int x, int y, uint16 skill_id, ui
 			break;
 
 		case HW_GRAVITATION:
-			if ((sg = skill->unitsetting(src,skill_id,skill_lv,x,y,0)))
-				sc_start4(src,src,type,100,skill_lv,0,BCT_SELF,sg->group_id,skill->get_time(skill_id,skill_lv));
+			if ( (sg = skill->unitsetting(src, skill_id, skill_lv, x, y, 0)) ) {
+				clif->skillcasting(src, src->id, 0, x, y, skill_id, skill->get_ele(skill_id, skill_lv), skill->get_time(skill_id, skill_lv));
+				sc_start4(src, src, type, 100, skill_lv, 0, BCT_SELF, sg->group_id, skill->get_time(skill_id, skill_lv));
+			}
 			flag|=1;
 			break;
 
 		// Plant Cultivation [Celest]
-		case CR_CULTIVATION:
+		/*case CR_CULTIVATION:
 			if (sd) {
 				if( map->count_oncell(src->m,x,y,BL_CHAR,0) > 0 ) {
 					clif->skill_fail(sd,skill_id,USESKILL_FAIL_LEVEL,0);
@@ -10649,7 +10696,7 @@ int skill_castend_pos2(struct block_list* src, int x, int y, uint16 skill_id, ui
 					}
 					mob->spawn (md);
 				}
-			}
+			}*/
 			break;
 
 		case SG_SUN_WARM:
@@ -14031,7 +14078,7 @@ int skill_check_condition_castend(struct map_session_data* sd, uint16 skill_id, 
 			int c=0;
 			int summons[5] = { 1589, 1579, 1575, 1555, 1590 };
 			//int summons[5] = { 1020, 1068, 1118, 1500, 1368 };
-			int maxcount = (skill_id==AM_CANNIBALIZE)? 6-skill_lv : skill->get_maxcount(skill_id,skill_lv);
+			int maxcount = (skill_id==AM_CANNIBALIZE)? 1/*6-skill_lv*/ : skill->get_maxcount(skill_id,skill_lv);
 			int mob_class = (skill_id==AM_CANNIBALIZE)? summons[skill_lv-1] :1142;
 			if(battle_config.land_skill_limit && maxcount>0 && (battle_config.land_skill_limit&BL_PC)) {
 				i = map->foreachinmap(skill->check_condition_mob_master_sub ,sd->bl.m, BL_MOB, sd->bl.id, mob_class, skill_id, &c);
