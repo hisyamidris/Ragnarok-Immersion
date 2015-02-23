@@ -249,6 +249,7 @@ OnInit:
 	sellitem Awakening_Potion;
 	sellitem Wing_Of_Fly;
 	sellitem Wing_Of_Butterfly;
+	sellitem Blue_Gemstone;
 }
 
 1@gef_in,28,167,5	script	Spa Service Employee	4_F_SHAMAN,{
