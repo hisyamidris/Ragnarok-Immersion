@@ -14,6 +14,54 @@
 //= -> Juno -> Hugel -> ...
 //============================================================
 
+//============================================================
+//= Ragnarok Immersion Airship Route
+/*
+Alberta
+pay_fild03
+pay_fild07
+payon
+pay_fild04
+Izlude
+Prontera
+mjolnir_09
+prt_fild00
+gef_fild00
+Geffen
+mjolnir_06
+mjolnir_03
+Aldebaran
+yuno_fild12
+yuno_fild07
+yuno_fild04
+Yuno
+yuno_fild04
+ein_fild05
+Einbech
+Einbroch
+lhz_fild02
+Lighthalzen
+ra_fild12
+rachel
+ve_fild02
+ve_fild04
+Veins
+ve_fild07
+Umbala
+um_fild04
+um_fild02
+Comodo
+cmd_fild01
+cmd_fild03
+moc_fild19
+morocc
+pay_fild02
+pay_fild03
+...
+Alberta
+*/
+//============================================================
+
 airplane,243,73,0	script	#AirshipWarp-1	WARPNPC,1,1,{
 	end;
 
