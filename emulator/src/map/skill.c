@@ -17080,7 +17080,8 @@ int skill_produce_mix(struct map_session_data *sd, uint16 skill_id, int nameid, 
 				}
 				break;
 			case ASC_CDP:
-				make_per = (2000 + 40*st->dex + 20*st->luk);
+				//make_per = (2000 + 40*st->dex + 20*st->luk);
+				make_per = 100000; //100% success
 				break;
 			case AL_HOLYWATER:
 			/**
@@ -17093,6 +17094,7 @@ int skill_produce_mix(struct map_session_data *sd, uint16 skill_id, int nameid, 
 			case AM_TWILIGHT1:
 			case AM_TWILIGHT2:
 			case AM_TWILIGHT3:
+/*
 				make_per = pc->checkskill(sd,AM_LEARNINGPOTION)*50
 					+ pc->checkskill(sd,AM_PHARMACY)*300 + sd->status.job_level*20
 					+ (st->int_/2)*10 + st->dex*10+st->luk*10;
@@ -17100,6 +17102,8 @@ int skill_produce_mix(struct map_session_data *sd, uint16 skill_id, int nameid, 
 					int skill2_lv;
 					if((skill2_lv=homun->checkskill(sd->hd,HVAN_INSTRUCT)) > 0) //His homun is a vanil with instruction change
 						make_per += skill2_lv*100; //+1% bonus per level
+
+				
 				}
 				switch(nameid){
 					case ITEMID_RED_POTION:
@@ -17131,6 +17135,38 @@ int skill_produce_mix(struct map_session_data *sd, uint16 skill_id, int nameid, 
 					default:
 						break;
 				}
+*/
+
+				make_per = 100000; //100% success
+				if(homun_alive(sd->hd)) {//Player got a homun
+					int skill2_lv;
+					if((skill2_lv=homun->checkskill(sd->hd,HVAN_INSTRUCT)) > 0) //His homun is a vanil with instruction change
+						make_per += skill2_lv*100; //+1% bonus per level
+
+				
+				}
+				switch(nameid){
+					case ITEMID_RED_POTION:
+					case ITEMID_YELLOW_POTION:
+					case ITEMID_WHITE_POTION:
+					case ITEMID_ALCHOL:
+					case ITEMID_FIRE_BOTTLE:
+					case ITEMID_ACID_BOTTLE:
+					case ITEMID_MENEATER_PLANT_BOTTLE:
+					case ITEMID_MINI_BOTTLE:
+					case ITEMID_YELLOW_SLIM_POTION:
+					case ITEMID_WHITE_SLIM_POTION:
+					case ITEMID_COATING_BOTTLE:
+					//Common items, receive no bonus or penalty, listed just because they are commonly produced
+					case ITEMID_BLUE_POTION:
+					case ITEMID_RED_SLIM_POTION:
+					case ITEMID_ANODYNE:
+					case ITEMID_ALOEBERA:
+					make_per = 100000; //100% success
+					default:
+						break;
+				}
+				
 				if(battle_config.pp_rate != 100)
 					make_per = make_per * battle_config.pp_rate / 100;
 				break;
