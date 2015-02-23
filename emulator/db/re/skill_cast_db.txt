@@ -443,6 +443,8 @@
 //===== Bard & Dancer (Ensemble Skills) ====
 //-- BD_ADAPTATION
 304,0,0,0,0,5000,0,0
+//-- BD_ENCORE
+305,0,0,0,10000,0,10000,0
 //-- BD_LULLABY
 306,0,0,0,60000,15000,0,0
 //-- BD_RICHMANKIM

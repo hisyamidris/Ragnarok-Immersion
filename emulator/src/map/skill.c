@@ -7588,8 +7588,9 @@ int skill_castend_nodamage_id(struct block_list *src, struct block_list *bl, uin
 			break;
 		case BD_ENCORE:
 			clif->skill_nodamage(src,bl,skill_id,skill_lv,1);
-			if(sd)
-				unit->skilluse_id(src,src->id,sd->skill_id_dance,sd->skill_lv_dance);
+			if ( sd && status_change_end(src, SC_DANCING, INVALID_TIMER) )
+				skill->unitsetting(src, sd->skill_id_dance, sd->skill_lv_dance, src->x, src->y, 0x2);
+				/*unit->skilluse_id(src,src->id,sd->skill_id_dance,sd->skill_lv_dance);*/
 			break;
 
 		case AS_SPLASHER:
@@ -10138,7 +10139,7 @@ int skill_castend_map (struct map_session_data *sd, uint16 skill_id, const char 
 		sd->sc.data[SC_ROKISWEIL] ||
 		sd->sc.data[SC_AUTOCOUNTER] ||
 		sd->sc.data[SC_STEELBODY] ||
-		(sd->sc.data[SC_DANCING] && skill_id < RK_ENCHANTBLADE && !pc->checkskill(sd, WM_LESSON)) ||
+		(sd->sc.data[SC_DANCING] && skill_id != BD_ENCORE && skill_id < RK_ENCHANTBLADE && !pc->checkskill(sd, WM_LESSON)) ||
 		sd->sc.data[SC_BERSERK] ||
 		sd->sc.data[SC_BASILICA] ||
 		sd->sc.data[SC_MARIONETTE_MASTER] ||
@@ -11469,6 +11470,32 @@ struct skill_unit_group* skill_unitsetting(struct block_list *src, uint16 skill_
 			break;
 	}
 
+	if ( sd && flag&0x2 ) {
+		switch ( skill_id ) {
+			case BD_RICHMANKIM:
+			case BD_DRUMBATTLEFIELD:
+			case BD_RINGNIBELUNGEN:
+			case BD_SIEGFRIED:
+			case BA_DISSONANCE:
+			case BA_ASSASSINCROSS:
+			case DC_UGLYDANCE:
+			case BD_LULLABY:
+			case BD_ETERNALCHAOS:
+			case BD_ROKISWEIL:
+			case DC_FORTUNEKISS:
+			case CG_HERMODE:
+			case BD_INTOABYSS:
+			case BA_WHISTLE:
+			case DC_HUMMING:
+			case BA_POEMBRAGI:
+			case DC_SERVICEFORYOU:
+			case BA_APPLEIDUN:
+			case CG_MOONLIT:
+			case DC_DONTFORGETME:
+				limit = skill->get_time(BD_ENCORE, skill_lv);
+		}
+	}
+
 	nullpo_retr(NULL, group=skill->init_unitgroup(src,layout->count,skill_id,skill_lv,skill->get_unit_id(skill_id,flag&1)+subunt, limit, interval));
 	group->val1=val1;
 	group->val2=val2;
@@ -11491,20 +11518,24 @@ struct skill_unit_group* skill_unitsetting(struct block_list *src, uint16 skill_
 			safestrncpy(group->valstr, "Boo!", MESSAGE_SIZE);
 	}
 
-	if (group->state.song_dance) {
-		if(sd){
+	if ( group->state.song_dance ) {
+		int start = (flag&0x2);
+		if ( !start ) {
+			start = sc_start4(src, src, SC_DANCING, 100, skill_id, group->group_id, skill_lv,
+				(group->state.song_dance & 2) ? BCT_SELF : 0, limit + 1000);
+		}
+		if ( sd ) {
 			sd->skill_id_dance = skill_id;
 			sd->skill_lv_dance = skill_lv;
 		}
-		if (
-			sc_start4(src,src, SC_DANCING, 100, skill_id, group->group_id, skill_lv,
-				(group->state.song_dance&2) ? BCT_SELF : 0, limit+1000) &&
-			sd && group->state.song_dance&2 && skill_id != CG_HERMODE //Hermod is a encore with a warp!
-		)
+		if ( start &&
+			sd && group->state.song_dance & 2 && skill_id != CG_HERMODE //Hermod is a encore with a warp!
+			)
 			skill->check_pc_partner(sd, skill_id, &skill_lv, 1, 1);
 	}
 
 	limit = group->limit;
+
 	for( i = 0; i < layout->count; i++ ) {
 		struct skill_unit *su;
 		int ux = x + layout->dx[i];

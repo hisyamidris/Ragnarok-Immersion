@@ -1695,6 +1695,7 @@ int status_check_skilluse(struct block_list *src, struct block_list *target, uin
 				case CG_LONGINGFREEDOM:
 				case BA_MUSICALSTRIKE:
 				case DC_THROWARROW:
+				case BD_ENCORE:
 					break;
 				default:
 					return 0;
