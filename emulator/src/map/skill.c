@@ -342,7 +342,8 @@ int skill_calc_heal(struct block_list *src, struct block_list *target, uint16 sk
 #ifdef RENEWAL
 			hp = 100+5*skill_lv+5*(status_get_vit(src)/10); // HP recovery
 #else // not RENEWAL
-			hp = 30+5*skill_lv+5*(status_get_vit(src)/10); // HP recovery
+			hp = (status->get_lv(src) + status_get_int(src)) / 5 * 30  * skill_lv / 10;
+			//hp = 30+5*skill_lv+5*(status_get_vit(src)/10); // HP recovery
 #endif // RENEWAL
 			if( sd )
 				hp += 5*pc->checkskill(sd,BA_MUSICALLESSON);
@@ -11307,7 +11308,8 @@ struct skill_unit_group* skill_unitsetting(struct block_list *src, uint16 skill_
 			}
 			break;
 		case BA_APPLEIDUN:
-			val1 = 5+2*skill_lv+st->vit/10; // MaxHP percent increase
+			//val1 = 5+2*skill_lv+st->vit/10; // MaxHP percent increase
+			val1 = 0;
 			if(sd)
 				val1 += pc->checkskill(sd,BA_MUSICALLESSON);
 			break;
