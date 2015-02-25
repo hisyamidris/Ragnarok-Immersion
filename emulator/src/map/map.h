@@ -380,6 +380,8 @@ enum status_point_types {
 
 	// Mercenaries
 	SP_MERCFLEE=165, SP_MERCKILLS=189, SP_MERCFAITH=190,
+	
+	SP_BONUS_EXP, SP_BONUS_DROP, // 191 - 192
 
 	// original 1000-
 	SP_ATTACKRANGE=1000, SP_ATKELE,SP_DEFELE, // 1000-1002

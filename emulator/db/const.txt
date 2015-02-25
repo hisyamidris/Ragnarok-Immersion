@@ -438,6 +438,9 @@ bAspd	53
 bFame	59
 bUnbreakable	60
 
+bBonusEXP	191
+bBonusDrop	192
+
 bAtkRange	1000
 bAtkEle	1001
 bDefEle	1002

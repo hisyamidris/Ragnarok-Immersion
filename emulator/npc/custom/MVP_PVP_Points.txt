@@ -1,0 +1,72 @@
+/* malufett@yourservice */
+-	script	PrestigePoints	-1,{
+OnPCKillEvent:
+	if (killedrid == getcharid(0)) end;
+
+	getpartymember getcharid(1), 1;
+	getpartymember getcharid(1), 2;
+	.@count = $@partymembercount;
+	.@online = 0;
+
+	for (.@i = 0; .@i < .@count; ++.@i) { // validate party members
+		if (isloggedin($@partymemberaid[.@i], $@partymembercid[.@i])){
+			.@online++;
+		}
+	}
+
+	if(.@count > 1 && .@online > 1){
+		for (.@i = 0; .@i < .@count; ++.@i) {
+			if (isloggedin($@partymemberaid[.@i], $@partymembercid[.@i])){
+				attachrid($@partymemberaid[.@i]);
+				.@pt = (1000/.@online)/10; // bonus will only depends on number of online members
+				.@factor = 10-(.@pt%10);
+				if(.@factor<10)
+					.@pt += .@factor; // round up
+				.@pt = max(1, .@pt/10);
+				PRESTIGE_POINTS += .@pt;
+				dispbottom "You have earn a Prestige Point(+" + .@pt + "). Your total Prestige Point is " + PRESTIGE_POINTS;
+				detachrid;
+			}
+		}
+	}else{
+		PRESTIGE_POINTS++;
+		dispbottom "You have earn a Prestige Point(+1). Your total Prestige Point is " + PRESTIGE_POINTS;
+	}
+	end;
+}
+
+-	script	SentinelPoints	-1,{
+OnNPCKillEvent:
+	if (getmonsterinfo(killedrid, MOB_MVPEXP)) {
+		getpartymember getcharid(1), 1;
+		getpartymember getcharid(1), 2;
+		.@count = $@partymembercount;
+		.@online = 0;
+
+		for (.@i = 0; .@i < .@count; ++.@i) { // validate party members
+			if (isloggedin($@partymemberaid[.@i], $@partymembercid[.@i])){
+				.@online++;
+			}
+		}
+
+		if(.@count > 1 && .@online > 1){
+			for (.@i = 0; .@i < .@count; ++.@i) {
+				if (isloggedin($@partymemberaid[.@i], $@partymembercid[.@i])){
+					attachrid($@partymemberaid[.@i]);
+					.@pt = (1000/.@online)/10; // bonus will only depends on number of online members
+					.@factor = 10-(.@pt%10);
+					if(.@factor<10)
+						.@pt += .@factor; // round up	
+					.@pt = max(1, .@pt/10);
+					SENTINEL_POINTS += .@pt;
+					dispbottom "You have earn a Sentinel Point(+" + .@pt + "). Your total Sentinel Point is " + SENTINEL_POINTS;
+					detachrid;
+				}
+			}
+		}else{
+			SENTINEL_POINTS++;
+			dispbottom "You have earn a Sentinel Point(+1). Your total Sentinel Point is " + SENTINEL_POINTS;
+		}
+	}
+	end;
+}

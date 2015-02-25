@@ -4945,7 +4945,7 @@ struct Damage battle_calc_weapon_attack(struct block_list *src,struct block_list
 					case ASC_BREAKER:
 					case ASC_METEORASSAULT: break;
 					default:
-						if ( tsc && tsc->data[SC_POISON] )
+						if ( (tsc && tsc->data[SC_POISON]) || sc->data[SC_ATTHASTE_INFINITY] )
 							ATK_ADDRATE(sc->data[SC_EDP]->val3);
 				}
 			}

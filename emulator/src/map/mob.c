@@ -2370,6 +2370,8 @@ int mob_dead(struct mob_data *md, struct block_list *src, int type) {
 					drop_rate = 1;
 			}
 #endif
+			if ( sd && sd->bonus.drop_rate )
+				drop_rate += drop_rate * sd->bonus.drop_rate / 100;
 			if( sd && sd->status.mod_drop != 100 ) {
 				drop_rate = drop_rate * sd->status.mod_drop / 100;
 				if( drop_rate < 1 )

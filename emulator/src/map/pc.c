@@ -2137,6 +2137,14 @@ int pc_bonus(struct map_session_data *sd,int type,int val) {
 	bst = &sd->base_status;
 
 	switch(type){
+		case SP_BONUS_DROP:
+			if ( sd->state.lr_flag != 2 )
+				sd->bonus.drop_rate += val;
+				break;
+		case SP_BONUS_EXP:
+			if ( sd->state.lr_flag != 2 )
+				sd->bonus.exp_rate += val;
+				break;
 		case SP_STR:
 		case SP_AGI:
 		case SP_VIT:
@@ -6034,9 +6042,11 @@ void pc_calcexp(struct map_session_data *sd, unsigned int *base_exp, unsigned in
 	if( sd->status.mod_exp != 100 ) {
 		*base_exp = (unsigned int) cap_value((double)*base_exp * sd->status.mod_exp/100., 1, UINT_MAX);
 		*job_exp  = (unsigned int) cap_value((double)*job_exp  * sd->status.mod_exp/100., 1, UINT_MAX);
-
 	}
-	
+	if ( sd->bonus.exp_rate ) {
+		*base_exp = (unsigned int)cap_value((double)*base_exp * (100 + sd->bonus.exp_rate) / 100., 1, UINT_MAX);
+		*job_exp = (unsigned int)cap_value((double)*job_exp  * (100 + sd->bonus.exp_rate) / 100., 1, UINT_MAX);
+	}
 	return;
 }
 

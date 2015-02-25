@@ -355,6 +355,8 @@ struct map_session_data {
 		int fixcastrate,varcastrate;
 		int add_fixcast,add_varcast;
 		int ematk; // matk bonus from equipment
+		int exp_rate;
+		int drop_rate;
 	} bonus;
 	// zeroed vars end here.
 	int castrate,delayrate,hprate,sprate,dsprate;
