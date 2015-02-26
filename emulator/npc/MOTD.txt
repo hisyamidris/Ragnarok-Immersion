@@ -10,7 +10,7 @@
 //====================================================
 // run when any character logs in, attached to them.
 -	script	HerculesMOTD	-1,{
-	message strcharinfo(0),"Welcome to Ragnarok Immersion. Current version: 0.02.";
+	message strcharinfo(0),"Welcome to Ragnarok Immersion. Current version: 0.02a.";
 	end;
 }
 
@@ -27,6 +27,11 @@ OnPCLoginEvent:
 		atcommand "@join #main";
 		atcommand "@join #support";
 		atcommand "@join #trade";
+	}
+	if(BaseLevel == 99 && #MaxLevel < 1) {
+		dispbottom "Congratulations! You've reached maximum level. You can now send Scroll of Recommendation your other characters.";
+		#MaxLevel++;
+		getitem 29000,1;
 	}
 	end;
 }

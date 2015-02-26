@@ -29,8 +29,9 @@ OnPCKillEvent:
 			}
 		}
 	}else{
-		PRESTIGE_POINTS++;
-		dispbottom "You have earn a Prestige Point(+1). Your total Prestige Point is " + PRESTIGE_POINTS;
+		.@pt = 10;
+		PRESTIGE_POINTS = PRESTIGE_POINTS + .@pt;
+		dispbottom "You have earn a Prestige Point(+" + .@pt + "). Your total Prestige Point is " + PRESTIGE_POINTS;
 	}
 	end;
 }
@@ -42,6 +43,7 @@ OnNPCKillEvent:
 		getpartymember getcharid(1), 2;
 		.@count = $@partymembercount;
 		.@online = 0;
+		.@level = getmonsterinfo(killedrid, MOB_LV);
 
 		for (.@i = 0; .@i < .@count; ++.@i) { // validate party members
 			if (isloggedin($@partymemberaid[.@i], $@partymembercid[.@i])){
@@ -53,7 +55,7 @@ OnNPCKillEvent:
 			for (.@i = 0; .@i < .@count; ++.@i) {
 				if (isloggedin($@partymemberaid[.@i], $@partymembercid[.@i])){
 					attachrid($@partymemberaid[.@i]);
-					.@pt = (1000/.@online)/10; // bonus will only depends on number of online members
+					.@pt = ((100/.@online)/10)*(.@level); // bonus will only depends on number of online members
 					.@factor = 10-(.@pt%10);
 					if(.@factor<10)
 						.@pt += .@factor; // round up	
@@ -64,9 +66,30 @@ OnNPCKillEvent:
 				}
 			}
 		}else{
-			SENTINEL_POINTS++;
-			dispbottom "You have earn a Sentinel Point(+1). Your total Sentinel Point is " + SENTINEL_POINTS;
+			.@pt = getmonsterinfo(killedrid, MOB_LV);
+			SENTINEL_POINTS = SENTINEL_POINTS + .@pt;
+			dispbottom "You have earn a Sentinel Point(+" + .@pt + "). Your total Sentinel Point is " + SENTINEL_POINTS;
 		}
 	}
 	end;
+}
+
+-	script	Recommendation	-1,{
+OnPCLoginEvent:
+	dispbottom "Test 1 2 3.";
+	if(BaseLevel == 99 && #MaxLevel < 1) {
+		dispbottom "Congratulations! You've reached maximum level. You can now send Scroll of Recommendation your other characters.";
+		#MaxLevel++;
+		getitem 29000,1;
+	}
+    end;
+
+OnPCBaseLvUpEvent:
+	dispbottom "Test 1 2 3.";
+	if(BaseLevel == 99 && #MaxLevel < 1) {
+		dispbottom "Congratulations! You've reached maximum level. You can now send Scroll of Recommendation your other characters.";
+		#MaxLevel++;
+		getitem 29000,1;
+	}
+    end;
 }

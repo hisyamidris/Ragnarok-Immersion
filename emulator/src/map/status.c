@@ -147,17 +147,17 @@ void initChangeTables(void) {
 	memset(status->DisplayType, 0, sizeof(status->DisplayType));
 
 	//First we define the skill for common ailments. These are used in skill_additional_effect through sc cards. [Skotlex]
-	set_sc( NPC_PETRIFYATTACK , SC_STONE     , SI_BLANK    , SCB_DEF_ELE|SCB_DEF|SCB_MDEF );
-	set_sc( NPC_WIDEFREEZE    , SC_FREEZE    , SI_BLANK    , SCB_DEF_ELE|SCB_DEF|SCB_MDEF );
-	set_sc( NPC_STUNATTACK    , SC_STUN      , SI_BLANK    , SCB_NONE );
-	set_sc( NPC_SLEEPATTACK   , SC_SLEEP     , SI_BLANK    , SCB_NONE );
-	set_sc( NPC_POISON        , SC_POISON    , SI_BLANK    , SCB_DEF2|SCB_REGEN );
-	set_sc( NPC_CURSEATTACK   , SC_CURSE     , SI_BLANK    , SCB_LUK|SCB_BATK|SCB_WATK|SCB_SPEED );
-	set_sc( NPC_SILENCEATTACK , SC_SILENCE   , SI_BLANK    , SCB_NONE );
-	set_sc( NPC_WIDECONFUSE   , SC_CONFUSION , SI_BLANK    , SCB_NONE );
-	set_sc( NPC_BLINDATTACK   , SC_BLIND     , SI_BLANK    , SCB_HIT|SCB_FLEE );
+	set_sc( NPC_PETRIFYATTACK , SC_STONE     , SI_STONE    , SCB_DEF_ELE|SCB_DEF|SCB_MDEF );
+	set_sc( NPC_WIDEFREEZE    , SC_FREEZE    , SI_FREEZE    , SCB_DEF_ELE|SCB_DEF|SCB_MDEF );
+	set_sc( NPC_STUNATTACK    , SC_STUN      , SI_STUN    , SCB_NONE );
+	set_sc( NPC_SLEEPATTACK   , SC_SLEEP     , SI_SLEEP    , SCB_NONE );
+	set_sc( NPC_POISON        , SC_POISON    , SI_POISON    , SCB_DEF2|SCB_REGEN );
+	set_sc( NPC_CURSEATTACK   , SC_CURSE     , SI_CURSE    , SCB_LUK|SCB_BATK|SCB_WATK|SCB_SPEED );
+	set_sc( NPC_SILENCEATTACK , SC_SILENCE   , SI_SILENCE    , SCB_NONE );
+	set_sc( NPC_WIDECONFUSE   , SC_CONFUSION , SI_CONFUSION    , SCB_NONE );
+	set_sc( NPC_BLINDATTACK   , SC_BLIND     , SI_BLIND    , SCB_HIT|SCB_FLEE );
 	set_sc( NPC_BLEEDING      , SC_BLOODING  , SI_BLOODING , SCB_REGEN );
-	set_sc( NPC_POISON        , SC_DPOISON   , SI_BLANK    , SCB_DEF2|SCB_REGEN );
+	set_sc( NPC_POISON        , SC_DPOISON   , SI_DPOISON    , SCB_DEF2|SCB_REGEN );
 
 	//The main status definitions
 	add_sc( SM_BASH              , SC_STUN            );
@@ -291,22 +291,22 @@ void initChangeTables(void) {
 	add_sc( SA_COMA              , SC_COMA            );
 	set_sc( BD_ENCORE            , SC_DANCING         , SI_BLANK           , SCB_SPEED|SCB_REGEN );
 	add_sc( BD_RICHMANKIM        , SC_RICHMANKIM      );
-	set_sc( BD_ETERNALCHAOS      , SC_ETERNALCHAOS    , SI_BLANK           , SCB_DEF2 );
-	set_sc( BD_DRUMBATTLEFIELD   , SC_DRUMBATTLE      , SI_BLANK           , SCB_WATK|SCB_DEF );
-	set_sc( BD_RINGNIBELUNGEN    , SC_NIBELUNGEN      , SI_BLANK           , SCB_WATK );
+	set_sc( BD_ETERNALCHAOS      , SC_ETERNALCHAOS    , SI_ETERNALCHAOS           , SCB_DEF2 );
+	set_sc( BD_DRUMBATTLEFIELD   , SC_DRUMBATTLE      , SI_DRUMBATTLEFIELD           , SCB_WATK|SCB_DEF );
+	set_sc( BD_RINGNIBELUNGEN    , SC_NIBELUNGEN      , SI_RINGNIBELUNGEN           , SCB_WATK );
 	add_sc( BD_ROKISWEIL         , SC_ROKISWEIL       );
 	add_sc( BD_INTOABYSS         , SC_INTOABYSS       );
-	set_sc( BD_SIEGFRIED         , SC_SIEGFRIED       , SI_BLANK           , SCB_ALL );
+	set_sc( BD_SIEGFRIED         , SC_SIEGFRIED       , SI_SIEGFRIED           , SCB_ALL );
 	add_sc( BA_FROSTJOKER        , SC_FREEZE          );
-	set_sc( BA_WHISTLE           , SC_WHISTLE         , SI_BLANK           , SCB_FLEE|SCB_FLEE2 );
-	set_sc( BA_ASSASSINCROSS     , SC_ASSNCROS        , SI_BLANK           , SCB_ASPD );
+	set_sc( BA_WHISTLE           , SC_WHISTLE         , SI_WHISTLE           , SCB_FLEE|SCB_FLEE2 );
+	set_sc( BA_ASSASSINCROSS     , SC_ASSNCROS        , SI_ASSASSINCROSS           , SCB_ASPD );
 	add_sc( BA_POEMBRAGI         , SC_POEMBRAGI       );
-	set_sc( BA_APPLEIDUN         , SC_APPLEIDUN       , SI_BLANK           , SCB_MAXHP );
+	set_sc( BA_APPLEIDUN         , SC_APPLEIDUN       , SI_APPLEIDUN           , SCB_MAXHP );
 	add_sc( DC_SCREAM            , SC_STUN            );
-	set_sc( DC_HUMMING           , SC_HUMMING         , SI_BLANK           , SCB_HIT );
-	set_sc( DC_DONTFORGETME      , SC_DONTFORGETME    , SI_BLANK           , SCB_SPEED|SCB_ASPD );
-	set_sc( DC_FORTUNEKISS       , SC_FORTUNE         , SI_BLANK           , SCB_CRI );
-	set_sc( DC_SERVICEFORYOU     , SC_SERVICEFORYOU   , SI_BLANK           , SCB_ALL );
+	set_sc( DC_HUMMING           , SC_HUMMING         , SI_HUMMING           , SCB_HIT );
+	set_sc( DC_DONTFORGETME      , SC_DONTFORGETME    , SI_DONTFORGETME           , SCB_SPEED|SCB_ASPD );
+	set_sc( DC_FORTUNEKISS       , SC_FORTUNE         , SI_FORTUNEKISS           , SCB_CRI );
+	set_sc( DC_SERVICEFORYOU     , SC_SERVICEFORYOU   , SI_SERVICEFORYOU           , SCB_ALL );
 	add_sc( NPC_DARKCROSS        , SC_BLIND           );
 	add_sc( NPC_GRANDDARKNESS    , SC_BLIND           );
 	set_sc( NPC_STOP             , SC_STOP            , SI_STOP            , SCB_NONE );
@@ -753,6 +753,11 @@ void initChangeTables(void) {
 
 	set_sc_with_vfx( GN_ILLUSIONDOPING   , SC_ILLUSIONDOPING    , SI_ILLUSIONDOPING     , SCB_HIT );
 
+	//Ragnarok Immersion Custom Statuses
+	
+	set_sc( MO_CHAINCOMBO        , SC_MOMENTUM      , SI_MOMENTUM      , SCB_NONE );
+	set_sc( MG_SOULSTRIKE    , SC_WEAKENED_SOUL      , SI_WEAKENED_SOUL    , SCB_NONE );
+	
 	// Storing the target job rather than simply SC_SOULLINK simplifies code later on.
 	status->Skill2SCTable[SL_ALCHEMIST]   = (sc_type)MAPID_ALCHEMIST,
 		status->Skill2SCTable[SL_MONK]        = (sc_type)MAPID_MONK,

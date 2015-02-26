@@ -132,9 +132,28 @@ veins,194,358,0	duplicate(#PayonCCW)	#VeinsCCW	WARPNPC,1,1
 umbala,138,227,0	duplicate(#PayonCCW)	#UmbalaCCW	WARPNPC,1,1
 comodo,102,340,0	duplicate(#PayonCCW)	#ComodoCCW	WARPNPC,1,1
 morocc,132,288,0	duplicate(#PayonCCW)	#MoroccCCW	WARPNPC,1,1
-morocc,144,239,0	duplicate(#PayonCCW)	#AlbertaCCW	WARPNPC,1,1
+alberta,144,239,0	duplicate(#PayonCCW)	#AlbertaCCW	WARPNPC,1,1
 //============================================================
 
+//============================================================
+payon,70,60,5	script	Portal Placement#ccwportal1::CWBoard	4_BOARD3,{
+	mes "Counter-clockwise portal will be summoned here when airship is in range.";
+	close;
+}
+izlude,190,65,5	duplicate(CWBoard)	Portal Placement#ccwportal2	4_BOARD3
+prontera,272,60,5	duplicate(CWBoard)	Portal Placement#ccwportal3	4_BOARD3
+geffen,39,152,5	duplicate(CWBoard)	Portal Placement#ccwportal4	4_BOARD3
+aldebaran,102,228,5	duplicate(CWBoard)	Portal Placement#ccwportal5	4_BOARD3
+yuno,90,261,5	duplicate(CWBoard)	Portal Placement#ccwportal6	4_BOARD3
+einbroch,91,267,5	duplicate(CWBoard)	Portal Placement#ccwportal7	4_BOARD3
+lighthalzen,265,76,5	duplicate(CWBoard)	Portal Placement#ccwportal8	4_BOARD3
+rachel,228,230,5	duplicate(CWBoard)	Portal Placement#ccwportal9	4_BOARD3
+veins,194,358,5	duplicate(CWBoard)	Portal Placement#ccwportal10	4_BOARD3
+umbala,138,227,5	duplicate(CWBoard)	Portal Placement#ccwportal11	4_BOARD3
+comodo,102,340,5	duplicate(CWBoard)	Portal Placement#ccwportal12	4_BOARD3
+morocc,132,288,5	duplicate(CWBoard)	Portal Placement#ccwportal13	4_BOARD3
+alberta,144,239,5	duplicate(CWBoard)	Portal Placement#ccwportal14	4_BOARD3
+//==============================================================
 airplane,1,1,0	script	Domestic_Airship	-1,{
 	end;
 OnInit:
@@ -147,6 +166,7 @@ OnTimer20000:
 OnTimer30000:
 	mapannounce "airplane","We will arrive in Payon shortly.",bc_map,"0x00ff00";
 	mapannounce "payon","Airship will arrive in Payon shortly.",bc_map,"0x00ff00";
+	soundeffectall "opensoon.wav",0,"payon";
 	end;
 OnTimer40000:
 	$@airplanelocation = 0;
@@ -165,6 +185,7 @@ OnTimer60000:
 	donpcevent "#PayonCCW::OnHide";
 	mapannounce "airplane","The Airship is leaving Payon Village. Our next destination is Izlude.",bc_map,"0x70dbdb";
 	mapannounce "izlude","Airship will arrive in Izlude shortly.",bc_map,"0x00ff00";
+	soundeffectall "opensoon.wav",0,"izlude";
 	end;
 OnTimer70000:
 	$@airplanelocation += 1;
@@ -183,6 +204,7 @@ OnTimer90000:
 	donpcevent "#IzludeCCW::OnHide";
 	mapannounce "airplane","The Airship is leaving the Izlude. Our next destination is Prontera.",bc_map,"0x00ff00";
 	mapannounce "prontera","Airship will arrive in Prontera shortly.",bc_map,"0x00ff00";
+	soundeffectall "opensoon.wav",0,"prontera";
 	end;
 OnTimer100000:
 	$@airplanelocation += 1;
@@ -203,7 +225,8 @@ OnTimer120000:
 	end;
 OnTimer140000:
 	mapannounce "airplane","We will arrive in Geffen shortly.",bc_map,"0xff8200";
-	mapannounce "Geffen","Airship will arrive in Geffen shortly.",bc_map,"0x00ff00";
+	mapannounce "geffen","Airship will arrive in Geffen shortly.",bc_map,"0x00ff00";
+	soundeffectall "opensoon.wav",0,"geffen";
 	end;
 OnTimer150000:
 	$@airplanelocation += 1;
@@ -224,7 +247,8 @@ OnTimer170000:
 	end;
 OnTimer180000:
 	mapannounce "airplane","We will arrive in Al De Baran shortly.",bc_map,"0xca4bf3";
-	mapannounce "Al De Baran","Airship will arrive in Al De Baran shortly.",bc_map,"0x00ff00";
+	mapannounce "aldebaran","Airship will arrive in Al De Baran shortly.",bc_map,"0x00ff00";
+	soundeffectall "opensoon.wav",0,"aldebaran";
 	end;
 OnTimer190000:
 	$@airplanelocation += 1;
@@ -246,6 +270,7 @@ OnTimer210000:
 OnTimer230000:
 	mapannounce "airplane","We will arrive in Juno shortly.",bc_map,"0xff8200";
 	mapannounce "yuno","Airship will arrive in Juno shortly.",bc_map,"0x00ff00";
+	soundeffectall "opensoon.wav",0,"yuno";
 	end;
 OnTimer240000:
 	$@airplanelocation += 1;
@@ -267,6 +292,7 @@ OnTimer260000:
 OnTimer270000:
 	mapannounce "airplane","We will arrive in Einbroch shortly.",bc_map,"0xff8200";
 	mapannounce "einbroch","Airship will arrive in Einbroch shortly.",bc_map,"0x00ff00";
+	soundeffectall "opensoon.wav",0,"einbroch";
 	end;
 OnTimer280000:
 	$@airplanelocation += 1;
@@ -285,6 +311,7 @@ OnTimer300000:
 	donpcevent "#EinbrochCCW::OnHide";
 	mapannounce "airplane","The Airship is leaving the ground. Our next destination is Lighthalzen.",bc_map,"0xff8200";
 	mapannounce "Lighthalzen","Airship will arrive in Lighthalzen shortly.",bc_map,"0x00ff00";
+	soundeffectall "opensoon.wav",0,"lighthalzen";
 	end;
 OnTimer310000:
 	$@airplanelocation += 1;
@@ -303,6 +330,7 @@ OnTimer330000:
 	donpcevent "#LighthalzenCCW::OnHide";
 	mapannounce "airplane","The Airship is leaving the ground. Our next destination is Rachel.",bc_map,"0xff8200";
 	mapannounce "rachel","Airship will arrive in Rachel shortly.",bc_map,"0x00ff00";
+	soundeffectall "opensoon.wav",0,"rachel";
 	end;
 OnTimer340000:
 	$@airplanelocation += 1;
@@ -324,6 +352,7 @@ OnTimer360000:
 OnTimer370000:
 	mapannounce "airplane","We will arrive in Veins shortly.",bc_map,"0xff8200";
 	mapannounce "veins","Airship will arrive in Veins shortly.",bc_map,"0x00ff00";
+	soundeffectall "opensoon.wav",0,"veins";
 	end;
 OnTimer380000:
 	$@airplanelocation += 1;
@@ -342,6 +371,7 @@ OnTimer400000:
 	donpcevent "#VeinsCCW::OnHide";
 	mapannounce "airplane","The Airship is leaving the ground. Our next destination is Umbala Village.",bc_map,"0xff8200";
 	mapannounce "umbala","Airship will arrive in Umbala shortly.",bc_map,"0x00ff00";
+	soundeffectall "opensoon.wav",0,"umbala";
 	end;
 OnTimer410000:
 	$@airplanelocation += 1;
@@ -363,6 +393,7 @@ OnTimer430000:
 OnTimer440000:
 	mapannounce "airplane","We will arrive in Comodo shortly.",bc_map,"0xff8200";
 	mapannounce "comodo","Airship will arrive in Comodo shortly.",bc_map,"0x00ff00";
+	soundeffectall "opensoon.wav",0,"comodo";
 	end;
 OnTimer450000:
 	$@airplanelocation += 1;
@@ -384,6 +415,7 @@ OnTimer470000:
 OnTimer490000:
 	mapannounce "airplane","We will arrive in Morocc shortly.",bc_map,"0xff8200";
 	mapannounce "morocc","Airship will arrive in Morocc shortly.",bc_map,"0x00ff00";
+	soundeffectall "opensoon.wav",0,"morocc";
 	end;
 OnTimer500000:
 	$@airplanelocation += 1;
@@ -405,6 +437,7 @@ OnTimer520000:
 OnTimer530000:
 	mapannounce "airplane","We will arrive in Alberta Port shortly.",bc_map,"0xff8200";
 	mapannounce "alberta","Airship will arrive in Alberta shortly.",bc_map,"0x00ff00";
+	soundeffectall "opensoon.wav",0,"alberta";
 	end;
 OnTimer540000:
 	$@airplanelocation += 1;
