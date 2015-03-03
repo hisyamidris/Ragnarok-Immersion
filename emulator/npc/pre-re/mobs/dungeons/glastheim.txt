@@ -175,6 +175,10 @@ gl_chyard,0,0,0,0	monster	Paragon Evil Druid	3117,1,0,0,0,2
 //==================================================
 // gl_sew01 - Glast Heim Culvert F1
 //==================================================
+gl_sew01,0,0,0,0	monster	Paragon Gargoyle	1253,30,0,0,0,2
+gl_sew01,0,0,0,0	monster	Paragon Arclouze	1194,10,0,0,0,2
+gl_sew01,0,0,0,0	monster	Paragon Whisper	1179,40,0,0,0,2
+
 gl_sew01,0,0,0,0	monster	Paragon Gargoyle	3253,3,0,0,0,2
 gl_sew01,0,0,0,0	monster	Paragon Arclouze	3194,1,0,0,0,2
 gl_sew01,0,0,0,0	monster	Paragon Whisper	3179,4,0,0,0,2

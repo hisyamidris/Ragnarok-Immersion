@@ -28,10 +28,5 @@ OnPCLoginEvent:
 		atcommand "@join #support";
 		atcommand "@join #trade";
 	}
-	if(BaseLevel == 99 && #MaxLevel < 1) {
-		dispbottom "Congratulations! You've reached maximum level. You can now send Scroll of Recommendation your other characters.";
-		#MaxLevel++;
-		getitem 29000,1;
-	}
 	end;
 }

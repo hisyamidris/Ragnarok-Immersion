@@ -76,11 +76,10 @@ OnNPCKillEvent:
 
 -	script	Recommendation	-1,{
 OnPCLoginEvent:
-	dispbottom "Test 1 2 3.";
 	if(BaseLevel == 99 && #MaxLevel < 1) {
 		dispbottom "Congratulations! You've reached maximum level. You can now send Scroll of Recommendation your other characters.";
-		#MaxLevel++;
-		getitem 29000,1;
+		#MaxLevel = #MaxLevel + 1;
+		getitem 30000,1;
 	}
     end;
 
@@ -88,8 +87,8 @@ OnPCBaseLvUpEvent:
 	dispbottom "Test 1 2 3.";
 	if(BaseLevel == 99 && #MaxLevel < 1) {
 		dispbottom "Congratulations! You've reached maximum level. You can now send Scroll of Recommendation your other characters.";
-		#MaxLevel++;
-		getitem 29000,1;
+		#MaxLevel = #MaxLevel + 1;
+		getitem 30000,1;
 	}
     end;
 }
