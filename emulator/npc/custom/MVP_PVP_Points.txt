@@ -93,10 +93,9 @@ OnPCBaseLvUpEvent:
     end;
 }
 
-/* custom npc trader */
 pvp_y_room,66,45,3	trader	Prestigious Vendor	4_M_RASWORD,{
 	OnInit:
-	tradertype(PRESTIGE_POINTS);
+	tradertype(NST_CUSTOM);
 	sellitem 30100,500;
 	sellitem 30101,500;
 	sellitem 30102,500;
@@ -116,10 +115,25 @@ pvp_y_room,66,45,3	trader	Prestigious Vendor	4_M_RASWORD,{
 	sellitem 30304,500;
 	sellitem 30305,500;
 	end;
-	
-1@gef_in,26,174,5	trader	Sentinel Vendor	4_M_EDEN_GUARDER,{
+/* allows currency to be item 501 and 502 */
+OnCountFunds:
+	setcurrency(PRESTIGE_POINTS);
+	dispbottom "This shop uses Prestige Points as currency.";
+	end;
+
+/* receives @price (total cost) and @points (the secondary input field for cash windows) */
+OnPayFunds:
+	if( SENTINEL_POINTS < @price )
+		end;
+	PRESTIGE_POINTS = PRESTIGE_POINTS - @price;
+	purchaseok();
+	dispbottom "You have " + PRESTIGE_POINTS + " remaining.";
+	end;
+}
+
+1@gef_in,26,177,5	trader	Sentinel Vendor	4_M_EDEN_GUARDER,{
 	OnInit:
-	tradertype(SENTINEL_POINTS);
+	tradertype(NST_CUSTOM);
 	sellitem 30110,500;
 	sellitem 30111,500;
 	sellitem 30112,500;
@@ -139,3 +153,19 @@ pvp_y_room,66,45,3	trader	Prestigious Vendor	4_M_RASWORD,{
 	sellitem 30314,500;
 	sellitem 30315,500;
 	end;
+	
+/* allows currency to be item 501 and 502 */
+OnCountFunds:
+	setcurrency(SENTINEL_POINTS);
+	dispbottom "This shop uses Sentinel Points as currency.";
+	end;
+
+/* receives @price (total cost) and @points (the secondary input field for cash windows) */
+OnPayFunds:
+	if( SENTINEL_POINTS < @price )
+		end;
+	SENTINEL_POINTS = SENTINEL_POINTS - @price;
+	purchaseok();
+	dispbottom "You have "+ SENTINEL_POINTS +" remaining.";
+	end;
+}
