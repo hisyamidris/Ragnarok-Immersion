@@ -77,7 +77,7 @@ OnNPCKillEvent:
 -	script	Recommendation	-1,{
 OnPCLoginEvent:
 	if(BaseLevel == 99 && #MaxLevel < 1) {
-		dispbottom "Congratulations! You've reached maximum level. You can now send Scroll of Recommendation your other characters.";
+		dispbottom "Congratulations! You've reached maximum level. You can now send Letter of Recommendation your other characters.";
 		#MaxLevel = #MaxLevel + 1;
 		getitem 30000,1;
 	}
@@ -86,9 +86,56 @@ OnPCLoginEvent:
 OnPCBaseLvUpEvent:
 	dispbottom "Test 1 2 3.";
 	if(BaseLevel == 99 && #MaxLevel < 1) {
-		dispbottom "Congratulations! You've reached maximum level. You can now send Scroll of Recommendation your other characters.";
+		dispbottom "Congratulations! You've reached maximum level. You can now send Letter of Recommendation your other characters.";
 		#MaxLevel = #MaxLevel + 1;
 		getitem 30000,1;
 	}
     end;
 }
+
+/* custom npc trader */
+pvp_y_room,66,45,3	trader	Prestigious Vendor	4_M_RASWORD,{
+	OnInit:
+	tradertype(PRESTIGE_POINTS);
+	sellitem 30100,500;
+	sellitem 30101,500;
+	sellitem 30102,500;
+	sellitem 30103,500;
+	sellitem 30104,500;
+	sellitem 30105,500;
+	sellitem 30200,500;
+	sellitem 30201,500;
+	sellitem 30202,500;
+	sellitem 30203,500;
+	sellitem 30204,500;
+	sellitem 30205,500;
+	sellitem 30300,500;
+	sellitem 30301,500;
+	sellitem 30302,500;
+	sellitem 30303,500;
+	sellitem 30304,500;
+	sellitem 30305,500;
+	end;
+	
+1@gef_in,26,174,5	trader	Sentinel Vendor	4_M_EDEN_GUARDER,{
+	OnInit:
+	tradertype(SENTINEL_POINTS);
+	sellitem 30110,500;
+	sellitem 30111,500;
+	sellitem 30112,500;
+	sellitem 30113,500;
+	sellitem 30114,500;
+	sellitem 30115,500;
+	sellitem 30210,500;
+	sellitem 30211,500;
+	sellitem 30212,500;
+	sellitem 30213,500;
+	sellitem 30214,500;
+	sellitem 30215,500;
+	sellitem 30310,500;
+	sellitem 30311,500;
+	sellitem 30312,500;
+	sellitem 30313,500;
+	sellitem 30314,500;
+	sellitem 30315,500;
+	end;
