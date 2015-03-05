@@ -162,3 +162,437 @@
 //5470:5653,{ bonus bDex,1; bonus bLongAtkRate,3; }
 13034:13035,{ bonus bMaxSP,20; bonus bMaxHPrate,5; bonus bHit,10; bonus2 bAddSize,Size_Large,30; autobonus "{ bonus bAspdRate,100; }",1,7000,0,"{ specialeffect2 EF_POTION_BERSERK; }"; }
 18507:18539,{ bonus bUseSPrate,-3; }
+//Ferocious Combo
+30100:30200:30300,{  bonus bAllStats,1; bonus2 bSubRace,RC_DemiHuman,5; }
+30100:30200:30301,{  bonus bAllStats,1; bonus2 bSubRace,RC_DemiHuman,5; }
+30100:30200:30302,{  bonus bAllStats,1; bonus2 bSubRace,RC_DemiHuman,5; }
+30100:30200:30303,{  bonus bAllStats,1; bonus2 bSubRace,RC_DemiHuman,5; }
+30100:30200:30304,{  bonus bAllStats,1; bonus2 bSubRace,RC_DemiHuman,5; }
+30100:30200:30305,{  bonus bAllStats,1; bonus2 bSubRace,RC_DemiHuman,5; }
+30100:30201:30300,{  bonus bAllStats,1; bonus2 bSubRace,RC_DemiHuman,5; }
+30100:30201:30301,{  bonus bAllStats,1; bonus2 bSubRace,RC_DemiHuman,5; }
+30100:30201:30302,{  bonus bAllStats,1; bonus2 bSubRace,RC_DemiHuman,5; }
+30100:30201:30303,{  bonus bAllStats,1; bonus2 bSubRace,RC_DemiHuman,5; }
+30100:30201:30304,{  bonus bAllStats,1; bonus2 bSubRace,RC_DemiHuman,5; }
+30100:30201:30305,{  bonus bAllStats,1; bonus2 bSubRace,RC_DemiHuman,5; }
+30100:30202:30300,{  bonus bAllStats,1; bonus2 bSubRace,RC_DemiHuman,5; }
+30100:30202:30301,{  bonus bAllStats,1; bonus2 bSubRace,RC_DemiHuman,5; }
+30100:30202:30302,{  bonus bAllStats,1; bonus2 bSubRace,RC_DemiHuman,5; }
+30100:30202:30303,{  bonus bAllStats,1; bonus2 bSubRace,RC_DemiHuman,5; }
+30100:30202:30304,{  bonus bAllStats,1; bonus2 bSubRace,RC_DemiHuman,5; }
+30100:30202:30305,{  bonus bAllStats,1; bonus2 bSubRace,RC_DemiHuman,5; }
+30100:30203:30300,{  bonus bAllStats,1; bonus2 bSubRace,RC_DemiHuman,5; }
+30100:30203:30301,{  bonus bAllStats,1; bonus2 bSubRace,RC_DemiHuman,5; }
+30100:30203:30302,{  bonus bAllStats,1; bonus2 bSubRace,RC_DemiHuman,5; }
+30100:30203:30303,{  bonus bAllStats,1; bonus2 bSubRace,RC_DemiHuman,5; }
+30100:30203:30304,{  bonus bAllStats,1; bonus2 bSubRace,RC_DemiHuman,5; }
+30100:30203:30305,{  bonus bAllStats,1; bonus2 bSubRace,RC_DemiHuman,5; }
+30100:30204:30300,{  bonus bAllStats,1; bonus2 bSubRace,RC_DemiHuman,5; }
+30100:30204:30301,{  bonus bAllStats,1; bonus2 bSubRace,RC_DemiHuman,5; }
+30100:30204:30302,{  bonus bAllStats,1; bonus2 bSubRace,RC_DemiHuman,5; }
+30100:30204:30303,{  bonus bAllStats,1; bonus2 bSubRace,RC_DemiHuman,5; }
+30100:30204:30304,{  bonus bAllStats,1; bonus2 bSubRace,RC_DemiHuman,5; }
+30100:30204:30305,{  bonus bAllStats,1; bonus2 bSubRace,RC_DemiHuman,5; }
+30100:30205:30300,{  bonus bAllStats,1; bonus2 bSubRace,RC_DemiHuman,5; }
+30100:30205:30301,{  bonus bAllStats,1; bonus2 bSubRace,RC_DemiHuman,5; }
+30100:30205:30302,{  bonus bAllStats,1; bonus2 bSubRace,RC_DemiHuman,5; }
+30100:30205:30303,{  bonus bAllStats,1; bonus2 bSubRace,RC_DemiHuman,5; }
+30100:30205:30304,{  bonus bAllStats,1; bonus2 bSubRace,RC_DemiHuman,5; }
+30100:30205:30305,{  bonus bAllStats,1; bonus2 bSubRace,RC_DemiHuman,5; }
+30101:30200:30300,{  bonus bAllStats,1; bonus2 bSubRace,RC_DemiHuman,5; }
+30101:30200:30301,{  bonus bAllStats,1; bonus2 bSubRace,RC_DemiHuman,5; }
+30101:30200:30302,{  bonus bAllStats,1; bonus2 bSubRace,RC_DemiHuman,5; }
+30101:30200:30303,{  bonus bAllStats,1; bonus2 bSubRace,RC_DemiHuman,5; }
+30101:30200:30304,{  bonus bAllStats,1; bonus2 bSubRace,RC_DemiHuman,5; }
+30101:30200:30305,{  bonus bAllStats,1; bonus2 bSubRace,RC_DemiHuman,5; }
+30101:30201:30300,{  bonus bAllStats,1; bonus2 bSubRace,RC_DemiHuman,5; }
+30101:30201:30301,{  bonus bAllStats,1; bonus2 bSubRace,RC_DemiHuman,5; }
+30101:30201:30302,{  bonus bAllStats,1; bonus2 bSubRace,RC_DemiHuman,5; }
+30101:30201:30303,{  bonus bAllStats,1; bonus2 bSubRace,RC_DemiHuman,5; }
+30101:30201:30304,{  bonus bAllStats,1; bonus2 bSubRace,RC_DemiHuman,5; }
+30101:30201:30305,{  bonus bAllStats,1; bonus2 bSubRace,RC_DemiHuman,5; }
+30101:30202:30300,{  bonus bAllStats,1; bonus2 bSubRace,RC_DemiHuman,5; }
+30101:30202:30301,{  bonus bAllStats,1; bonus2 bSubRace,RC_DemiHuman,5; }
+30101:30202:30302,{  bonus bAllStats,1; bonus2 bSubRace,RC_DemiHuman,5; }
+30101:30202:30303,{  bonus bAllStats,1; bonus2 bSubRace,RC_DemiHuman,5; }
+30101:30202:30304,{  bonus bAllStats,1; bonus2 bSubRace,RC_DemiHuman,5; }
+30101:30202:30305,{  bonus bAllStats,1; bonus2 bSubRace,RC_DemiHuman,5; }
+30101:30203:30300,{  bonus bAllStats,1; bonus2 bSubRace,RC_DemiHuman,5; }
+30101:30203:30301,{  bonus bAllStats,1; bonus2 bSubRace,RC_DemiHuman,5; }
+30101:30203:30302,{  bonus bAllStats,1; bonus2 bSubRace,RC_DemiHuman,5; }
+30101:30203:30303,{  bonus bAllStats,1; bonus2 bSubRace,RC_DemiHuman,5; }
+30101:30203:30304,{  bonus bAllStats,1; bonus2 bSubRace,RC_DemiHuman,5; }
+30101:30203:30305,{  bonus bAllStats,1; bonus2 bSubRace,RC_DemiHuman,5; }
+30101:30204:30300,{  bonus bAllStats,1; bonus2 bSubRace,RC_DemiHuman,5; }
+30101:30204:30301,{  bonus bAllStats,1; bonus2 bSubRace,RC_DemiHuman,5; }
+30101:30204:30302,{  bonus bAllStats,1; bonus2 bSubRace,RC_DemiHuman,5; }
+30101:30204:30303,{  bonus bAllStats,1; bonus2 bSubRace,RC_DemiHuman,5; }
+30101:30204:30304,{  bonus bAllStats,1; bonus2 bSubRace,RC_DemiHuman,5; }
+30101:30204:30305,{  bonus bAllStats,1; bonus2 bSubRace,RC_DemiHuman,5; }
+30101:30205:30300,{  bonus bAllStats,1; bonus2 bSubRace,RC_DemiHuman,5; }
+30101:30205:30301,{  bonus bAllStats,1; bonus2 bSubRace,RC_DemiHuman,5; }
+30101:30205:30302,{  bonus bAllStats,1; bonus2 bSubRace,RC_DemiHuman,5; }
+30101:30205:30303,{  bonus bAllStats,1; bonus2 bSubRace,RC_DemiHuman,5; }
+30101:30205:30304,{  bonus bAllStats,1; bonus2 bSubRace,RC_DemiHuman,5; }
+30101:30205:30305,{  bonus bAllStats,1; bonus2 bSubRace,RC_DemiHuman,5; }
+30102:30200:30300,{  bonus bAllStats,1; bonus2 bSubRace,RC_DemiHuman,5; }
+30102:30200:30301,{  bonus bAllStats,1; bonus2 bSubRace,RC_DemiHuman,5; }
+30102:30200:30302,{  bonus bAllStats,1; bonus2 bSubRace,RC_DemiHuman,5; }
+30102:30200:30303,{  bonus bAllStats,1; bonus2 bSubRace,RC_DemiHuman,5; }
+30102:30200:30304,{  bonus bAllStats,1; bonus2 bSubRace,RC_DemiHuman,5; }
+30102:30200:30305,{  bonus bAllStats,1; bonus2 bSubRace,RC_DemiHuman,5; }
+30102:30201:30300,{  bonus bAllStats,1; bonus2 bSubRace,RC_DemiHuman,5; }
+30102:30201:30301,{  bonus bAllStats,1; bonus2 bSubRace,RC_DemiHuman,5; }
+30102:30201:30302,{  bonus bAllStats,1; bonus2 bSubRace,RC_DemiHuman,5; }
+30102:30201:30303,{  bonus bAllStats,1; bonus2 bSubRace,RC_DemiHuman,5; }
+30102:30201:30304,{  bonus bAllStats,1; bonus2 bSubRace,RC_DemiHuman,5; }
+30102:30201:30305,{  bonus bAllStats,1; bonus2 bSubRace,RC_DemiHuman,5; }
+30102:30202:30300,{  bonus bAllStats,1; bonus2 bSubRace,RC_DemiHuman,5; }
+30102:30202:30301,{  bonus bAllStats,1; bonus2 bSubRace,RC_DemiHuman,5; }
+30102:30202:30302,{  bonus bAllStats,1; bonus2 bSubRace,RC_DemiHuman,5; }
+30102:30202:30303,{  bonus bAllStats,1; bonus2 bSubRace,RC_DemiHuman,5; }
+30102:30202:30304,{  bonus bAllStats,1; bonus2 bSubRace,RC_DemiHuman,5; }
+30102:30202:30305,{  bonus bAllStats,1; bonus2 bSubRace,RC_DemiHuman,5; }
+30102:30203:30300,{  bonus bAllStats,1; bonus2 bSubRace,RC_DemiHuman,5; }
+30102:30203:30301,{  bonus bAllStats,1; bonus2 bSubRace,RC_DemiHuman,5; }
+30102:30203:30302,{  bonus bAllStats,1; bonus2 bSubRace,RC_DemiHuman,5; }
+30102:30203:30303,{  bonus bAllStats,1; bonus2 bSubRace,RC_DemiHuman,5; }
+30102:30203:30304,{  bonus bAllStats,1; bonus2 bSubRace,RC_DemiHuman,5; }
+30102:30203:30305,{  bonus bAllStats,1; bonus2 bSubRace,RC_DemiHuman,5; }
+30102:30204:30300,{  bonus bAllStats,1; bonus2 bSubRace,RC_DemiHuman,5; }
+30102:30204:30301,{  bonus bAllStats,1; bonus2 bSubRace,RC_DemiHuman,5; }
+30102:30204:30302,{  bonus bAllStats,1; bonus2 bSubRace,RC_DemiHuman,5; }
+30102:30204:30303,{  bonus bAllStats,1; bonus2 bSubRace,RC_DemiHuman,5; }
+30102:30204:30304,{  bonus bAllStats,1; bonus2 bSubRace,RC_DemiHuman,5; }
+30102:30204:30305,{  bonus bAllStats,1; bonus2 bSubRace,RC_DemiHuman,5; }
+30102:30205:30300,{  bonus bAllStats,1; bonus2 bSubRace,RC_DemiHuman,5; }
+30102:30205:30301,{  bonus bAllStats,1; bonus2 bSubRace,RC_DemiHuman,5; }
+30102:30205:30302,{  bonus bAllStats,1; bonus2 bSubRace,RC_DemiHuman,5; }
+30102:30205:30303,{  bonus bAllStats,1; bonus2 bSubRace,RC_DemiHuman,5; }
+30102:30205:30304,{  bonus bAllStats,1; bonus2 bSubRace,RC_DemiHuman,5; }
+30102:30205:30305,{  bonus bAllStats,1; bonus2 bSubRace,RC_DemiHuman,5; }
+30103:30200:30300,{  bonus bAllStats,1; bonus2 bSubRace,RC_DemiHuman,5; }
+30103:30200:30301,{  bonus bAllStats,1; bonus2 bSubRace,RC_DemiHuman,5; }
+30103:30200:30302,{  bonus bAllStats,1; bonus2 bSubRace,RC_DemiHuman,5; }
+30103:30200:30303,{  bonus bAllStats,1; bonus2 bSubRace,RC_DemiHuman,5; }
+30103:30200:30304,{  bonus bAllStats,1; bonus2 bSubRace,RC_DemiHuman,5; }
+30103:30200:30305,{  bonus bAllStats,1; bonus2 bSubRace,RC_DemiHuman,5; }
+30103:30201:30300,{  bonus bAllStats,1; bonus2 bSubRace,RC_DemiHuman,5; }
+30103:30201:30301,{  bonus bAllStats,1; bonus2 bSubRace,RC_DemiHuman,5; }
+30103:30201:30302,{  bonus bAllStats,1; bonus2 bSubRace,RC_DemiHuman,5; }
+30103:30201:30303,{  bonus bAllStats,1; bonus2 bSubRace,RC_DemiHuman,5; }
+30103:30201:30304,{  bonus bAllStats,1; bonus2 bSubRace,RC_DemiHuman,5; }
+30103:30201:30305,{  bonus bAllStats,1; bonus2 bSubRace,RC_DemiHuman,5; }
+30103:30202:30300,{  bonus bAllStats,1; bonus2 bSubRace,RC_DemiHuman,5; }
+30103:30202:30301,{  bonus bAllStats,1; bonus2 bSubRace,RC_DemiHuman,5; }
+30103:30202:30302,{  bonus bAllStats,1; bonus2 bSubRace,RC_DemiHuman,5; }
+30103:30202:30303,{  bonus bAllStats,1; bonus2 bSubRace,RC_DemiHuman,5; }
+30103:30202:30304,{  bonus bAllStats,1; bonus2 bSubRace,RC_DemiHuman,5; }
+30103:30202:30305,{  bonus bAllStats,1; bonus2 bSubRace,RC_DemiHuman,5; }
+30103:30203:30300,{  bonus bAllStats,1; bonus2 bSubRace,RC_DemiHuman,5; }
+30103:30203:30301,{  bonus bAllStats,1; bonus2 bSubRace,RC_DemiHuman,5; }
+30103:30203:30302,{  bonus bAllStats,1; bonus2 bSubRace,RC_DemiHuman,5; }
+30103:30203:30303,{  bonus bAllStats,1; bonus2 bSubRace,RC_DemiHuman,5; }
+30103:30203:30304,{  bonus bAllStats,1; bonus2 bSubRace,RC_DemiHuman,5; }
+30103:30203:30305,{  bonus bAllStats,1; bonus2 bSubRace,RC_DemiHuman,5; }
+30103:30204:30300,{  bonus bAllStats,1; bonus2 bSubRace,RC_DemiHuman,5; }
+30103:30204:30301,{  bonus bAllStats,1; bonus2 bSubRace,RC_DemiHuman,5; }
+30103:30204:30302,{  bonus bAllStats,1; bonus2 bSubRace,RC_DemiHuman,5; }
+30103:30204:30303,{  bonus bAllStats,1; bonus2 bSubRace,RC_DemiHuman,5; }
+30103:30204:30304,{  bonus bAllStats,1; bonus2 bSubRace,RC_DemiHuman,5; }
+30103:30204:30305,{  bonus bAllStats,1; bonus2 bSubRace,RC_DemiHuman,5; }
+30103:30205:30300,{  bonus bAllStats,1; bonus2 bSubRace,RC_DemiHuman,5; }
+30103:30205:30301,{  bonus bAllStats,1; bonus2 bSubRace,RC_DemiHuman,5; }
+30103:30205:30302,{  bonus bAllStats,1; bonus2 bSubRace,RC_DemiHuman,5; }
+30103:30205:30303,{  bonus bAllStats,1; bonus2 bSubRace,RC_DemiHuman,5; }
+30103:30205:30304,{  bonus bAllStats,1; bonus2 bSubRace,RC_DemiHuman,5; }
+30103:30205:30305,{  bonus bAllStats,1; bonus2 bSubRace,RC_DemiHuman,5; }
+30104:30200:30300,{  bonus bAllStats,1; bonus2 bSubRace,RC_DemiHuman,5; }
+30104:30200:30301,{  bonus bAllStats,1; bonus2 bSubRace,RC_DemiHuman,5; }
+30104:30200:30302,{  bonus bAllStats,1; bonus2 bSubRace,RC_DemiHuman,5; }
+30104:30200:30303,{  bonus bAllStats,1; bonus2 bSubRace,RC_DemiHuman,5; }
+30104:30200:30304,{  bonus bAllStats,1; bonus2 bSubRace,RC_DemiHuman,5; }
+30104:30200:30305,{  bonus bAllStats,1; bonus2 bSubRace,RC_DemiHuman,5; }
+30104:30201:30300,{  bonus bAllStats,1; bonus2 bSubRace,RC_DemiHuman,5; }
+30104:30201:30301,{  bonus bAllStats,1; bonus2 bSubRace,RC_DemiHuman,5; }
+30104:30201:30302,{  bonus bAllStats,1; bonus2 bSubRace,RC_DemiHuman,5; }
+30104:30201:30303,{  bonus bAllStats,1; bonus2 bSubRace,RC_DemiHuman,5; }
+30104:30201:30304,{  bonus bAllStats,1; bonus2 bSubRace,RC_DemiHuman,5; }
+30104:30201:30305,{  bonus bAllStats,1; bonus2 bSubRace,RC_DemiHuman,5; }
+30104:30202:30300,{  bonus bAllStats,1; bonus2 bSubRace,RC_DemiHuman,5; }
+30104:30202:30301,{  bonus bAllStats,1; bonus2 bSubRace,RC_DemiHuman,5; }
+30104:30202:30302,{  bonus bAllStats,1; bonus2 bSubRace,RC_DemiHuman,5; }
+30104:30202:30303,{  bonus bAllStats,1; bonus2 bSubRace,RC_DemiHuman,5; }
+30104:30202:30304,{  bonus bAllStats,1; bonus2 bSubRace,RC_DemiHuman,5; }
+30104:30202:30305,{  bonus bAllStats,1; bonus2 bSubRace,RC_DemiHuman,5; }
+30104:30203:30300,{  bonus bAllStats,1; bonus2 bSubRace,RC_DemiHuman,5; }
+30104:30203:30301,{  bonus bAllStats,1; bonus2 bSubRace,RC_DemiHuman,5; }
+30104:30203:30302,{  bonus bAllStats,1; bonus2 bSubRace,RC_DemiHuman,5; }
+30104:30203:30303,{  bonus bAllStats,1; bonus2 bSubRace,RC_DemiHuman,5; }
+30104:30203:30304,{  bonus bAllStats,1; bonus2 bSubRace,RC_DemiHuman,5; }
+30104:30203:30305,{  bonus bAllStats,1; bonus2 bSubRace,RC_DemiHuman,5; }
+30104:30204:30300,{  bonus bAllStats,1; bonus2 bSubRace,RC_DemiHuman,5; }
+30104:30204:30301,{  bonus bAllStats,1; bonus2 bSubRace,RC_DemiHuman,5; }
+30104:30204:30302,{  bonus bAllStats,1; bonus2 bSubRace,RC_DemiHuman,5; }
+30104:30204:30303,{  bonus bAllStats,1; bonus2 bSubRace,RC_DemiHuman,5; }
+30104:30204:30304,{  bonus bAllStats,1; bonus2 bSubRace,RC_DemiHuman,5; }
+30104:30204:30305,{  bonus bAllStats,1; bonus2 bSubRace,RC_DemiHuman,5; }
+30104:30205:30300,{  bonus bAllStats,1; bonus2 bSubRace,RC_DemiHuman,5; }
+30104:30205:30301,{  bonus bAllStats,1; bonus2 bSubRace,RC_DemiHuman,5; }
+30104:30205:30302,{  bonus bAllStats,1; bonus2 bSubRace,RC_DemiHuman,5; }
+30104:30205:30303,{  bonus bAllStats,1; bonus2 bSubRace,RC_DemiHuman,5; }
+30104:30205:30304,{  bonus bAllStats,1; bonus2 bSubRace,RC_DemiHuman,5; }
+30104:30205:30305,{  bonus bAllStats,1; bonus2 bSubRace,RC_DemiHuman,5; }
+30105:30200:30300,{  bonus bAllStats,1; bonus2 bSubRace,RC_DemiHuman,5; }
+30105:30200:30301,{  bonus bAllStats,1; bonus2 bSubRace,RC_DemiHuman,5; }
+30105:30200:30302,{  bonus bAllStats,1; bonus2 bSubRace,RC_DemiHuman,5; }
+30105:30200:30303,{  bonus bAllStats,1; bonus2 bSubRace,RC_DemiHuman,5; }
+30105:30200:30304,{  bonus bAllStats,1; bonus2 bSubRace,RC_DemiHuman,5; }
+30105:30200:30305,{  bonus bAllStats,1; bonus2 bSubRace,RC_DemiHuman,5; }
+30105:30201:30300,{  bonus bAllStats,1; bonus2 bSubRace,RC_DemiHuman,5; }
+30105:30201:30301,{  bonus bAllStats,1; bonus2 bSubRace,RC_DemiHuman,5; }
+30105:30201:30302,{  bonus bAllStats,1; bonus2 bSubRace,RC_DemiHuman,5; }
+30105:30201:30303,{  bonus bAllStats,1; bonus2 bSubRace,RC_DemiHuman,5; }
+30105:30201:30304,{  bonus bAllStats,1; bonus2 bSubRace,RC_DemiHuman,5; }
+30105:30201:30305,{  bonus bAllStats,1; bonus2 bSubRace,RC_DemiHuman,5; }
+30105:30202:30300,{  bonus bAllStats,1; bonus2 bSubRace,RC_DemiHuman,5; }
+30105:30202:30301,{  bonus bAllStats,1; bonus2 bSubRace,RC_DemiHuman,5; }
+30105:30202:30302,{  bonus bAllStats,1; bonus2 bSubRace,RC_DemiHuman,5; }
+30105:30202:30303,{  bonus bAllStats,1; bonus2 bSubRace,RC_DemiHuman,5; }
+30105:30202:30304,{  bonus bAllStats,1; bonus2 bSubRace,RC_DemiHuman,5; }
+30105:30202:30305,{  bonus bAllStats,1; bonus2 bSubRace,RC_DemiHuman,5; }
+30105:30203:30300,{  bonus bAllStats,1; bonus2 bSubRace,RC_DemiHuman,5; }
+30105:30203:30301,{  bonus bAllStats,1; bonus2 bSubRace,RC_DemiHuman,5; }
+30105:30203:30302,{  bonus bAllStats,1; bonus2 bSubRace,RC_DemiHuman,5; }
+30105:30203:30303,{  bonus bAllStats,1; bonus2 bSubRace,RC_DemiHuman,5; }
+30105:30203:30304,{  bonus bAllStats,1; bonus2 bSubRace,RC_DemiHuman,5; }
+30105:30203:30305,{  bonus bAllStats,1; bonus2 bSubRace,RC_DemiHuman,5; }
+30105:30204:30300,{  bonus bAllStats,1; bonus2 bSubRace,RC_DemiHuman,5; }
+30105:30204:30301,{  bonus bAllStats,1; bonus2 bSubRace,RC_DemiHuman,5; }
+30105:30204:30302,{  bonus bAllStats,1; bonus2 bSubRace,RC_DemiHuman,5; }
+30105:30204:30303,{  bonus bAllStats,1; bonus2 bSubRace,RC_DemiHuman,5; }
+30105:30204:30304,{  bonus bAllStats,1; bonus2 bSubRace,RC_DemiHuman,5; }
+30105:30204:30305,{  bonus bAllStats,1; bonus2 bSubRace,RC_DemiHuman,5; }
+30105:30205:30300,{  bonus bAllStats,1; bonus2 bSubRace,RC_DemiHuman,5; }
+30105:30205:30301,{  bonus bAllStats,1; bonus2 bSubRace,RC_DemiHuman,5; }
+30105:30205:30302,{  bonus bAllStats,1; bonus2 bSubRace,RC_DemiHuman,5; }
+30105:30205:30303,{  bonus bAllStats,1; bonus2 bSubRace,RC_DemiHuman,5; }
+30105:30205:30304,{  bonus bAllStats,1; bonus2 bSubRace,RC_DemiHuman,5; }
+30105:30205:30305,{  bonus bAllStats,1; bonus2 bSubRace,RC_DemiHuman,5; }
+//Protector Combo
+30110:30210:30310,{  bonus bAllStats,1; bonus2 bSubRace,RC_Boss,5; bonus2 bAddRace,RC_Boss,10; bonus bAddItemHealRate,25; bonus bHealPower2,25; }
+30110:30210:30311,{  bonus bAllStats,1; bonus2 bSubRace,RC_Boss,5; bonus2 bAddRace,RC_Boss,10; bonus bAddItemHealRate,25; bonus bHealPower2,25; }
+30110:30210:30312,{  bonus bAllStats,1; bonus2 bSubRace,RC_Boss,5; bonus2 bAddRace,RC_Boss,10; bonus bAddItemHealRate,25; bonus bHealPower2,25; }
+30110:30210:30313,{  bonus bAllStats,1; bonus2 bSubRace,RC_Boss,5; bonus2 bAddRace,RC_Boss,10; bonus bAddItemHealRate,25; bonus bHealPower2,25; }
+30110:30210:30314,{  bonus bAllStats,1; bonus2 bSubRace,RC_Boss,5; bonus2 bAddRace,RC_Boss,10; bonus bAddItemHealRate,25; bonus bHealPower2,25; }
+30110:30210:30315,{  bonus bAllStats,1; bonus2 bSubRace,RC_Boss,5; bonus2 bAddRace,RC_Boss,10; bonus bAddItemHealRate,25; bonus bHealPower2,25; }
+30110:30211:30310,{  bonus bAllStats,1; bonus2 bSubRace,RC_Boss,5; bonus2 bAddRace,RC_Boss,10; bonus bAddItemHealRate,25; bonus bHealPower2,25; }
+30110:30211:30311,{  bonus bAllStats,1; bonus2 bSubRace,RC_Boss,5; bonus2 bAddRace,RC_Boss,10; bonus bAddItemHealRate,25; bonus bHealPower2,25; }
+30110:30211:30312,{  bonus bAllStats,1; bonus2 bSubRace,RC_Boss,5; bonus2 bAddRace,RC_Boss,10; bonus bAddItemHealRate,25; bonus bHealPower2,25; }
+30110:30211:30313,{  bonus bAllStats,1; bonus2 bSubRace,RC_Boss,5; bonus2 bAddRace,RC_Boss,10; bonus bAddItemHealRate,25; bonus bHealPower2,25; }
+30110:30211:30314,{  bonus bAllStats,1; bonus2 bSubRace,RC_Boss,5; bonus2 bAddRace,RC_Boss,10; bonus bAddItemHealRate,25; bonus bHealPower2,25; }
+30110:30211:30315,{  bonus bAllStats,1; bonus2 bSubRace,RC_Boss,5; bonus2 bAddRace,RC_Boss,10; bonus bAddItemHealRate,25; bonus bHealPower2,25; }
+30110:30212:30310,{  bonus bAllStats,1; bonus2 bSubRace,RC_Boss,5; bonus2 bAddRace,RC_Boss,10; bonus bAddItemHealRate,25; bonus bHealPower2,25; }
+30110:30212:30311,{  bonus bAllStats,1; bonus2 bSubRace,RC_Boss,5; bonus2 bAddRace,RC_Boss,10; bonus bAddItemHealRate,25; bonus bHealPower2,25; }
+30110:30212:30312,{  bonus bAllStats,1; bonus2 bSubRace,RC_Boss,5; bonus2 bAddRace,RC_Boss,10; bonus bAddItemHealRate,25; bonus bHealPower2,25; }
+30110:30212:30313,{  bonus bAllStats,1; bonus2 bSubRace,RC_Boss,5; bonus2 bAddRace,RC_Boss,10; bonus bAddItemHealRate,25; bonus bHealPower2,25; }
+30110:30212:30314,{  bonus bAllStats,1; bonus2 bSubRace,RC_Boss,5; bonus2 bAddRace,RC_Boss,10; bonus bAddItemHealRate,25; bonus bHealPower2,25; }
+30110:30212:30315,{  bonus bAllStats,1; bonus2 bSubRace,RC_Boss,5; bonus2 bAddRace,RC_Boss,10; bonus bAddItemHealRate,25; bonus bHealPower2,25; }
+30110:30213:30310,{  bonus bAllStats,1; bonus2 bSubRace,RC_Boss,5; bonus2 bAddRace,RC_Boss,10; bonus bAddItemHealRate,25; bonus bHealPower2,25; }
+30110:30213:30311,{  bonus bAllStats,1; bonus2 bSubRace,RC_Boss,5; bonus2 bAddRace,RC_Boss,10; bonus bAddItemHealRate,25; bonus bHealPower2,25; }
+30110:30213:30312,{  bonus bAllStats,1; bonus2 bSubRace,RC_Boss,5; bonus2 bAddRace,RC_Boss,10; bonus bAddItemHealRate,25; bonus bHealPower2,25; }
+30110:30213:30313,{  bonus bAllStats,1; bonus2 bSubRace,RC_Boss,5; bonus2 bAddRace,RC_Boss,10; bonus bAddItemHealRate,25; bonus bHealPower2,25; }
+30110:30213:30314,{  bonus bAllStats,1; bonus2 bSubRace,RC_Boss,5; bonus2 bAddRace,RC_Boss,10; bonus bAddItemHealRate,25; bonus bHealPower2,25; }
+30110:30213:30315,{  bonus bAllStats,1; bonus2 bSubRace,RC_Boss,5; bonus2 bAddRace,RC_Boss,10; bonus bAddItemHealRate,25; bonus bHealPower2,25; }
+30110:30214:30310,{  bonus bAllStats,1; bonus2 bSubRace,RC_Boss,5; bonus2 bAddRace,RC_Boss,10; bonus bAddItemHealRate,25; bonus bHealPower2,25; }
+30110:30214:30311,{  bonus bAllStats,1; bonus2 bSubRace,RC_Boss,5; bonus2 bAddRace,RC_Boss,10; bonus bAddItemHealRate,25; bonus bHealPower2,25; }
+30110:30214:30312,{  bonus bAllStats,1; bonus2 bSubRace,RC_Boss,5; bonus2 bAddRace,RC_Boss,10; bonus bAddItemHealRate,25; bonus bHealPower2,25; }
+30110:30214:30313,{  bonus bAllStats,1; bonus2 bSubRace,RC_Boss,5; bonus2 bAddRace,RC_Boss,10; bonus bAddItemHealRate,25; bonus bHealPower2,25; }
+30110:30214:30314,{  bonus bAllStats,1; bonus2 bSubRace,RC_Boss,5; bonus2 bAddRace,RC_Boss,10; bonus bAddItemHealRate,25; bonus bHealPower2,25; }
+30110:30214:30315,{  bonus bAllStats,1; bonus2 bSubRace,RC_Boss,5; bonus2 bAddRace,RC_Boss,10; bonus bAddItemHealRate,25; bonus bHealPower2,25; }
+30110:30215:30310,{  bonus bAllStats,1; bonus2 bSubRace,RC_Boss,5; bonus2 bAddRace,RC_Boss,10; bonus bAddItemHealRate,25; bonus bHealPower2,25; }
+30110:30215:30311,{  bonus bAllStats,1; bonus2 bSubRace,RC_Boss,5; bonus2 bAddRace,RC_Boss,10; bonus bAddItemHealRate,25; bonus bHealPower2,25; }
+30110:30215:30312,{  bonus bAllStats,1; bonus2 bSubRace,RC_Boss,5; bonus2 bAddRace,RC_Boss,10; bonus bAddItemHealRate,25; bonus bHealPower2,25; }
+30110:30215:30313,{  bonus bAllStats,1; bonus2 bSubRace,RC_Boss,5; bonus2 bAddRace,RC_Boss,10; bonus bAddItemHealRate,25; bonus bHealPower2,25; }
+30110:30215:30314,{  bonus bAllStats,1; bonus2 bSubRace,RC_Boss,5; bonus2 bAddRace,RC_Boss,10; bonus bAddItemHealRate,25; bonus bHealPower2,25; }
+30110:30215:30315,{  bonus bAllStats,1; bonus2 bSubRace,RC_Boss,5; bonus2 bAddRace,RC_Boss,10; bonus bAddItemHealRate,25; bonus bHealPower2,25; }
+30111:30210:30310,{  bonus bAllStats,1; bonus2 bSubRace,RC_Boss,5; bonus2 bAddRace,RC_Boss,10; bonus bAddItemHealRate,25; bonus bHealPower2,25; }
+30111:30210:30311,{  bonus bAllStats,1; bonus2 bSubRace,RC_Boss,5; bonus2 bAddRace,RC_Boss,10; bonus bAddItemHealRate,25; bonus bHealPower2,25; }
+30111:30210:30312,{  bonus bAllStats,1; bonus2 bSubRace,RC_Boss,5; bonus2 bAddRace,RC_Boss,10; bonus bAddItemHealRate,25; bonus bHealPower2,25; }
+30111:30210:30313,{  bonus bAllStats,1; bonus2 bSubRace,RC_Boss,5; bonus2 bAddRace,RC_Boss,10; bonus bAddItemHealRate,25; bonus bHealPower2,25; }
+30111:30210:30314,{  bonus bAllStats,1; bonus2 bSubRace,RC_Boss,5; bonus2 bAddRace,RC_Boss,10; bonus bAddItemHealRate,25; bonus bHealPower2,25; }
+30111:30210:30315,{  bonus bAllStats,1; bonus2 bSubRace,RC_Boss,5; bonus2 bAddRace,RC_Boss,10; bonus bAddItemHealRate,25; bonus bHealPower2,25; }
+30111:30211:30310,{  bonus bAllStats,1; bonus2 bSubRace,RC_Boss,5; bonus2 bAddRace,RC_Boss,10; bonus bAddItemHealRate,25; bonus bHealPower2,25; }
+30111:30211:30311,{  bonus bAllStats,1; bonus2 bSubRace,RC_Boss,5; bonus2 bAddRace,RC_Boss,10; bonus bAddItemHealRate,25; bonus bHealPower2,25; }
+30111:30211:30312,{  bonus bAllStats,1; bonus2 bSubRace,RC_Boss,5; bonus2 bAddRace,RC_Boss,10; bonus bAddItemHealRate,25; bonus bHealPower2,25; }
+30111:30211:30313,{  bonus bAllStats,1; bonus2 bSubRace,RC_Boss,5; bonus2 bAddRace,RC_Boss,10; bonus bAddItemHealRate,25; bonus bHealPower2,25; }
+30111:30211:30314,{  bonus bAllStats,1; bonus2 bSubRace,RC_Boss,5; bonus2 bAddRace,RC_Boss,10; bonus bAddItemHealRate,25; bonus bHealPower2,25; }
+30111:30211:30315,{  bonus bAllStats,1; bonus2 bSubRace,RC_Boss,5; bonus2 bAddRace,RC_Boss,10; bonus bAddItemHealRate,25; bonus bHealPower2,25; }
+30111:30212:30310,{  bonus bAllStats,1; bonus2 bSubRace,RC_Boss,5; bonus2 bAddRace,RC_Boss,10; bonus bAddItemHealRate,25; bonus bHealPower2,25; }
+30111:30212:30311,{  bonus bAllStats,1; bonus2 bSubRace,RC_Boss,5; bonus2 bAddRace,RC_Boss,10; bonus bAddItemHealRate,25; bonus bHealPower2,25; }
+30111:30212:30312,{  bonus bAllStats,1; bonus2 bSubRace,RC_Boss,5; bonus2 bAddRace,RC_Boss,10; bonus bAddItemHealRate,25; bonus bHealPower2,25; }
+30111:30212:30313,{  bonus bAllStats,1; bonus2 bSubRace,RC_Boss,5; bonus2 bAddRace,RC_Boss,10; bonus bAddItemHealRate,25; bonus bHealPower2,25; }
+30111:30212:30314,{  bonus bAllStats,1; bonus2 bSubRace,RC_Boss,5; bonus2 bAddRace,RC_Boss,10; bonus bAddItemHealRate,25; bonus bHealPower2,25; }
+30111:30212:30315,{  bonus bAllStats,1; bonus2 bSubRace,RC_Boss,5; bonus2 bAddRace,RC_Boss,10; bonus bAddItemHealRate,25; bonus bHealPower2,25; }
+30111:30213:30310,{  bonus bAllStats,1; bonus2 bSubRace,RC_Boss,5; bonus2 bAddRace,RC_Boss,10; bonus bAddItemHealRate,25; bonus bHealPower2,25; }
+30111:30213:30311,{  bonus bAllStats,1; bonus2 bSubRace,RC_Boss,5; bonus2 bAddRace,RC_Boss,10; bonus bAddItemHealRate,25; bonus bHealPower2,25; }
+30111:30213:30312,{  bonus bAllStats,1; bonus2 bSubRace,RC_Boss,5; bonus2 bAddRace,RC_Boss,10; bonus bAddItemHealRate,25; bonus bHealPower2,25; }
+30111:30213:30313,{  bonus bAllStats,1; bonus2 bSubRace,RC_Boss,5; bonus2 bAddRace,RC_Boss,10; bonus bAddItemHealRate,25; bonus bHealPower2,25; }
+30111:30213:30314,{  bonus bAllStats,1; bonus2 bSubRace,RC_Boss,5; bonus2 bAddRace,RC_Boss,10; bonus bAddItemHealRate,25; bonus bHealPower2,25; }
+30111:30213:30315,{  bonus bAllStats,1; bonus2 bSubRace,RC_Boss,5; bonus2 bAddRace,RC_Boss,10; bonus bAddItemHealRate,25; bonus bHealPower2,25; }
+30111:30214:30310,{  bonus bAllStats,1; bonus2 bSubRace,RC_Boss,5; bonus2 bAddRace,RC_Boss,10; bonus bAddItemHealRate,25; bonus bHealPower2,25; }
+30111:30214:30311,{  bonus bAllStats,1; bonus2 bSubRace,RC_Boss,5; bonus2 bAddRace,RC_Boss,10; bonus bAddItemHealRate,25; bonus bHealPower2,25; }
+30111:30214:30312,{  bonus bAllStats,1; bonus2 bSubRace,RC_Boss,5; bonus2 bAddRace,RC_Boss,10; bonus bAddItemHealRate,25; bonus bHealPower2,25; }
+30111:30214:30313,{  bonus bAllStats,1; bonus2 bSubRace,RC_Boss,5; bonus2 bAddRace,RC_Boss,10; bonus bAddItemHealRate,25; bonus bHealPower2,25; }
+30111:30214:30314,{  bonus bAllStats,1; bonus2 bSubRace,RC_Boss,5; bonus2 bAddRace,RC_Boss,10; bonus bAddItemHealRate,25; bonus bHealPower2,25; }
+30111:30214:30315,{  bonus bAllStats,1; bonus2 bSubRace,RC_Boss,5; bonus2 bAddRace,RC_Boss,10; bonus bAddItemHealRate,25; bonus bHealPower2,25; }
+30111:30215:30310,{  bonus bAllStats,1; bonus2 bSubRace,RC_Boss,5; bonus2 bAddRace,RC_Boss,10; bonus bAddItemHealRate,25; bonus bHealPower2,25; }
+30111:30215:30311,{  bonus bAllStats,1; bonus2 bSubRace,RC_Boss,5; bonus2 bAddRace,RC_Boss,10; bonus bAddItemHealRate,25; bonus bHealPower2,25; }
+30111:30215:30312,{  bonus bAllStats,1; bonus2 bSubRace,RC_Boss,5; bonus2 bAddRace,RC_Boss,10; bonus bAddItemHealRate,25; bonus bHealPower2,25; }
+30111:30215:30313,{  bonus bAllStats,1; bonus2 bSubRace,RC_Boss,5; bonus2 bAddRace,RC_Boss,10; bonus bAddItemHealRate,25; bonus bHealPower2,25; }
+30111:30215:30314,{  bonus bAllStats,1; bonus2 bSubRace,RC_Boss,5; bonus2 bAddRace,RC_Boss,10; bonus bAddItemHealRate,25; bonus bHealPower2,25; }
+30111:30215:30315,{  bonus bAllStats,1; bonus2 bSubRace,RC_Boss,5; bonus2 bAddRace,RC_Boss,10; bonus bAddItemHealRate,25; bonus bHealPower2,25; }
+30112:30210:30310,{  bonus bAllStats,1; bonus2 bSubRace,RC_Boss,5; bonus2 bAddRace,RC_Boss,10; bonus bAddItemHealRate,25; bonus bHealPower2,25; }
+30112:30210:30311,{  bonus bAllStats,1; bonus2 bSubRace,RC_Boss,5; bonus2 bAddRace,RC_Boss,10; bonus bAddItemHealRate,25; bonus bHealPower2,25; }
+30112:30210:30312,{  bonus bAllStats,1; bonus2 bSubRace,RC_Boss,5; bonus2 bAddRace,RC_Boss,10; bonus bAddItemHealRate,25; bonus bHealPower2,25; }
+30112:30210:30313,{  bonus bAllStats,1; bonus2 bSubRace,RC_Boss,5; bonus2 bAddRace,RC_Boss,10; bonus bAddItemHealRate,25; bonus bHealPower2,25; }
+30112:30210:30314,{  bonus bAllStats,1; bonus2 bSubRace,RC_Boss,5; bonus2 bAddRace,RC_Boss,10; bonus bAddItemHealRate,25; bonus bHealPower2,25; }
+30112:30210:30315,{  bonus bAllStats,1; bonus2 bSubRace,RC_Boss,5; bonus2 bAddRace,RC_Boss,10; bonus bAddItemHealRate,25; bonus bHealPower2,25; }
+30112:30211:30310,{  bonus bAllStats,1; bonus2 bSubRace,RC_Boss,5; bonus2 bAddRace,RC_Boss,10; bonus bAddItemHealRate,25; bonus bHealPower2,25; }
+30112:30211:30311,{  bonus bAllStats,1; bonus2 bSubRace,RC_Boss,5; bonus2 bAddRace,RC_Boss,10; bonus bAddItemHealRate,25; bonus bHealPower2,25; }
+30112:30211:30312,{  bonus bAllStats,1; bonus2 bSubRace,RC_Boss,5; bonus2 bAddRace,RC_Boss,10; bonus bAddItemHealRate,25; bonus bHealPower2,25; }
+30112:30211:30313,{  bonus bAllStats,1; bonus2 bSubRace,RC_Boss,5; bonus2 bAddRace,RC_Boss,10; bonus bAddItemHealRate,25; bonus bHealPower2,25; }
+30112:30211:30314,{  bonus bAllStats,1; bonus2 bSubRace,RC_Boss,5; bonus2 bAddRace,RC_Boss,10; bonus bAddItemHealRate,25; bonus bHealPower2,25; }
+30112:30211:30315,{  bonus bAllStats,1; bonus2 bSubRace,RC_Boss,5; bonus2 bAddRace,RC_Boss,10; bonus bAddItemHealRate,25; bonus bHealPower2,25; }
+30112:30212:30310,{  bonus bAllStats,1; bonus2 bSubRace,RC_Boss,5; bonus2 bAddRace,RC_Boss,10; bonus bAddItemHealRate,25; bonus bHealPower2,25; }
+30112:30212:30311,{  bonus bAllStats,1; bonus2 bSubRace,RC_Boss,5; bonus2 bAddRace,RC_Boss,10; bonus bAddItemHealRate,25; bonus bHealPower2,25; }
+30112:30212:30312,{  bonus bAllStats,1; bonus2 bSubRace,RC_Boss,5; bonus2 bAddRace,RC_Boss,10; bonus bAddItemHealRate,25; bonus bHealPower2,25; }
+30112:30212:30313,{  bonus bAllStats,1; bonus2 bSubRace,RC_Boss,5; bonus2 bAddRace,RC_Boss,10; bonus bAddItemHealRate,25; bonus bHealPower2,25; }
+30112:30212:30314,{  bonus bAllStats,1; bonus2 bSubRace,RC_Boss,5; bonus2 bAddRace,RC_Boss,10; bonus bAddItemHealRate,25; bonus bHealPower2,25; }
+30112:30212:30315,{  bonus bAllStats,1; bonus2 bSubRace,RC_Boss,5; bonus2 bAddRace,RC_Boss,10; bonus bAddItemHealRate,25; bonus bHealPower2,25; }
+30112:30213:30310,{  bonus bAllStats,1; bonus2 bSubRace,RC_Boss,5; bonus2 bAddRace,RC_Boss,10; bonus bAddItemHealRate,25; bonus bHealPower2,25; }
+30112:30213:30311,{  bonus bAllStats,1; bonus2 bSubRace,RC_Boss,5; bonus2 bAddRace,RC_Boss,10; bonus bAddItemHealRate,25; bonus bHealPower2,25; }
+30112:30213:30312,{  bonus bAllStats,1; bonus2 bSubRace,RC_Boss,5; bonus2 bAddRace,RC_Boss,10; bonus bAddItemHealRate,25; bonus bHealPower2,25; }
+30112:30213:30313,{  bonus bAllStats,1; bonus2 bSubRace,RC_Boss,5; bonus2 bAddRace,RC_Boss,10; bonus bAddItemHealRate,25; bonus bHealPower2,25; }
+30112:30213:30314,{  bonus bAllStats,1; bonus2 bSubRace,RC_Boss,5; bonus2 bAddRace,RC_Boss,10; bonus bAddItemHealRate,25; bonus bHealPower2,25; }
+30112:30213:30315,{  bonus bAllStats,1; bonus2 bSubRace,RC_Boss,5; bonus2 bAddRace,RC_Boss,10; bonus bAddItemHealRate,25; bonus bHealPower2,25; }
+30112:30214:30310,{  bonus bAllStats,1; bonus2 bSubRace,RC_Boss,5; bonus2 bAddRace,RC_Boss,10; bonus bAddItemHealRate,25; bonus bHealPower2,25; }
+30112:30214:30311,{  bonus bAllStats,1; bonus2 bSubRace,RC_Boss,5; bonus2 bAddRace,RC_Boss,10; bonus bAddItemHealRate,25; bonus bHealPower2,25; }
+30112:30214:30312,{  bonus bAllStats,1; bonus2 bSubRace,RC_Boss,5; bonus2 bAddRace,RC_Boss,10; bonus bAddItemHealRate,25; bonus bHealPower2,25; }
+30112:30214:30313,{  bonus bAllStats,1; bonus2 bSubRace,RC_Boss,5; bonus2 bAddRace,RC_Boss,10; bonus bAddItemHealRate,25; bonus bHealPower2,25; }
+30112:30214:30314,{  bonus bAllStats,1; bonus2 bSubRace,RC_Boss,5; bonus2 bAddRace,RC_Boss,10; bonus bAddItemHealRate,25; bonus bHealPower2,25; }
+30112:30214:30315,{  bonus bAllStats,1; bonus2 bSubRace,RC_Boss,5; bonus2 bAddRace,RC_Boss,10; bonus bAddItemHealRate,25; bonus bHealPower2,25; }
+30112:30215:30310,{  bonus bAllStats,1; bonus2 bSubRace,RC_Boss,5; bonus2 bAddRace,RC_Boss,10; bonus bAddItemHealRate,25; bonus bHealPower2,25; }
+30112:30215:30311,{  bonus bAllStats,1; bonus2 bSubRace,RC_Boss,5; bonus2 bAddRace,RC_Boss,10; bonus bAddItemHealRate,25; bonus bHealPower2,25; }
+30112:30215:30312,{  bonus bAllStats,1; bonus2 bSubRace,RC_Boss,5; bonus2 bAddRace,RC_Boss,10; bonus bAddItemHealRate,25; bonus bHealPower2,25; }
+30112:30215:30313,{  bonus bAllStats,1; bonus2 bSubRace,RC_Boss,5; bonus2 bAddRace,RC_Boss,10; bonus bAddItemHealRate,25; bonus bHealPower2,25; }
+30112:30215:30314,{  bonus bAllStats,1; bonus2 bSubRace,RC_Boss,5; bonus2 bAddRace,RC_Boss,10; bonus bAddItemHealRate,25; bonus bHealPower2,25; }
+30112:30215:30315,{  bonus bAllStats,1; bonus2 bSubRace,RC_Boss,5; bonus2 bAddRace,RC_Boss,10; bonus bAddItemHealRate,25; bonus bHealPower2,25; }
+30113:30210:30310,{  bonus bAllStats,1; bonus2 bSubRace,RC_Boss,5; bonus2 bAddRace,RC_Boss,10; bonus bAddItemHealRate,25; bonus bHealPower2,25; }
+30113:30210:30311,{  bonus bAllStats,1; bonus2 bSubRace,RC_Boss,5; bonus2 bAddRace,RC_Boss,10; bonus bAddItemHealRate,25; bonus bHealPower2,25; }
+30113:30210:30312,{  bonus bAllStats,1; bonus2 bSubRace,RC_Boss,5; bonus2 bAddRace,RC_Boss,10; bonus bAddItemHealRate,25; bonus bHealPower2,25; }
+30113:30210:30313,{  bonus bAllStats,1; bonus2 bSubRace,RC_Boss,5; bonus2 bAddRace,RC_Boss,10; bonus bAddItemHealRate,25; bonus bHealPower2,25; }
+30113:30210:30314,{  bonus bAllStats,1; bonus2 bSubRace,RC_Boss,5; bonus2 bAddRace,RC_Boss,10; bonus bAddItemHealRate,25; bonus bHealPower2,25; }
+30113:30210:30315,{  bonus bAllStats,1; bonus2 bSubRace,RC_Boss,5; bonus2 bAddRace,RC_Boss,10; bonus bAddItemHealRate,25; bonus bHealPower2,25; }
+30113:30211:30310,{  bonus bAllStats,1; bonus2 bSubRace,RC_Boss,5; bonus2 bAddRace,RC_Boss,10; bonus bAddItemHealRate,25; bonus bHealPower2,25; }
+30113:30211:30311,{  bonus bAllStats,1; bonus2 bSubRace,RC_Boss,5; bonus2 bAddRace,RC_Boss,10; bonus bAddItemHealRate,25; bonus bHealPower2,25; }
+30113:30211:30312,{  bonus bAllStats,1; bonus2 bSubRace,RC_Boss,5; bonus2 bAddRace,RC_Boss,10; bonus bAddItemHealRate,25; bonus bHealPower2,25; }
+30113:30211:30313,{  bonus bAllStats,1; bonus2 bSubRace,RC_Boss,5; bonus2 bAddRace,RC_Boss,10; bonus bAddItemHealRate,25; bonus bHealPower2,25; }
+30113:30211:30314,{  bonus bAllStats,1; bonus2 bSubRace,RC_Boss,5; bonus2 bAddRace,RC_Boss,10; bonus bAddItemHealRate,25; bonus bHealPower2,25; }
+30113:30211:30315,{  bonus bAllStats,1; bonus2 bSubRace,RC_Boss,5; bonus2 bAddRace,RC_Boss,10; bonus bAddItemHealRate,25; bonus bHealPower2,25; }
+30113:30212:30310,{  bonus bAllStats,1; bonus2 bSubRace,RC_Boss,5; bonus2 bAddRace,RC_Boss,10; bonus bAddItemHealRate,25; bonus bHealPower2,25; }
+30113:30212:30311,{  bonus bAllStats,1; bonus2 bSubRace,RC_Boss,5; bonus2 bAddRace,RC_Boss,10; bonus bAddItemHealRate,25; bonus bHealPower2,25; }
+30113:30212:30312,{  bonus bAllStats,1; bonus2 bSubRace,RC_Boss,5; bonus2 bAddRace,RC_Boss,10; bonus bAddItemHealRate,25; bonus bHealPower2,25; }
+30113:30212:30313,{  bonus bAllStats,1; bonus2 bSubRace,RC_Boss,5; bonus2 bAddRace,RC_Boss,10; bonus bAddItemHealRate,25; bonus bHealPower2,25; }
+30113:30212:30314,{  bonus bAllStats,1; bonus2 bSubRace,RC_Boss,5; bonus2 bAddRace,RC_Boss,10; bonus bAddItemHealRate,25; bonus bHealPower2,25; }
+30113:30212:30315,{  bonus bAllStats,1; bonus2 bSubRace,RC_Boss,5; bonus2 bAddRace,RC_Boss,10; bonus bAddItemHealRate,25; bonus bHealPower2,25; }
+30113:30213:30310,{  bonus bAllStats,1; bonus2 bSubRace,RC_Boss,5; bonus2 bAddRace,RC_Boss,10; bonus bAddItemHealRate,25; bonus bHealPower2,25; }
+30113:30213:30311,{  bonus bAllStats,1; bonus2 bSubRace,RC_Boss,5; bonus2 bAddRace,RC_Boss,10; bonus bAddItemHealRate,25; bonus bHealPower2,25; }
+30113:30213:30312,{  bonus bAllStats,1; bonus2 bSubRace,RC_Boss,5; bonus2 bAddRace,RC_Boss,10; bonus bAddItemHealRate,25; bonus bHealPower2,25; }
+30113:30213:30313,{  bonus bAllStats,1; bonus2 bSubRace,RC_Boss,5; bonus2 bAddRace,RC_Boss,10; bonus bAddItemHealRate,25; bonus bHealPower2,25; }
+30113:30213:30314,{  bonus bAllStats,1; bonus2 bSubRace,RC_Boss,5; bonus2 bAddRace,RC_Boss,10; bonus bAddItemHealRate,25; bonus bHealPower2,25; }
+30113:30213:30315,{  bonus bAllStats,1; bonus2 bSubRace,RC_Boss,5; bonus2 bAddRace,RC_Boss,10; bonus bAddItemHealRate,25; bonus bHealPower2,25; }
+30113:30214:30310,{  bonus bAllStats,1; bonus2 bSubRace,RC_Boss,5; bonus2 bAddRace,RC_Boss,10; bonus bAddItemHealRate,25; bonus bHealPower2,25; }
+30113:30214:30311,{  bonus bAllStats,1; bonus2 bSubRace,RC_Boss,5; bonus2 bAddRace,RC_Boss,10; bonus bAddItemHealRate,25; bonus bHealPower2,25; }
+30113:30214:30312,{  bonus bAllStats,1; bonus2 bSubRace,RC_Boss,5; bonus2 bAddRace,RC_Boss,10; bonus bAddItemHealRate,25; bonus bHealPower2,25; }
+30113:30214:30313,{  bonus bAllStats,1; bonus2 bSubRace,RC_Boss,5; bonus2 bAddRace,RC_Boss,10; bonus bAddItemHealRate,25; bonus bHealPower2,25; }
+30113:30214:30314,{  bonus bAllStats,1; bonus2 bSubRace,RC_Boss,5; bonus2 bAddRace,RC_Boss,10; bonus bAddItemHealRate,25; bonus bHealPower2,25; }
+30113:30214:30315,{  bonus bAllStats,1; bonus2 bSubRace,RC_Boss,5; bonus2 bAddRace,RC_Boss,10; bonus bAddItemHealRate,25; bonus bHealPower2,25; }
+30113:30215:30310,{  bonus bAllStats,1; bonus2 bSubRace,RC_Boss,5; bonus2 bAddRace,RC_Boss,10; bonus bAddItemHealRate,25; bonus bHealPower2,25; }
+30113:30215:30311,{  bonus bAllStats,1; bonus2 bSubRace,RC_Boss,5; bonus2 bAddRace,RC_Boss,10; bonus bAddItemHealRate,25; bonus bHealPower2,25; }
+30113:30215:30312,{  bonus bAllStats,1; bonus2 bSubRace,RC_Boss,5; bonus2 bAddRace,RC_Boss,10; bonus bAddItemHealRate,25; bonus bHealPower2,25; }
+30113:30215:30313,{  bonus bAllStats,1; bonus2 bSubRace,RC_Boss,5; bonus2 bAddRace,RC_Boss,10; bonus bAddItemHealRate,25; bonus bHealPower2,25; }
+30113:30215:30314,{  bonus bAllStats,1; bonus2 bSubRace,RC_Boss,5; bonus2 bAddRace,RC_Boss,10; bonus bAddItemHealRate,25; bonus bHealPower2,25; }
+30113:30215:30315,{  bonus bAllStats,1; bonus2 bSubRace,RC_Boss,5; bonus2 bAddRace,RC_Boss,10; bonus bAddItemHealRate,25; bonus bHealPower2,25; }
+30114:30210:30310,{  bonus bAllStats,1; bonus2 bSubRace,RC_Boss,5; bonus2 bAddRace,RC_Boss,10; bonus bAddItemHealRate,25; bonus bHealPower2,25; }
+30114:30210:30311,{  bonus bAllStats,1; bonus2 bSubRace,RC_Boss,5; bonus2 bAddRace,RC_Boss,10; bonus bAddItemHealRate,25; bonus bHealPower2,25; }
+30114:30210:30312,{  bonus bAllStats,1; bonus2 bSubRace,RC_Boss,5; bonus2 bAddRace,RC_Boss,10; bonus bAddItemHealRate,25; bonus bHealPower2,25; }
+30114:30210:30313,{  bonus bAllStats,1; bonus2 bSubRace,RC_Boss,5; bonus2 bAddRace,RC_Boss,10; bonus bAddItemHealRate,25; bonus bHealPower2,25; }
+30114:30210:30314,{  bonus bAllStats,1; bonus2 bSubRace,RC_Boss,5; bonus2 bAddRace,RC_Boss,10; bonus bAddItemHealRate,25; bonus bHealPower2,25; }
+30114:30210:30315,{  bonus bAllStats,1; bonus2 bSubRace,RC_Boss,5; bonus2 bAddRace,RC_Boss,10; bonus bAddItemHealRate,25; bonus bHealPower2,25; }
+30114:30211:30310,{  bonus bAllStats,1; bonus2 bSubRace,RC_Boss,5; bonus2 bAddRace,RC_Boss,10; bonus bAddItemHealRate,25; bonus bHealPower2,25; }
+30114:30211:30311,{  bonus bAllStats,1; bonus2 bSubRace,RC_Boss,5; bonus2 bAddRace,RC_Boss,10; bonus bAddItemHealRate,25; bonus bHealPower2,25; }
+30114:30211:30312,{  bonus bAllStats,1; bonus2 bSubRace,RC_Boss,5; bonus2 bAddRace,RC_Boss,10; bonus bAddItemHealRate,25; bonus bHealPower2,25; }
+30114:30211:30313,{  bonus bAllStats,1; bonus2 bSubRace,RC_Boss,5; bonus2 bAddRace,RC_Boss,10; bonus bAddItemHealRate,25; bonus bHealPower2,25; }
+30114:30211:30314,{  bonus bAllStats,1; bonus2 bSubRace,RC_Boss,5; bonus2 bAddRace,RC_Boss,10; bonus bAddItemHealRate,25; bonus bHealPower2,25; }
+30114:30211:30315,{  bonus bAllStats,1; bonus2 bSubRace,RC_Boss,5; bonus2 bAddRace,RC_Boss,10; bonus bAddItemHealRate,25; bonus bHealPower2,25; }
+30114:30212:30310,{  bonus bAllStats,1; bonus2 bSubRace,RC_Boss,5; bonus2 bAddRace,RC_Boss,10; bonus bAddItemHealRate,25; bonus bHealPower2,25; }
+30114:30212:30311,{  bonus bAllStats,1; bonus2 bSubRace,RC_Boss,5; bonus2 bAddRace,RC_Boss,10; bonus bAddItemHealRate,25; bonus bHealPower2,25; }
+30114:30212:30312,{  bonus bAllStats,1; bonus2 bSubRace,RC_Boss,5; bonus2 bAddRace,RC_Boss,10; bonus bAddItemHealRate,25; bonus bHealPower2,25; }
+30114:30212:30313,{  bonus bAllStats,1; bonus2 bSubRace,RC_Boss,5; bonus2 bAddRace,RC_Boss,10; bonus bAddItemHealRate,25; bonus bHealPower2,25; }
+30114:30212:30314,{  bonus bAllStats,1; bonus2 bSubRace,RC_Boss,5; bonus2 bAddRace,RC_Boss,10; bonus bAddItemHealRate,25; bonus bHealPower2,25; }
+30114:30212:30315,{  bonus bAllStats,1; bonus2 bSubRace,RC_Boss,5; bonus2 bAddRace,RC_Boss,10; bonus bAddItemHealRate,25; bonus bHealPower2,25; }
+30114:30213:30310,{  bonus bAllStats,1; bonus2 bSubRace,RC_Boss,5; bonus2 bAddRace,RC_Boss,10; bonus bAddItemHealRate,25; bonus bHealPower2,25; }
+30114:30213:30311,{  bonus bAllStats,1; bonus2 bSubRace,RC_Boss,5; bonus2 bAddRace,RC_Boss,10; bonus bAddItemHealRate,25; bonus bHealPower2,25; }
+30114:30213:30312,{  bonus bAllStats,1; bonus2 bSubRace,RC_Boss,5; bonus2 bAddRace,RC_Boss,10; bonus bAddItemHealRate,25; bonus bHealPower2,25; }
+30114:30213:30313,{  bonus bAllStats,1; bonus2 bSubRace,RC_Boss,5; bonus2 bAddRace,RC_Boss,10; bonus bAddItemHealRate,25; bonus bHealPower2,25; }
+30114:30213:30314,{  bonus bAllStats,1; bonus2 bSubRace,RC_Boss,5; bonus2 bAddRace,RC_Boss,10; bonus bAddItemHealRate,25; bonus bHealPower2,25; }
+30114:30213:30315,{  bonus bAllStats,1; bonus2 bSubRace,RC_Boss,5; bonus2 bAddRace,RC_Boss,10; bonus bAddItemHealRate,25; bonus bHealPower2,25; }
+30114:30214:30310,{  bonus bAllStats,1; bonus2 bSubRace,RC_Boss,5; bonus2 bAddRace,RC_Boss,10; bonus bAddItemHealRate,25; bonus bHealPower2,25; }
+30114:30214:30311,{  bonus bAllStats,1; bonus2 bSubRace,RC_Boss,5; bonus2 bAddRace,RC_Boss,10; bonus bAddItemHealRate,25; bonus bHealPower2,25; }
+30114:30214:30312,{  bonus bAllStats,1; bonus2 bSubRace,RC_Boss,5; bonus2 bAddRace,RC_Boss,10; bonus bAddItemHealRate,25; bonus bHealPower2,25; }
+30114:30214:30313,{  bonus bAllStats,1; bonus2 bSubRace,RC_Boss,5; bonus2 bAddRace,RC_Boss,10; bonus bAddItemHealRate,25; bonus bHealPower2,25; }
+30114:30214:30314,{  bonus bAllStats,1; bonus2 bSubRace,RC_Boss,5; bonus2 bAddRace,RC_Boss,10; bonus bAddItemHealRate,25; bonus bHealPower2,25; }
+30114:30214:30315,{  bonus bAllStats,1; bonus2 bSubRace,RC_Boss,5; bonus2 bAddRace,RC_Boss,10; bonus bAddItemHealRate,25; bonus bHealPower2,25; }
+30114:30215:30310,{  bonus bAllStats,1; bonus2 bSubRace,RC_Boss,5; bonus2 bAddRace,RC_Boss,10; bonus bAddItemHealRate,25; bonus bHealPower2,25; }
+30114:30215:30311,{  bonus bAllStats,1; bonus2 bSubRace,RC_Boss,5; bonus2 bAddRace,RC_Boss,10; bonus bAddItemHealRate,25; bonus bHealPower2,25; }
+30114:30215:30312,{  bonus bAllStats,1; bonus2 bSubRace,RC_Boss,5; bonus2 bAddRace,RC_Boss,10; bonus bAddItemHealRate,25; bonus bHealPower2,25; }
+30114:30215:30313,{  bonus bAllStats,1; bonus2 bSubRace,RC_Boss,5; bonus2 bAddRace,RC_Boss,10; bonus bAddItemHealRate,25; bonus bHealPower2,25; }
+30114:30215:30314,{  bonus bAllStats,1; bonus2 bSubRace,RC_Boss,5; bonus2 bAddRace,RC_Boss,10; bonus bAddItemHealRate,25; bonus bHealPower2,25; }
+30114:30215:30315,{  bonus bAllStats,1; bonus2 bSubRace,RC_Boss,5; bonus2 bAddRace,RC_Boss,10; bonus bAddItemHealRate,25; bonus bHealPower2,25; }
+30115:30210:30310,{  bonus bAllStats,1; bonus2 bSubRace,RC_Boss,5; bonus2 bAddRace,RC_Boss,10; bonus bAddItemHealRate,25; bonus bHealPower2,25; }
+30115:30210:30311,{  bonus bAllStats,1; bonus2 bSubRace,RC_Boss,5; bonus2 bAddRace,RC_Boss,10; bonus bAddItemHealRate,25; bonus bHealPower2,25; }
+30115:30210:30312,{  bonus bAllStats,1; bonus2 bSubRace,RC_Boss,5; bonus2 bAddRace,RC_Boss,10; bonus bAddItemHealRate,25; bonus bHealPower2,25; }
+30115:30210:30313,{  bonus bAllStats,1; bonus2 bSubRace,RC_Boss,5; bonus2 bAddRace,RC_Boss,10; bonus bAddItemHealRate,25; bonus bHealPower2,25; }
+30115:30210:30314,{  bonus bAllStats,1; bonus2 bSubRace,RC_Boss,5; bonus2 bAddRace,RC_Boss,10; bonus bAddItemHealRate,25; bonus bHealPower2,25; }
+30115:30210:30315,{  bonus bAllStats,1; bonus2 bSubRace,RC_Boss,5; bonus2 bAddRace,RC_Boss,10; bonus bAddItemHealRate,25; bonus bHealPower2,25; }
+30115:30211:30310,{  bonus bAllStats,1; bonus2 bSubRace,RC_Boss,5; bonus2 bAddRace,RC_Boss,10; bonus bAddItemHealRate,25; bonus bHealPower2,25; }
+30115:30211:30311,{  bonus bAllStats,1; bonus2 bSubRace,RC_Boss,5; bonus2 bAddRace,RC_Boss,10; bonus bAddItemHealRate,25; bonus bHealPower2,25; }
+30115:30211:30312,{  bonus bAllStats,1; bonus2 bSubRace,RC_Boss,5; bonus2 bAddRace,RC_Boss,10; bonus bAddItemHealRate,25; bonus bHealPower2,25; }
+30115:30211:30313,{  bonus bAllStats,1; bonus2 bSubRace,RC_Boss,5; bonus2 bAddRace,RC_Boss,10; bonus bAddItemHealRate,25; bonus bHealPower2,25; }
+30115:30211:30314,{  bonus bAllStats,1; bonus2 bSubRace,RC_Boss,5; bonus2 bAddRace,RC_Boss,10; bonus bAddItemHealRate,25; bonus bHealPower2,25; }
+30115:30211:30315,{  bonus bAllStats,1; bonus2 bSubRace,RC_Boss,5; bonus2 bAddRace,RC_Boss,10; bonus bAddItemHealRate,25; bonus bHealPower2,25; }
+30115:30212:30310,{  bonus bAllStats,1; bonus2 bSubRace,RC_Boss,5; bonus2 bAddRace,RC_Boss,10; bonus bAddItemHealRate,25; bonus bHealPower2,25; }
+30115:30212:30311,{  bonus bAllStats,1; bonus2 bSubRace,RC_Boss,5; bonus2 bAddRace,RC_Boss,10; bonus bAddItemHealRate,25; bonus bHealPower2,25; }
+30115:30212:30312,{  bonus bAllStats,1; bonus2 bSubRace,RC_Boss,5; bonus2 bAddRace,RC_Boss,10; bonus bAddItemHealRate,25; bonus bHealPower2,25; }
+30115:30212:30313,{  bonus bAllStats,1; bonus2 bSubRace,RC_Boss,5; bonus2 bAddRace,RC_Boss,10; bonus bAddItemHealRate,25; bonus bHealPower2,25; }
+30115:30212:30314,{  bonus bAllStats,1; bonus2 bSubRace,RC_Boss,5; bonus2 bAddRace,RC_Boss,10; bonus bAddItemHealRate,25; bonus bHealPower2,25; }
+30115:30212:30315,{  bonus bAllStats,1; bonus2 bSubRace,RC_Boss,5; bonus2 bAddRace,RC_Boss,10; bonus bAddItemHealRate,25; bonus bHealPower2,25; }
+30115:30213:30310,{  bonus bAllStats,1; bonus2 bSubRace,RC_Boss,5; bonus2 bAddRace,RC_Boss,10; bonus bAddItemHealRate,25; bonus bHealPower2,25; }
+30115:30213:30311,{  bonus bAllStats,1; bonus2 bSubRace,RC_Boss,5; bonus2 bAddRace,RC_Boss,10; bonus bAddItemHealRate,25; bonus bHealPower2,25; }
+30115:30213:30312,{  bonus bAllStats,1; bonus2 bSubRace,RC_Boss,5; bonus2 bAddRace,RC_Boss,10; bonus bAddItemHealRate,25; bonus bHealPower2,25; }
+30115:30213:30313,{  bonus bAllStats,1; bonus2 bSubRace,RC_Boss,5; bonus2 bAddRace,RC_Boss,10; bonus bAddItemHealRate,25; bonus bHealPower2,25; }
+30115:30213:30314,{  bonus bAllStats,1; bonus2 bSubRace,RC_Boss,5; bonus2 bAddRace,RC_Boss,10; bonus bAddItemHealRate,25; bonus bHealPower2,25; }
+30115:30213:30315,{  bonus bAllStats,1; bonus2 bSubRace,RC_Boss,5; bonus2 bAddRace,RC_Boss,10; bonus bAddItemHealRate,25; bonus bHealPower2,25; }
+30115:30214:30310,{  bonus bAllStats,1; bonus2 bSubRace,RC_Boss,5; bonus2 bAddRace,RC_Boss,10; bonus bAddItemHealRate,25; bonus bHealPower2,25; }
+30115:30214:30311,{  bonus bAllStats,1; bonus2 bSubRace,RC_Boss,5; bonus2 bAddRace,RC_Boss,10; bonus bAddItemHealRate,25; bonus bHealPower2,25; }
+30115:30214:30312,{  bonus bAllStats,1; bonus2 bSubRace,RC_Boss,5; bonus2 bAddRace,RC_Boss,10; bonus bAddItemHealRate,25; bonus bHealPower2,25; }
+30115:30214:30313,{  bonus bAllStats,1; bonus2 bSubRace,RC_Boss,5; bonus2 bAddRace,RC_Boss,10; bonus bAddItemHealRate,25; bonus bHealPower2,25; }
+30115:30214:30314,{  bonus bAllStats,1; bonus2 bSubRace,RC_Boss,5; bonus2 bAddRace,RC_Boss,10; bonus bAddItemHealRate,25; bonus bHealPower2,25; }
+30115:30214:30315,{  bonus bAllStats,1; bonus2 bSubRace,RC_Boss,5; bonus2 bAddRace,RC_Boss,10; bonus bAddItemHealRate,25; bonus bHealPower2,25; }
+30115:30215:30310,{  bonus bAllStats,1; bonus2 bSubRace,RC_Boss,5; bonus2 bAddRace,RC_Boss,10; bonus bAddItemHealRate,25; bonus bHealPower2,25; }
+30115:30215:30311,{  bonus bAllStats,1; bonus2 bSubRace,RC_Boss,5; bonus2 bAddRace,RC_Boss,10; bonus bAddItemHealRate,25; bonus bHealPower2,25; }
+30115:30215:30312,{  bonus bAllStats,1; bonus2 bSubRace,RC_Boss,5; bonus2 bAddRace,RC_Boss,10; bonus bAddItemHealRate,25; bonus bHealPower2,25; }
+30115:30215:30313,{  bonus bAllStats,1; bonus2 bSubRace,RC_Boss,5; bonus2 bAddRace,RC_Boss,10; bonus bAddItemHealRate,25; bonus bHealPower2,25; }
+30115:30215:30314,{  bonus bAllStats,1; bonus2 bSubRace,RC_Boss,5; bonus2 bAddRace,RC_Boss,10; bonus bAddItemHealRate,25; bonus bHealPower2,25; }
+30115:30215:30315,{  bonus bAllStats,1; bonus2 bSubRace,RC_Boss,5; bonus2 bAddRace,RC_Boss,10; bonus bAddItemHealRate,25; bonus bHealPower2,25; }
