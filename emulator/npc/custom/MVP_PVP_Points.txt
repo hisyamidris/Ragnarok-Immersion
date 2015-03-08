@@ -2,7 +2,7 @@
 -	script	PrestigePoints	-1,{
 OnInit:
 	/* Configure maps here */
-	setarray .maps$, "prt_fild08", "prontera";
+	setarray .maps$, "arena30", "arena40", "arena50", "arena60", "arena70", "arena80", "arena90", "arena";
 	end;
 OnPCKillEvent:
 	if (killedrid == getcharid(0)) end;
@@ -100,21 +100,43 @@ OnNPCKillEvent:
 	end;
 }
 
+//Old Acc: #MaxLevel
+
+//New Acc: #VETERAN
+//New Char: CHAR_VETERAN
 -	script	Recommendation	-1,{
 OnPCLoginEvent:
-	if(BaseLevel == 99 && #MaxLevel < 1) {
+/*
+	if(BaseLevel == 99 && MAXLEVEL < 1) {
 		dispbottom "Congratulations! You've reached maximum level. You can now send Letter of Recommendation your other characters.";
 		#MaxLevel = #MaxLevel + 1;
 		getitem 30000,1;
 	}
     end;
+*/
+
+	if(BaseLevel == 99 && #VETERAN == 0 && CHAR_VETERAN < 1) {
+		dispbottom "Congratulations! You're now a veteran. You can now send Letter of Recommendation your other characters.";
+		#VETERAN = #VETERAN + 1;
+		CHAR_VETERAN = 1;
+		if(#MaxLevel < 1) getitem 30000,1;
+	} else if(BaseLevel == 99 && #VETERAN > 0 && CHAR_VETERAN < 1) {
+		#VETERAN = #VETERAN + 1;
+		CHAR_VETERAN = 1;
+		dispbottom "Congratulations! You've received +1 Veteran Points. You now have "+ #VETERAN +" Veteran Points";
+	}
+    end;
 
 OnPCBaseLvUpEvent:
-	dispbottom "Test 1 2 3.";
-	if(BaseLevel == 99 && #MaxLevel < 1) {
-		dispbottom "Congratulations! You've reached maximum level. You can now send Letter of Recommendation your other characters.";
-		#MaxLevel = #MaxLevel + 1;
-		getitem 30000,1;
+	if(BaseLevel == 99 && #VETERAN == 0 && CHAR_VETERAN < 1) {
+		dispbottom "Congratulations! You're now a veteran. You can now send Letter of Recommendation your other characters.";
+		#VETERAN = #VETERAN + 1;
+		CHAR_VETERAN = 1;
+		if(#MaxLevel < 1) getitem 30000,1;
+	} else if(BaseLevel == 99 && #VETERAN > 0 && CHAR_VETERAN < 1) {
+		#VETERAN = #VETERAN + 1;
+		CHAR_VETERAN = 1;
+		dispbottom "Congratulations! You've received +1 Veteran Points. You now have "+ #VETERAN +" Veteran Points";
 	}
     end;
 }

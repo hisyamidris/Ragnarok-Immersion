@@ -1,4 +1,4 @@
 // <given_name>,<var_name>
 Prestige,PRESTIGE_POINTS
 Sentinel,SENTINEL_POINTS
-Veteran,#MaxLevel
+Veteran,#VETERAN
