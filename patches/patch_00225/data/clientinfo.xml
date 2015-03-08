@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="euc-kr" ?>
+<clientinfo>
+<servicetype>korea</servicetype>
+<servertype>sakray</servertype>
+   <connection>
+      <display>Ragnarok Immersion</display>
+      <balloon>Ragnarok Immersion</balloon>
+      <desc>Ragnarok Immersion</desc>
+      <address>104.238.206.51</address>
+      <port>6900</port>
+      <version>30</version>
+      <langtype>0</langtype>
+      <registrationweb>ragnarokimmersion.com</registrationweb>
+        <aid>
+            <admin>2000000</admin>
+            <admin>2000001</admin>
+        </aid>
+        <loading>
+        </loading>
+   </connection>
+</clientinfo>
