@@ -1,16 +1,33 @@
 /* malufett@yourservice */
 -	script	PrestigePoints	-1,{
+OnInit:
+	/* Configure maps here */
+	setarray .maps$, "prt_fild08", "prontera";
+	end;
 OnPCKillEvent:
 	if (killedrid == getcharid(0)) end;
-
+	.@mapin$ = strcharinfo(3);
+	for(.@i=0; .@i<getarraysize(.maps$); .@i++){
+		if(.maps$[.@i] == .@mapin$)
+			break;
+	}
+	if(.@i == getarraysize(.maps$))
+		end;
+	getpartymember getcharid(1), 0;
 	getpartymember getcharid(1), 1;
 	getpartymember getcharid(1), 2;
 	.@count = $@partymembercount;
-	.@online = 0;
+	.@online = 1;
 
 	for (.@i = 0; .@i < .@count; ++.@i) { // validate party members
-		if (isloggedin($@partymemberaid[.@i], $@partymembercid[.@i])){
-			.@online++;
+		if(killedrid == $@partymemberaid[.@i]){ // stop if killer killed his/her partymates
+			end;
+		}
+		if (isloggedin($@partymemberaid[.@i], $@partymembercid[.@i]) && $@partymembercid[.@i] != getcharid(0)){
+			if (getmapxy(.@mapname$,.@mapx,.@mapy,0,$@partymembername$[.@i]) == 0) {
+				if(.@mapin$ == .@mapname$)
+					.@online++;
+			}
 		}
 	}
 
@@ -18,6 +35,8 @@ OnPCKillEvent:
 		for (.@i = 0; .@i < .@count; ++.@i) {
 			if (isloggedin($@partymemberaid[.@i], $@partymembercid[.@i])){
 				attachrid($@partymemberaid[.@i]);
+				if(.@mapin$ != strcharinfo(3))
+					continue;
 				.@pt = (1000/.@online)/10; // bonus will only depends on number of online members
 				.@factor = 10-(.@pt%10);
 				if(.@factor<10)
@@ -39,15 +58,20 @@ OnPCKillEvent:
 -	script	SentinelPoints	-1,{
 OnNPCKillEvent:
 	if (getmonsterinfo(killedrid, MOB_MVPEXP)) {
+		getpartymember getcharid(1), 0;
 		getpartymember getcharid(1), 1;
 		getpartymember getcharid(1), 2;
 		.@count = $@partymembercount;
-		.@online = 0;
+		.@online = 1;
 		.@level = getmonsterinfo(killedrid, MOB_LV);
+		.@mapin$ = strcharinfo(3);
 
 		for (.@i = 0; .@i < .@count; ++.@i) { // validate party members
-			if (isloggedin($@partymemberaid[.@i], $@partymembercid[.@i])){
-				.@online++;
+			if (isloggedin($@partymemberaid[.@i], $@partymembercid[.@i]) && $@partymembercid[.@i] != getcharid(0)){
+				if (getmapxy(.@mapname$,.@mapx,.@mapy,0,$@partymembername$[.@i]) == 0) {
+					if(.@mapin$ == .@mapname$)
+						.@online++;
+				}
 			}
 		}
 
@@ -55,6 +79,8 @@ OnNPCKillEvent:
 			for (.@i = 0; .@i < .@count; ++.@i) {
 				if (isloggedin($@partymemberaid[.@i], $@partymembercid[.@i])){
 					attachrid($@partymemberaid[.@i]);
+					if(.@mapin$ != strcharinfo(3))
+						continue;
 					.@pt = ((100/.@online)/10)*(.@level); // bonus will only depends on number of online members
 					.@factor = 10-(.@pt%10);
 					if(.@factor<10)

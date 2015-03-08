@@ -112,6 +112,7 @@ struct atcommand_interface {
 	void (*base_commands) (void);
 	bool (*add) (char *name, AtCommandFunc func, bool replace);
 	const char* (*msg) (int msg_number);
+	bool (*readdb_chkpnt) (char* fields[], int columns, int current);
 };
 
 struct atcommand_interface *atcommand;

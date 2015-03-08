@@ -62,6 +62,14 @@ struct atcommand_interface atcommand_s;
 static char atcmd_output[CHAT_SIZE_MAX];
 static char atcmd_player_name[NAME_LENGTH];
 
+struct checkpoints {
+	char name[NAME_LENGTH];
+	char variable[NAME_LENGTH];
+};
+
+
+struct checkpoints* atcm_chk_points[50];
+
 // @commands (script-based)
 struct atcmd_binding_data* get_atcommandbind_byname(const char* name) {
 	int i = 0;
@@ -506,7 +514,36 @@ ACMD(jumpto) {
 
 	return true;
 }
+ACMD(checkpoints) {
+	int i, fail;
+	if ( !message || !*message ) {
+		fail = 1;
+	} else {
+		for ( i = 0; i < ARRAYLENGTH(atcm_chk_points); i++ ) {
+			if ( atcm_chk_points[i] && strcmp(message, atcm_chk_points[i]->name) == 0 ) {
+				fail = 0;
+				break;
+			}
+		}
+		if ( i == ARRAYLENGTH(atcm_chk_points) )
+			fail = 1;
+	}
+	if ( fail ) {
+		char list[50 * NAME_LENGTH + 50];
+		list[0] = '\0';
+		for ( i = 0; i < ARRAYLENGTH(atcm_chk_points); i++ ) {
+			if ( atcm_chk_points[i] )
+				sprintf(list, "%s %s", list, atcm_chk_points[i]->name);
+		}
+		sprintf(atcmd_output, "Available points to check : %s", list);
+		clif->message(fd, atcmd_output);
+		return false;
+	}
+	sprintf(atcmd_output, "You currently have %d %s Point(s)", pc_readaccountreg(sd, script->add_str(atcm_chk_points[i]->variable)), atcm_chk_points[i]->name);
+	clif->message(fd, atcmd_output);
 
+	return true;
+}
 /*==========================================
  *
  *------------------------------------------*/
@@ -9582,6 +9619,7 @@ void atcommand_basecommands(void) {
 		ACMD_DEF(costume),
 		ACMD_DEF(skdebug),
 		ACMD_DEF(cddebug),
+		ACMD_DEF(checkpoints),
 	};
 	int i;
 
@@ -10147,6 +10185,12 @@ bool atcommand_hp_add(char *name, AtCommandFunc func) {
 	return HPM_map_add_atcommand(name,func);
 }
 
+bool atcommand_readdb_chkpnt(char* fields[], int columns, int current) {
+	CREATE(atcm_chk_points[current], struct checkpoints, 1);
+	safestrncpy(atcm_chk_points[current]->name, fields[0], sizeof(atcm_chk_points[current]->name));
+	safestrncpy(atcm_chk_points[current]->variable, fields[1], sizeof(atcm_chk_points[current]->variable));
+	return true;
+}
 /**
  * @see DBApply
  */
@@ -10190,6 +10234,9 @@ void do_init_atcommand(bool minimal) {
 	atcommand->binding_count = 0;
 
 	atcommand->doload();
+
+	memset(atcm_chk_points, 0, sizeof(atcm_chk_points));
+	sv->readdb(map->db_path, "checkpoint_db.txt", ',', 2, 2, 50, atcommand->readdb_chkpnt);
 }
 
 void do_final_atcommand(void) {
@@ -10235,4 +10282,5 @@ void atcommand_defaults(void) {
 	atcommand->base_commands = atcommand_basecommands;
 	atcommand->add = atcommand_add;
 	atcommand->msg = atcommand_msg;
+	atcommand->readdb_chkpnt = atcommand_readdb_chkpnt;
 }
