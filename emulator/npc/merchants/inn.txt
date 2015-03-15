@@ -236,20 +236,26 @@ function	script	F_InnMaid	{
 }
 // Spawn: @gef_in 28 161
 
-1@gef_in,30,178,4	trader	Tool Dealer#spa	1_F_MERCHANT_01,{
+1@gef_in,31,173,4	trader	Tool Dealer#spa	1_F_MERCHANT_01,{
 OnInit:
 	sellitem Arrow;
+	sellitem Silver_Arrow;
+	sellitem Fire_Arrow;
+	sellitem Iron_Arrow;
 	sellitem Spectacles;
 	sellitem Red_Potion;
 	sellitem Orange_Potion;
 	sellitem Yellow_Potion;
 	sellitem White_Potion;
 	sellitem Green_Potion;
+	sellitem Leaf_Of_Yggdrasil;
 	sellitem Center_Potion;
 	sellitem Awakening_Potion;
+	sellitem Berserk_Potion;
 	sellitem Wing_Of_Fly;
 	sellitem Wing_Of_Butterfly;
 	sellitem Blue_Gemstone;
+	sellitem Booby_Trap;
 }
 
 1@gef_in,28,167,5	script	Spa Service Employee	4_F_SHAMAN,{
