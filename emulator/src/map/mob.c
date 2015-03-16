@@ -1286,6 +1286,8 @@ int mob_unlocktarget(struct mob_data *md, int64 tick) {
 		//Because it is not unset when the mob finishes walking.
 		md->state.skillstate = MSS_IDLE;
 	case MSS_IDLE:
+		if ( !md->sc.data[SC_MOB_REFRESH] && status_get_hp(&md->bl) < status_get_max_hp(&md->bl) )
+			sc_start(&md->bl, &md->bl, SC_MOB_REFRESH, 100, 1, 60000); // after 60 secs monster will refresh
 		// Idle skill.
 		if (!(++md->ud.walk_count%IDLE_SKILL_INTERVAL) && mob->skill_use(md, tick, -1))
 			break;
@@ -2054,6 +2056,8 @@ void mob_damage(struct mob_data *md, struct block_list *src, int damage) {
 		if (src)
 			mob->log_damage(md, src, damage);
 		md->dmgtick = timer->gettick();
+		if ( md->state.skillstate != MSS_IDLE )
+			status_change_end(&md->bl, SC_MOB_REFRESH, INVALID_TIMER);
 	}
 
 	if (battle_config.show_mob_info&3)

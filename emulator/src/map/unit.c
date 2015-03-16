@@ -2150,6 +2150,8 @@ int unit_attack_timer_sub(struct block_list* src, int tid, int64 tick) {
 				md->last_linktime = tick;
 				map->foreachinrange(mob->linksearch, src, md->db->range2, BL_MOB, md->class_, target, tick);
 			}
+			if ( md->state.skillstate != MSS_IDLE )
+				status_change_end(&md->bl, SC_MOB_REFRESH, INVALID_TIMER);
 		}
 		if(src->type == BL_PET && pet->attackskill((TBL_PET*)src, target->id))
 			return 1;

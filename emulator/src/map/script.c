@@ -19035,7 +19035,11 @@ BUILDIN(channelmes)
 	script_pushint(st, 1);
 	return true;
 }
-
+BUILDIN(transmute) {
+	struct map_session_data *sd = script->rid2sd(st);
+	clif->transmute_list(sd);
+	return true;
+}
 // declarations that were supposed to be exported from npc_chat.c
 #ifdef PCRE_SUPPORT
 BUILDIN(defpattern);
@@ -19663,6 +19667,8 @@ void script_parse_builtin(void) {
 		BUILDIN_DEF(shopcount, "i"),
 
 		BUILDIN_DEF(channelmes, "ss"),
+
+		BUILDIN_DEF(transmute, ""),
 	};
 	int i, len = ARRAYLENGTH(BUILDIN);
 	RECREATE(script->buildin, char *, script->buildin_count + len); // Pre-alloc to speed up

@@ -18652,6 +18652,47 @@ int skill_get_elemental_type( uint16 skill_id , uint16 skill_lv ) {
 	return type;
 }
 
+int create_transmute_item(struct map_session_data *sd, int nameid) {
+	int i, j, flag, index = -1;
+	struct item tmp_item;
+
+	nullpo_ret(sd);
+
+	if ( nameid <= 0 )
+		return 1;
+
+	for ( i = 0; i<MAX_TRANSMUTE_DB; i++ )
+	if ( nameid == skill->transmute_db[i].nameid ) {
+		index = i;
+		break;
+	}
+
+	if ( index < 0 || (j = pc->search_inventory(sd, nameid)) == INDEX_NOT_FOUND )
+		return 1;
+
+	pc->delitem(sd, j, 1, 0, 0, LOG_TYPE_PRODUCE);
+	for ( i = 0; i<MAX_TRANSMUTE_RESOURCE; i++ ) {
+		memset(&tmp_item, 0, sizeof(tmp_item));
+		tmp_item.identify = 1;
+		tmp_item.nameid = skill->transmute_db[index].cre_id[i];
+		tmp_item.amount = skill->transmute_db[index].cre_amount[i];
+		if ( battle_config.produce_item_name_input & 0x4 ) {
+			tmp_item.card[0] = CARD0_CREATE;
+			tmp_item.card[1] = 0;
+			tmp_item.card[2] = GetWord(sd->status.char_id, 0); // CharId
+			tmp_item.card[3] = GetWord(sd->status.char_id, 1);
+		}
+		if ( tmp_item.nameid <= 0 || tmp_item.amount <= 0 )
+			continue;
+		if ( (flag = pc->additem(sd, &tmp_item, tmp_item.amount, LOG_TYPE_PRODUCE)) ) {
+			clif->additem(sd, 0, 0, flag);
+			map->addflooritem(&tmp_item, tmp_item.amount, sd->bl.m, sd->bl.x, sd->bl.y, 0, 0, 0, 0);
+		}
+	}
+
+	return 0;
+}
+
 /**
  * update stored skill cooldowns for player logout
  * @param   sd     the affected player structure
@@ -18960,6 +19001,25 @@ bool skill_parse_row_createarrowdb(char* split[], int columns, int current) {
 
 	return true;
 }
+
+bool skill_parse_row_transmutedb(char* split[], int columns, int current) {
+	// SourceID,MakeID1,MakeAmount1,...,MakeID5,MakeAmount5
+	int x, y;
+
+	int i = atoi(split[0]);
+	if ( !i )
+		return false;
+
+	skill->transmute_db[current].nameid = i;
+
+	for ( x = 1, y = 0; x + 1 < columns && split[x] && split[x + 1] && y < MAX_TRANSMUTE_RESOURCE; x += 2, y++ ) {
+		skill->transmute_db[current].cre_id[y] = atoi(split[x]);
+		skill->transmute_db[current].cre_amount[y] = atoi(split[x + 1]);
+	}
+
+	return true;
+}
+
 bool skill_parse_row_spellbookdb(char* split[], int columns, int current) {
 // skill_id,PreservePoints
 
@@ -19118,6 +19178,7 @@ void skill_readdb(bool minimal) {
 			   + sizeof(skill->changematerial_db)
 			   + sizeof(skill->spellbook_db)
 			   + sizeof(skill->reproduce_db)
+			   + sizeof(skill->transmute_db)
 			   );
 	}
 
@@ -19156,6 +19217,7 @@ void skill_readdb(bool minimal) {
 	sv->readdb(map->db_path, "skill_reproduce_db.txt",       ',',   1,                        1,               MAX_SKILL_DB, skill->parse_row_reproducedb);
 	sv->readdb(map->db_path, "skill_improvise_db.txt",       ',',   2,                        2,     MAX_SKILL_IMPROVISE_DB, skill->parse_row_improvisedb);
 	sv->readdb(map->db_path, "skill_changematerial_db.txt",  ',',   4,                    4+2*5,       MAX_SKILL_PRODUCE_DB, skill->parse_row_changematerialdb);
+	sv->readdb(map->db_path, "transmute_db.txt",             ',', 1+2,1+2*MAX_TRANSMUTE_RESOURCE,          MAX_TRANSMUTE_DB, skill->parse_row_transmutedb);
 }
 
 void skill_reload (void) {
@@ -19268,6 +19330,7 @@ void skill_defaults(void) {
 		   + sizeof(skill->spellbook_db)
 		   + sizeof(skill->reproduce_db)
 		   + sizeof(skill->unit_layout)
+		   + sizeof(skill->transmute_db)
 		   );
 	/* */
 	memcpy(skill->enchant_eff, skill_enchant_eff, sizeof(skill->enchant_eff));
@@ -19492,4 +19555,7 @@ void skill_defaults(void) {
 	skill->get_requirement_off_unknown = skill_get_requirement_off_unknown;
 	skill->get_requirement_item_unknown = skill_get_requirement_item_unknown;
 	skill->get_requirement_unknown = skill_get_requirement_unknown;
+
+	skill->parse_row_transmutedb = skill_parse_row_transmutedb;
+	skill->create_transmute = create_transmute_item;
 }

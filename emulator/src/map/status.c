@@ -10299,6 +10299,12 @@ int status_change_end_(struct block_list* bl, enum sc_type type, int tid, const 
 				clif->specialeffect(bl, 192, AREA);
 			}
 			break;
+		case SC_MOB_REFRESH:
+			if ( bl->type == BL_MOB && ((TBL_MOB*)bl)->state.skillstate == MSS_IDLE ) {
+				status_percent_heal(bl, 100, 100); // Full recovery
+				status->change_clear_buffs(bl, 2); // remove all debuffs
+			}
+			break;
 	}
 
 	opt_flag = 1;

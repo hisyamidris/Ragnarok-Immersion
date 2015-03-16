@@ -44,6 +44,8 @@ struct status_change_entry;
 #define MAX_SKILL_ITEM_REQUIRE    10
 #define MAX_SKILLUNITGROUPTICKSET 25
 #define MAX_SKILL_NAME_LENGTH     30
+#define MAX_TRANSMUTE_DB         200
+#define MAX_TRANSMUTE_RESOURCE     5
 
 // (Epoque:) To-do: replace this macro with some sort of skill tree check (rather than hard-coded skill names)
 #define skill_ischangesex(id) ( \
@@ -1774,7 +1776,10 @@ struct skill_cd_entry {
 	int timer;/* timer id */
 	uint16 skill_id;//skill id
 };
-
+struct i_transmute_db {
+	int nameid, trigger;
+	int cre_id[MAX_ARROW_RESOURCE], cre_amount[MAX_ARROW_RESOURCE];
+};
 /**
  * Skill Cool Down Delay Saving
  * Struct skill_cd is not a member of struct map_session_data
@@ -1844,6 +1849,7 @@ struct skill_interface {
 	struct s_skill_spellbook_db spellbook_db[MAX_SKILL_SPELLBOOK_DB];
 	bool reproduce_db[MAX_SKILL_DB];
 	struct s_skill_unit_layout unit_layout[MAX_SKILL_UNIT_LAYOUT];
+	struct i_transmute_db transmute_db[MAX_TRANSMUTE_DB];
 	/* */
 	int enchant_eff[5];
 	int deluge_eff[5];
@@ -2075,6 +2081,9 @@ struct skill_interface {
 	bool (*get_requirement_off_unknown) (struct status_change *sc, uint16 *skill_id);
 	bool (*get_requirement_item_unknown) (struct status_change *sc, struct map_session_data* sd, uint16 *skill_id, uint16 *skill_lv, uint16 *idx, int *i);
 	void (*get_requirement_unknown) (struct status_change *sc, struct map_session_data* sd, uint16 *skill_id, uint16 *skill_lv, struct skill_condition *req);
+
+	bool (*parse_row_transmutedb) (char* split[], int columns, int current);
+	int (*create_transmute) (struct map_session_data *sd, int nameid);
 };
 
 struct skill_interface *skill;

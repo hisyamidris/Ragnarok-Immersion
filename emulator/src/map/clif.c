@@ -11320,6 +11320,9 @@ void clif_parse_SelectArrow(int fd,struct map_session_data *sd)
 		case NC_MAGICDECOY:
 			skill->magicdecoy(sd,RFIFOW(fd,2));
 			break;
+		case 0x7D0:
+			skill->create_transmute(sd, RFIFOW(fd, 2));
+			break;
 	}
 
 	clif_menuskill_clear(sd);
@@ -16942,6 +16945,36 @@ void clif_parse_SkillSelectMenu(int fd, struct map_session_data *sd) {
 
 	clif_menuskill_clear(sd);
 }
+void clif_transmute_list(struct map_session_data *sd) {
+	int i, c;
+	int fd;
+
+	nullpo_retv(sd);
+
+	fd = sd->fd;
+	WFIFOHEAD(fd, MAX_TRANSMUTE_DB * 2 + 4);
+	WFIFOW(fd, 0) = 0x1ad;
+
+	for ( i = 0, c = 0; i < MAX_TRANSMUTE_DB; i++ ) {
+		int j;
+		if ( skill->transmute_db[i].nameid > 0
+			&& (j = pc->search_inventory(sd, skill->transmute_db[i].nameid)) != INDEX_NOT_FOUND
+			&& !sd->status.inventory[j].equip && sd->status.inventory[j].identify
+			) {
+			if ( (j = itemdb_viewid(skill->transmute_db[i].nameid)) > 0 )
+				WFIFOW(fd, c * 2 + 4) = j;
+			else
+				WFIFOW(fd, c * 2 + 4) = skill->transmute_db[i].nameid;
+			c++;
+		}
+	}
+	WFIFOW(fd, 2) = c * 2 + 4;
+	WFIFOSET(fd, WFIFOW(fd, 2));
+	if ( c > 0 ) {
+		sd->menuskill_id = 0x7D0;
+		sd->menuskill_val = c;
+	}
+}
 /*==========================================
  * Kagerou/Oboro amulet spirit
  *------------------------------------------*/
@@ -19133,4 +19166,6 @@ void clif_defaults(void) {
 	/* NPC Market */
 	clif->pNPCMarketClosed = clif_parse_NPCMarketClosed;
 	clif->pNPCMarketPurchase = clif_parse_NPCMarketPurchase;
+	
+	clif->transmute_list = clif_transmute_list;
 }
