@@ -339,6 +339,7 @@ int skill_calc_heal(struct block_list *src, struct block_list *target, uint16 sk
 
 	switch( skill_id ) {
 		case BA_APPLEIDUN:
+		case DC_SERVICEFORYOU:
 #ifdef RENEWAL
 			hp = 100+5*skill_lv+5*(status_get_vit(src)/10); // HP recovery
 #else // not RENEWAL
@@ -393,7 +394,7 @@ int skill_calc_heal(struct block_list *src, struct block_list *target, uint16 sk
 			hp -= hp * sc->data[SC_CRITICALWOUND]->val2/100;
 		if(sc->data[SC_DEATHHURT] && heal)
 			hp -= hp * 20/100;
-		if(sc->data[SC_HEALPLUS] && skill_id != NPC_EVILLAND && skill_id != BA_APPLEIDUN)
+		if(sc->data[SC_HEALPLUS] && skill_id != NPC_EVILLAND && skill_id != BA_APPLEIDUN && skill_id != DC_SERVICEFORYOU)
 			hp += hp * sc->data[SC_HEALPLUS]->val1/100; // Only affects Heal, Sanctuary and PotionPitcher.(like bHealPower) [Inkfish]
 		if(sc->data[SC_WATER_INSIGNIA] && sc->data[SC_WATER_INSIGNIA]->val1 == 2)
 			hp += hp / 10;
@@ -12204,6 +12205,7 @@ int skill_unit_onplace_timer(struct skill_unit *src, struct block_list *bl, int6
 			skill->attack(BF_MISC, ss, &src->bl, bl, sg->skill_id, sg->skill_lv, tick, 0);
 			break;
 
+		case UNT_SERVICEFORYOU:
 		case UNT_APPLEIDUN: //Apple of Idun [Skotlex]
 		{
 			int heal;
@@ -12212,8 +12214,8 @@ int skill_unit_onplace_timer(struct skill_unit *src, struct block_list *bl, int6
 			if (md && md->class_ == MOBID_EMPERIUM)
 				break;
 #endif
-			if ((sg->src_id == bl->id && !(tsc && tsc->data[SC_SOULLINK] && tsc->data[SC_SOULLINK]->val2 == SL_BARDDANCER))
-			  || (!(battle_config.song_timer_reset) && tsc && tsc->data[type] && tsc->data[type]->val4 == 1))
+			if (/*(sg->src_id == bl->id && !(tsc && tsc->data[SC_SOULLINK] && tsc->data[SC_SOULLINK]->val2 == SL_BARDDANCER))
+			  || */(!(battle_config.song_timer_reset) && tsc && tsc->data[type] && tsc->data[type]->val4 == 1))
 				break;
 
 			heal = skill->calc_heal(ss,bl,sg->skill_id, sg->skill_lv, true);
@@ -12221,7 +12223,6 @@ int skill_unit_onplace_timer(struct skill_unit *src, struct block_list *bl, int6
 				heal = ~heal + 1;
 			clif->skill_nodamage(&src->bl, bl, AL_HEAL, heal, 1);
 			status->heal(bl, heal, 0, 0);
-
 			if (!battle_config.song_timer_reset)
 				sc_start4(ss, bl, type, 100, sg->skill_lv, sg->val1, sg->val2, 0, sg->limit);
 		}
@@ -12232,7 +12233,6 @@ int skill_unit_onplace_timer(struct skill_unit *src, struct block_list *bl, int6
 		case UNT_HUMMING:
 		case UNT_DONTFORGETME:
 		case UNT_FORTUNEKISS:
-		case UNT_SERVICEFORYOU:
 			if (battle_config.song_timer_reset
 			  || (!(battle_config.song_timer_reset) && tsc && tsc->data[type] && tsc->data[type]->val4 == 1)
 			  || (sg->src_id == bl->id && !(tsc && tsc->data[SC_SOULLINK] && tsc->data[SC_SOULLINK]->val2 == SL_BARDDANCER))
@@ -14702,6 +14702,10 @@ int skill_castfix (struct block_list *bl, uint16 skill_id, uint16 skill_lv) {
 					time+= time * sd->skillcast[i].val / 100;
 					break;
 				}
+			}
+			if ( (i = pc->checkskill(sd, MC_VENDING) > 0) ) {
+				i = ((sd->max_weight - sd->weight) * 1000 / sd->max_weight / 10) * (5 * i) / 10;
+				time -= time * i / 100;
 			}
 		}
 

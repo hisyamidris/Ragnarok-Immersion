@@ -2661,12 +2661,7 @@ int status_calc_pc_(struct map_session_data* sd, enum e_status_calc_opt opt) {
 	// Absolute modifiers from passive skills
 	if((skill_lv=pc->checkskill(sd,CR_TRUST))>0)
 		bstatus->max_hp += skill_lv * 200;
-	if ( pc->checkskill(sd, MC_VENDING) > 0 ) {
-		skill_lv = sd->weight * 1000 / sd->max_weight / 10;
-		if(sd->weight < sd->max_weight)	{
-		bstatus->max_hp += bstatus->max_hp * (100 - skill_lv) * (5 * pc->checkskill(sd, MC_VENDING)) / 10000;
-		}
-	}
+
 	// Apply relative modifiers from equipment
 	if(sd->hprate < 0)
 		sd->hprate = 0;
@@ -2869,6 +2864,10 @@ int status_calc_pc_(struct map_session_data* sd, enum e_status_calc_opt opt) {
 		bstatus->aspd_rate += 500-100*pc->checkskill(sd,KN_CAVALIERMASTERY);
 	else if (pc_isridingdragon(sd))
 		bstatus->aspd_rate += 250-50*pc->checkskill(sd,RK_DRAGONTRAINING);
+	if ( (skill_lv = pc->checkskill(sd, MC_VENDING) > 0) ) {
+		skill_lv = ((sd->max_weight - sd->weight) * 1000 / sd->max_weight / 10) * (5 * skill_lv) / 10;
+		bstatus->aspd_rate -= skill_lv * 10; // 1000 = 100%
+	}
 #else // needs more info
 	if((skill_lv=pc->checkskill(sd,SA_ADVANCEDBOOK))>0 && sd->status.weapon == W_BOOK)
 		bstatus->aspd_rate += 5*skill_lv;
@@ -5280,6 +5279,7 @@ unsigned short status_calc_speed(struct block_list *bl, struct status_change *sc
 			if(sc->data[SC_FUSION]) {
 				val = 25;
 			} else if (sd) {
+				int skill_lv;
 				if (pc_isridingpeco(sd) || pc_isridingdragon(sd) || sd->sc.data[SC_ALL_RIDING])
 					val = 25;//Same bonus
 				else if (pc_isridingwug(sd))
@@ -5288,6 +5288,10 @@ unsigned short status_calc_speed(struct block_list *bl, struct status_change *sc
 					val = (- 10 * (5 - pc->checkskill(sd,NC_MADOLICENCE)));
 					if (sc->data[SC_ACCELERATION])
 						val += 25;
+				}
+				if ( (skill_lv = pc->checkskill(sd, MC_VENDING) > 0) ) {
+					skill_lv = ((sd->max_weight - sd->weight) * 1000 / sd->max_weight / 10) * (5 * skill_lv) / 10;
+					val += skill_lv;
 				}
 			}
 

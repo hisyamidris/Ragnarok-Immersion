@@ -4071,6 +4071,10 @@ int pc_additem(struct map_session_data *sd,struct item *item_data,int amount,e_l
 
 	sd->weight += w;
 	clif->updatestatus(sd,SP_WEIGHT);
+	if ( pc->checkskill(sd, MC_VENDING) > 0 ) {
+		clif->updatestatus(sd, SP_ASPD);
+		clif->updatestatus(sd, SP_SPEED);
+	}
 	status_calc_pc(sd, SCO_FORCE);
 	//Auto-equip
 	if(data->flag.autoequip)
@@ -6851,6 +6855,7 @@ int pc_skillheal_bonus(struct map_session_data *sd, uint16 skill_id) {
 			case PR_SANCTUARY:      if( !(battle_config.skill_add_heal_rate&2) ) bonus = 0; break;
 			case AM_POTIONPITCHER:  if( !(battle_config.skill_add_heal_rate&4) ) bonus = 0; break;
 			case CR_SLIMPITCHER:    if( !(battle_config.skill_add_heal_rate&8) ) bonus = 0; break;
+			case DC_SERVICEFORYOU:
 			case BA_APPLEIDUN:      if( !(battle_config.skill_add_heal_rate&16)) bonus = 0; break;
 		}
 	}
