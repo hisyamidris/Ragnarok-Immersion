@@ -4002,7 +4002,7 @@ struct Damage battle_calc_misc_attack(struct block_list *src,struct block_list *
 
 	damage_div_fix(md.damage, md.div_);
 
-	if (!(nk&NK_IGNORE_FLEE))
+	if ( !(nk&NK_IGNORE_FLEE) && !(target->type == BL_MOB && tsc && tsc->data[SC_PROVOKE]) )
 	{
 		i = 0; //Temp for "hit or no hit"
 		if(tsc && tsc->opt1 && tsc->opt1 != OPT1_STONEWAIT && tsc->opt1 != OPT1_BURNING)
@@ -4304,7 +4304,8 @@ struct Damage battle_calc_weapon_attack(struct block_list *src,struct block_list
 		}
 	} else //Range for normal attacks.
 		wd.flag |= flag.arrow?BF_LONG:BF_SHORT;
-	if ((!skill_id || skill_id == PA_SACRIFICE) && tstatus->flee2 && rnd()%1000 < tstatus->flee2) {
+	if ((!skill_id || skill_id == PA_SACRIFICE) && tstatus->flee2 && rnd()%1000 < tstatus->flee2
+		&& !(target->type == BL_MOB && tsc && tsc->data[SC_PROVOKE])) {
 		//Check for Lucky Dodge
 		wd.type=0x0b;
 		wd.dmg_lv=ATK_LUCKY;
@@ -4593,7 +4594,7 @@ struct Damage battle_calc_weapon_attack(struct block_list *src,struct block_list
 		if( !sd )
 			hitrate = cap_value(hitrate, 5, 95);
 #endif
-		if(rnd()%100 >= hitrate){
+		if ( rnd() % 100 >= hitrate && !(target->type == BL_MOB && tsc && tsc->data[SC_PROVOKE]) ) {
 			wd.dmg_lv = ATK_FLEE;
 			if (skill_id == SR_GATEOFHELL)
 				flag.hit = 1;/* will hit with the special */
